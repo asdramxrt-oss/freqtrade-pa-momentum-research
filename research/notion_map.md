@@ -78,8 +78,16 @@ Diagnostic only. No strategy change and no strategy verdict.
 | Strategy Candidates — Research Decision Matrix (database) | https://app.notion.com/p/978de4a87da6436692d0d5f5671075b1 |
 | PHASE A — Repository Audit (summary) | https://app.notion.com/p/3dd017d63ac78108b4dfee3d4d850df1 |
 | Research Area 1 — Turtle/trend robustness (evidence pass) | https://app.notion.com/p/3dd017d63ac7819f85ace7bacf9b0cce |
+| Phase 3 — Experiment Registry (database) | https://app.notion.com/p/4f43d206722a4aef9525ca54a281397f |
+| Data Availability | https://app.notion.com/p/3dd017d63ac7819f8f0aee2ead80c02d |
+| Phase D — Critical Evaluation | https://app.notion.com/p/3dd017d63ac781ea90fff63d309adf1d |
+| FROZEN Implementation Specification | https://app.notion.com/p/3dd017d63ac7812a8edcf705f5db7b51 |
 
 Git-side audit documents: `docs/REPOSITORY_AUDIT.md`, `docs/DATA_AVAILABILITY.md`, `docs/EXTERNAL_EVIDENCE.md`.
+
+Git-side Phase 3 control documents: `docs/EXPERIMENT_REGISTRY.md`, `docs/PHASE_D_CRITICAL_EVALUATION.md`, `docs/FROZEN_IMPLEMENTATION_SPEC.md`.
+
+Note: the new programme is registered in the **Phase 3 — Experiment Registry** database with `P3-` prefixed IDs, because `EXP-001…015` belong to the closed original programme and the original `Experiments` data source could not be altered via the API.
 
 ## Update procedure after each experiment
 
