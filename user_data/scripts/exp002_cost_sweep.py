@@ -235,8 +235,18 @@ def analyse(result: dict) -> dict:
         "wins": strategy["wins"],
         "losses": strategy["losses"],
         "draws": strategy["draws"],
-        "max_drawdown_wallet_pct": strategy["max_drawdown_account"] * 100,
-        "max_relative_drawdown_pct": strategy["max_relative_drawdown"] * 100,
+        # Drawdown fields mirror what freqtrade prints:
+        #   trade-based "Max % of account underwater"        -> strategy['max_relative_drawdown']
+        #   wallet  "Max % of account underwater (balance)"  -> wallet_stats['max_relative_drawdown']
+        "max_drawdown_trade_pct": strategy["max_relative_drawdown"] * 100,
+        "max_drawdown_wallet_pct": strategy.get("wallet_stats", {}).get(
+            "max_relative_drawdown", strategy["max_relative_drawdown"]
+        )
+        * 100,
+        "max_drawdown_wallet_abs_usdt": strategy.get("wallet_stats", {}).get(
+            "max_drawdown_abs"
+        ),
+        "wallet_high_balance_usdt": strategy.get("wallet_stats", {}).get("high_balance"),
         "market_change_pct": strategy["market_change"] * 100,
         "turnover_usdt": turnover,
         "turnover_reported_usdt": float(strategy["total_volume"]),
@@ -297,6 +307,35 @@ def main() -> int:
         for record in prior.get("runs", []):
             merged[record["label"]] = record
 
+    def persist() -> dict:
+        """Write the consolidated output and return the breakeven summary."""
+        group_rank = {"full_sample": 0, "oos": 1, "per_year": 2}
+        ordered = sorted(
+            merged.values(),
+            key=lambda r: (group_rank[r["group"]], r.get("year", 0), r["fee"]),
+        )
+        full_sample = [r for r in ordered if r["group"] == "full_sample"]
+        breakeven = {
+            "fee_at_pf_1_00": interpolate_breakeven(
+                [(r["fee"], r["metrics"]["profit_factor"]) for r in full_sample], 1.0
+            ),
+            "fee_at_net_return_0": interpolate_breakeven(
+                [(r["fee"], r["metrics"]["net_profit_pct"]) for r in full_sample], 0.0
+            ),
+        }
+        output = {
+            "experiment_id": "EXP-002",
+            "strategy": STRATEGY,
+            "config": str(CONFIG.relative_to(PROJECT_ROOT)),
+            "generated_utc": datetime.now(timezone.utc).isoformat(),
+            "run_count": len(ordered),
+            "breakeven": breakeven,
+            "runs": ordered,
+        }
+        OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+        OUTPUT.write_text(json.dumps(output, indent=2), encoding="utf-8")
+        return breakeven
+
     for index, run in enumerate(runs, start=1):
         print(f"  [{index}/{len(runs)}] {run['label']} fee={run['fee']:.4f} ...", flush=True)
         run_backtest(run)
@@ -304,41 +343,17 @@ def main() -> int:
         record = dict(run)
         record["metrics"] = metrics
         merged[record["label"]] = record
+        persist()
         print(
             f"      trades={metrics['trades']} "
             f"PF={metrics['profit_factor']:.3f} "
             f"return={metrics['net_profit_pct']:.2f}% "
-            f"fees={metrics['fees_paid_usdt']:,.0f} USDT",
+            f"fees={metrics['fees_paid_usdt']:,.0f} USDT "
+            f"dd_wallet={metrics['max_drawdown_wallet_pct']:.2f}%",
             flush=True,
         )
 
-    group_rank = {"full_sample": 0, "oos": 1, "per_year": 2}
-    results = sorted(
-        merged.values(),
-        key=lambda r: (group_rank[r["group"]], r.get("year", 0), r["fee"]),
-    )
-
-    full_sample = [r for r in results if r["group"] == "full_sample"]
-    breakeven = {
-        "fee_at_pf_1_00": interpolate_breakeven(
-            [(r["fee"], r["metrics"]["profit_factor"]) for r in full_sample], 1.0
-        ),
-        "fee_at_net_return_0": interpolate_breakeven(
-            [(r["fee"], r["metrics"]["net_profit_pct"]) for r in full_sample], 0.0
-        ),
-    }
-
-    output = {
-        "experiment_id": "EXP-002",
-        "strategy": STRATEGY,
-        "config": str(CONFIG.relative_to(PROJECT_ROOT)),
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
-        "run_count": len(results),
-        "breakeven": breakeven,
-        "runs": results,
-    }
-    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT.write_text(json.dumps(output, indent=2), encoding="utf-8")
+    breakeven = persist()
     print(f"\nWrote {OUTPUT}")
     print(f"Breakeven (full sample): {breakeven}")
     return 0
