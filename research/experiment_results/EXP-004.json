@@ -1,0 +1,133 @@
+{
+  "experiment_id": "EXP-004",
+  "title": "Frozen long-only pullback continuation — fresh OOS validation",
+  "strategy_class": "PullbackContinuationLong",
+  "version": "pullback-continuation-v1 (frozen at EXP-003 implementation)",
+  "status": "FAILS_FRESH_OOS",
+  "hypothesis_doc": "research/hypotheses/pullback_continuation.md",
+  "spec_doc": "research/experiment_specs/EXP-004.md",
+  "result_doc": "research/experiment_results/EXP-004.md",
+  "raw_results": "research/experiment_results/EXP-004.raw.json",
+  "regression_results": "research/experiment_results/EXP-004.regression.json",
+  "github_branch": "research/frozen-pullback-oos",
+  "preregistration_commit": "1a8e5ab",
+  "frozen_strategy_commit": "c4bee8e264a111aa2e72dbce203bd49db1484d8b",
+  "run_date": "2026-09-16",
+  "governance": {
+    "charter_conflict": "charter listed EXP-004 as 'Turtle + Pullback'; re-scoped to fresh-OOS validation by research-owner direction",
+    "decision_record": "DEC-005"
+  },
+  "environment": {
+    "freqtrade": "2026.9-dev",
+    "ccxt": "4.5.71",
+    "python": "3.12.10",
+    "pandas": "3.0.5",
+    "numpy": "2.4.6"
+  },
+  "dataset": {
+    "exchange": "binance",
+    "instrument": "USDT perpetual futures (mirror of identical spot candles; funding excluded)",
+    "timeframe": "4h",
+    "pairs": ["BTC/USDT:USDT", "ETH/USDT:USDT", "BNB/USDT:USDT", "SOL/USDT:USDT", "XRP/USDT:USDT", "ADA/USDT:USDT", "DOGE/USDT:USDT", "LINK/USDT:USDT", "AVAX/USDT:USDT", "DOT/USDT:USDT"],
+    "oos_timerange": "20260101-20260916",
+    "oos_start": "2026-01-01",
+    "oos_end": "2026-09-16",
+    "oob_length_months": 8.5,
+    "fee_per_side": 0.0005
+  },
+  "configuration": {
+    "config_file": "user_data/configs/EXP-003-long.json",
+    "tuned_parameters": "none",
+    "strategy_modified": false,
+    "fee_sweep": false
+  },
+  "contamination_audit": {
+    "result": "clean",
+    "prior_timeranges": ["20190101-20260101", "20250101-20260101", "per-year 2019-2025"],
+    "first_fresh_bar": "2026-01-01T00:00:00Z",
+    "note": "no prior experiment, report, script or decision referenced any date at or after 2026-01-01"
+  },
+  "metrics": {
+    "trades": 64,
+    "profit_factor": 0.6065,
+    "net_return_pct": -12.7542,
+    "net_profit_abs_usdt": -1275.4199,
+    "cagr_pct": -17.554,
+    "p_value": 0.16435,
+    "sharpe": -0.8401,
+    "sortino": -3.3264,
+    "sqn": -1.407,
+    "win_rate_pct": 25.0,
+    "wins": 16,
+    "losses": 48,
+    "draws": 0,
+    "expectancy": -19.9284,
+    "avg_trade_pct": -0.8378,
+    "median_trade_pct": -2.1336,
+    "max_drawdown_wallet_pct": 21.6987,
+    "holding_avg_seconds": 235140.0,
+    "market_change_pct": -27.479,
+    "turnover_usdt": 337171.21,
+    "fees_paid_usdt": 168.59,
+    "time_in_market_ratio": 0.6751,
+    "starting_balance": 10000.0,
+    "final_balance": 8724.58,
+    "best_trade_usdt": 482.64,
+    "worst_trade_usdt": -104.98
+  },
+  "monthly": {
+    "2026-01": { "trades": 7, "net_profit_abs_usdt": -230.12 },
+    "2026-02": { "trades": 5, "net_profit_abs_usdt": -468.59 },
+    "2026-03": { "trades": 8, "net_profit_abs_usdt": -283.48 },
+    "2026-04": { "trades": 11, "net_profit_abs_usdt": -170.26 },
+    "2026-05": { "trades": 10, "net_profit_abs_usdt": -281.06 },
+    "2026-06": { "trades": 2, "net_profit_abs_usdt": -82.74 },
+    "2026-07": { "trades": 6, "net_profit_abs_usdt": -127.0 },
+    "2026-08": { "trades": 9, "net_profit_abs_usdt": 23.81 },
+    "2026-09": { "trades": 6, "net_profit_abs_usdt": 344.02 }
+  },
+  "per_pair": {
+    "LINK": { "trades": 6, "profit_factor": 4.173, "net_return_usdt": 4.68 },
+    "DOT": { "trades": 5, "profit_factor": 1.557, "net_return_usdt": 1.56 },
+    "BTC": { "trades": 1, "profit_factor": null, "net_return_usdt": 0.07 },
+    "SOL": { "trades": 7, "profit_factor": 0.844, "net_return_usdt": -0.49 },
+    "BNB": { "trades": 8, "profit_factor": 0.723, "net_return_usdt": -1.07 },
+    "ETH": { "trades": 6, "profit_factor": 0.243, "net_return_usdt": -2.17 },
+    "DOGE": { "trades": 7, "profit_factor": 0.083, "net_return_usdt": -3.17 },
+    "ADA": { "trades": 5, "profit_factor": 0.0, "net_return_usdt": -3.27 },
+    "AVAX": { "trades": 6, "profit_factor": 0.0, "net_return_usdt": -3.72 },
+    "XRP": { "trades": 13, "profit_factor": 0.34, "net_return_usdt": -5.17 }
+  },
+  "statistics": {
+    "test": "two-sided one-sample t-test (scipy.stats.ttest_1samp) on per-trade returns vs 0",
+    "sample_size": 64,
+    "p_value": 0.16435,
+    "significant_at_5pct": false,
+    "note": "negative expectancy is not statistically distinguishable from zero; the window is under-powered (64 < 200 trades)"
+  },
+  "integrity_checks": {
+    "strategy_identical_to_frozen_commit": true,
+    "regression_spot_full": { "expected_trades": 607, "actual_trades": 607, "timestamp_value_mismatches": 0, "pass": true },
+    "regression_futures_full": { "trades": 607, "profit_factor": 1.567081, "net_return_pct": 718.6218, "pass": true },
+    "causality_prefix_invariance": true,
+    "pivot_publication_delay": true,
+    "timestamp_alignment": true,
+    "regression_used_fresh_window": false
+  },
+  "acceptance_criteria": {
+    "A1_min_trades": { "threshold": ">=200", "measured": 64, "pass": false },
+    "A2_profit_factor": { "threshold": ">=1.10", "measured": 0.6065, "pass": false },
+    "A3_expectancy_p_value": { "threshold": "<0.05", "measured": 0.16435, "pass": false },
+    "A4_net_return": { "threshold": ">=0", "measured": -12.7542, "pass": false },
+    "A5_profit_factor_ge_1": { "threshold": ">=1.00", "measured": 0.6065, "pass": false },
+    "A6_wallet_max_drawdown": { "threshold": "<35%", "measured": 21.6987, "pass": true },
+    "A7_profitable_years": { "threshold": ">=60%", "measured": 0.0, "pass": false },
+    "A8_profit_factor_stress": { "threshold": "N/A", "measured": null, "pass": null, "note": "not evaluated: no fee sweep" }
+  },
+  "criteria_passed": 1,
+  "criteria_evaluable": 7,
+  "decision": "FAILS FRESH OOS. The EXP-003 long-only pullback result did not replicate on fresh unseen data (PF 0.607, -12.75%, 64 trades). No tuning, no pair removal, no parameter change, no combination. Long-only pullback hypothesis not validated.",
+  "decision_record": "DEC-006",
+  "next_experiment": "EXP-005",
+  "next_experiment_started": false
+}

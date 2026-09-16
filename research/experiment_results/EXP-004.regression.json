@@ -1,0 +1,22 @@
+{
+  "experiment_id": "EXP-004",
+  "purpose": "strategy immutability regression on historical EXP-003 data",
+  "fresh_oos_used": false,
+  "spot_long_full_exact_trade_comparison": {
+    "expected_trades": 607,
+    "actual_trades": 607,
+    "count_match": true,
+    "timestamp_and_value_mismatches": 0,
+    "first_mismatches": []
+  },
+  "futures_long_full_aggregate_comparison": {
+    "expected_trades": 607,
+    "actual_trades": 607,
+    "expected_profit_factor": 1.567081,
+    "actual_profit_factor": 1.567081,
+    "expected_net_profit_pct": 718.6218,
+    "actual_net_profit_pct": 718.6218,
+    "match": true
+  },
+  "passed": true
+}
