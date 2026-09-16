@@ -67,6 +67,19 @@ https://app.notion.com/p/1a91654b27394de48575b6d8b5b117db
 
 Diagnostic only. No strategy change and no strategy verdict.
 
+## Phase 3 research knowledge base (Notion)
+
+| Artifact | Notion |
+|----------|--------|
+| 09 — Research Knowledge Base | https://app.notion.com/p/3dd017d63ac78140b572dce19f80d7d1 |
+| Research Questions & Hypotheses | https://app.notion.com/p/3dd017d63ac781099c96e418b377f600 |
+| Literature & Evidence | https://app.notion.com/p/3dd017d63ac78190a8e0d58e931c3b0a |
+| Validation Framework | https://app.notion.com/p/3dd017d63ac78177bdeada6bba71e941 |
+| Strategy Candidates — Research Decision Matrix (database) | https://app.notion.com/p/978de4a87da6436692d0d5f5671075b1 |
+| PHASE A — Repository Audit (summary) | https://app.notion.com/p/3dd017d63ac78108b4dfee3d4d850df1 |
+
+Git-side audit document: `docs/REPOSITORY_AUDIT.md`.
+
 ## Update procedure after each experiment
 
 1. Write `research/experiment_specs/<ID>.md` and `user_data/configs/<ID>.json`,
