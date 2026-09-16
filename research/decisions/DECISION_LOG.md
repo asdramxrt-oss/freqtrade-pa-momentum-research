@@ -10,6 +10,7 @@ decision is a new entry that supersedes the old one.
 | DEC-002 | 2026-09-16 | Strategy verdict | **EXP-001 (Turtle raw baseline) = FAIL.** 4 of 8 acceptance criteria passed. Failures: per-trade expectancy not significant (p=0.066), OOS 2025 negative (−18.98%, PF 0.80), wallet max drawdown 61.55%. | `research/experiment_results/EXP-001.md`, `EXP-001.json` |
 | DEC-003 | 2026-09-16 | Strategy verdict | **EXP-002 (Turtle with realistic transaction costs) = FAIL.** 5 of 9 criteria passed (A1, A2, A7, A8, M1). Same failures as EXP-001: expectancy p=0.066, OOS 2025 −18.98% (PF 0.80), wallet max drawdown 61.55%. Cost is a real but non-binding constraint — profit factor stays above 1.00 until ~0.80% per side (1.61% round trip), so costs do not cause the failure. | `research/experiment_results/EXP-002.md`, `EXP-002.json`, `EXP-002.raw.json` |
 | DEC-004 | 2026-09-16 | Strategy verdict | **EXP-003 (Pullback continuation) = MIXED / REQUIRES FURTHER VALIDATION.** Combined object fails A1–A8 (4/8: A3, A4, A5, A6), caused entirely by the short side (PF 0.73, −55.95%, DD 61.73%, 9/10 pairs negative, expectancy significantly negative). Long-only passes all 8 (PF 1.567, DD 24.4%, OOS +14.01%, 6/7 years, all 10 pairs profitable) but is a pre-registered variant on a single holdout — promising, not validated. Short side rejected. Geometry does not separate winners from losers. | `research/experiment_results/EXP-003.md`, `EXP-003.json`, `EXP-003.raw.json` |
+| DEC-005 | 2026-09-16 | Governance | **EXP-004 slot re-scoped.** The frozen charter sequence listed EXP-004 as "Turtle + Pullback". At the research owner's explicit direction the EXP-004 slot is instead a **fresh out-of-sample validation of the frozen long-only pullback strategy** (`c4bee8e`), with combination research explicitly prohibited for this slot. The charter sequence and this experiment are therefore reconciled by record, not by silent divergence. Turtle+Pullback is deferred and not authorised. | `research/experiment_specs/EXP-004.md` |
 
 Founding commit (foundation + EXP-001 implementation, on `main`):
 `12acbf7017a04418dbfa54771edf5c97b358d618`
@@ -209,3 +210,36 @@ structural variable measured here explains success.
 - Can position sizing or a portfolio rule extract the long edge without the
   combined-slot competition that made the combined run worse than its own long
   side?
+
+---
+
+## DEC-005 — detail
+
+**Decision.** The EXP-004 slot is used for a **fresh out-of-sample validation of
+the frozen long-only pullback continuation strategy**, not for the
+`Turtle + Pullback` combination experiment named in the charter's pre-registered
+sequence.
+
+**Reasoning.**
+
+1. EXP-003 left exactly one open lead: the long-only pullback variant (8/8
+   criteria on the development sample, 2025 OOS +14.01%). The single most useful
+   next step is to test whether that lead survives a period nobody has looked at,
+   before spending effort on combination research that the earlier evidence does
+   not yet justify.
+2. The research owner directed this re-scope explicitly and prohibited any
+   baseline combination in this slot.
+3. The charter requires that a change to the frozen plan be recorded rather than
+   made silently; this record supplies that.
+
+**Consequences.**
+
+1. EXP-004 = fresh OOS validation of `PullbackContinuationLong` at its frozen
+   commit `c4bee8e`.
+2. `Turtle + Pullback` is deferred; no combination is built or authorised.
+3. The charter sequence table is now knowingly divergent for the EXP-004 row and
+   is superseded by this decision for that row only.
+4. EXP-005 and later remain unauthorised.
+
+**Note.** This is a governance decision, not a strategy verdict; the EXP-004
+verdict is recorded separately after the fresh run.
