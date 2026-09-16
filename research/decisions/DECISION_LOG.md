@@ -32,6 +32,13 @@ EXP-003 results commit (results + DEC-004 + map):
 `552fd763b08971f302cbc73f035115cc2a86813a`
 Baseline strategy logic unchanged at `12acbf7017a04418dbfa54771edf5c97b358d618`.
 
+EXP-004 pre-registration commit (spec + DEC-005, on `research/frozen-pullback-oos`):
+`1a8e5ab29079319642e08fca78e6d2ed003f983d`
+EXP-004 frozen strategy commit (unchanged from EXP-003 implementation):
+`c4bee8e264a111aa2e72dbce203bd49db1484d8b`
+EXP-004 results commit (results + DEC-006 + map):
+`f17572d39f7e8f6fab73262ad5f770de93629017`
+
 ---
 
 ## DEC-002 — detail

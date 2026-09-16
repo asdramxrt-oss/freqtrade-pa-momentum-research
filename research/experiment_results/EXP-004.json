@@ -10,8 +10,9 @@
   "raw_results": "research/experiment_results/EXP-004.raw.json",
   "regression_results": "research/experiment_results/EXP-004.regression.json",
   "github_branch": "research/frozen-pullback-oos",
-  "preregistration_commit": "1a8e5ab",
+  "preregistration_commit": "1a8e5ab29079319642e08fca78e6d2ed003f983d",
   "frozen_strategy_commit": "c4bee8e264a111aa2e72dbce203bd49db1484d8b",
+  "results_commit": "f17572d39f7e8f6fab73262ad5f770de93629017",
   "run_date": "2026-09-16",
   "governance": {
     "charter_conflict": "charter listed EXP-004 as 'Turtle + Pullback'; re-scoped to fresh-OOS validation by research-owner direction",
