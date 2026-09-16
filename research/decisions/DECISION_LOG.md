@@ -9,6 +9,7 @@ decision is a new entry that supersedes the old one.
 | DEC-001 | 2026-09-16 | Governance | Research charter and experiment protocol frozen. Project established as a standalone repository, isolated from all pre-existing trading/research repositories. | `research/preregistration/research_charter.md`, `research/preregistration/experiment_protocol.md` |
 | DEC-002 | 2026-09-16 | Strategy verdict | **EXP-001 (Turtle raw baseline) = FAIL.** 4 of 8 acceptance criteria passed. Failures: per-trade expectancy not significant (p=0.066), OOS 2025 negative (−18.98%, PF 0.80), wallet max drawdown 61.55%. | `research/experiment_results/EXP-001.md`, `EXP-001.json` |
 | DEC-003 | 2026-09-16 | Strategy verdict | **EXP-002 (Turtle with realistic transaction costs) = FAIL.** 5 of 9 criteria passed (A1, A2, A7, A8, M1). Same failures as EXP-001: expectancy p=0.066, OOS 2025 −18.98% (PF 0.80), wallet max drawdown 61.55%. Cost is a real but non-binding constraint — profit factor stays above 1.00 until ~0.80% per side (1.61% round trip), so costs do not cause the failure. | `research/experiment_results/EXP-002.md`, `EXP-002.json`, `EXP-002.raw.json` |
+| DEC-004 | 2026-09-16 | Strategy verdict | **EXP-003 (Pullback continuation) = MIXED / REQUIRES FURTHER VALIDATION.** Combined object fails A1–A8 (4/8: A3, A4, A5, A6), caused entirely by the short side (PF 0.73, −55.95%, DD 61.73%, 9/10 pairs negative, expectancy significantly negative). Long-only passes all 8 (PF 1.567, DD 24.4%, OOS +14.01%, 6/7 years, all 10 pairs profitable) but is a pre-registered variant on a single holdout — promising, not validated. Short side rejected. Geometry does not separate winners from losers. | `research/experiment_results/EXP-003.md`, `EXP-003.json`, `EXP-003.raw.json` |
 
 Founding commit (foundation + EXP-001 implementation, on `main`):
 `12acbf7017a04418dbfa54771edf5c97b358d618`
@@ -20,6 +21,12 @@ Baseline strategy logic unchanged at `12acbf7017a04418dbfa54771edf5c97b358d618`.
 EXP-002 branch: `research/turtle-costs`.
 EXP-002 results commit (results + DEC-003 + map):
 `2fdcc8f4acd25593dd37337e9cbe3b2abdcd5b3a`
+
+EXP-003 freeze commit (spec + configs, on `research/pullback-continuation`):
+`a07e966`
+EXP-003 implementation commit (strategy, shared primitives, tests):
+`c4bee8e`
+Baseline strategy logic unchanged at `12acbf7017a04418dbfa54771edf5c97b358d618`.
 
 ---
 
@@ -134,3 +141,69 @@ years.
 - Can a later strategy do better than the baseline **net of fees**, or only
   better gross? (Cost drag must be part of the acceptance test, not an
   afterthought.)
+
+---
+
+## DEC-004 — detail
+
+**Decision.** The pullback-continuation hypothesis is **MIXED**: the pre-registered
+combined strategy fails the acceptance framework, entirely because of the short
+side, while the long side independently clears all eight criteria. The short
+continuation setup is rejected. The long setup is promising but is **not**
+validated and is **not** production-ready.
+
+**Evidence (full sample 2019–2026, fee 0.05%).**
+
+| Variant | Trades | PF | Net return | p-value | Wallet max DD | OOS 2025 | Profitable years | A1–A8 |
+|---------|--------|----|------------|---------|---------------|----------|------------------|-------|
+| Combined (primary) | 1,148 | 1.149 | +209.49% | 0.2366 | 36.39% | −3.57% (PF 0.95) | 5/7 | 4/8 FAIL |
+| Long-only | 607 | 1.567 | +718.62% | 0.0112 | 24.43% | +14.01% (PF 1.34) | 6/7 | 8/8 PASS |
+| Short-only | 641 | 0.728 | −55.95% | 0.0049 | 61.73% | +3.03% (PF 1.07) | 1/7 | 4/8 FAIL |
+
+The combined failure set is A3 (expectancy not significant, p = 0.237), A4 (OOS
+−3.57%), A5 (OOS PF 0.953) and A6 (drawdown 36.39%). The long side is profitable
+in all 10 pairs; the short side is negative in 9 of 10. Trade-level MAE/MFE and
+all geometry statistics (impulse size, pullback depth, duration, distance from
+structure, trigger margin) are **almost identical for winners and losers**, so no
+structural variable measured here explains success.
+
+**Reasoning.**
+
+1. The pre-registered primary object is the combined strategy, and it fails.
+   Reporting only the long side would be retrospectively redefining the strategy.
+2. The short side is not marginal: PF 0.73, −55.95%, 61.73% drawdown, expectancy
+   significantly *negative* (p = 0.0049), 1/7 profitable years. It is rejected.
+3. The long side passes every criterion with margin — including the ones the
+   Turtle baseline could never clear (expectancy significance, OOS return,
+   drawdown). That is the strongest lead in the programme so far.
+4. But the long side is a pre-registered *variant*, evaluated on a single holdout,
+   with an edge that is not explained by any measured geometry. Calling it
+   validated or robust would overstate the evidence.
+
+**What was explicitly NOT done.**
+
+- No parameter tuning, no geometry filter fitted after the fact, no criterion
+  changed after seeing results.
+- The short side was **not** disabled to make the combined result look better.
+- No combination with the baseline was built (that is EXP-004, not authorised).
+- OOS was evaluated once per variant and not reused for selection.
+
+**Consequences.**
+
+1. Combined pullback continuation is not promoted and not combined with anything.
+2. Short-continuation geometry is recorded as rejected for this universe.
+3. EXP-004 is **not** started automatically; the next experiment requires an
+   explicit decision.
+4. The long-only pullback setup is the leading candidate for the next
+   authorisation, and any follow-up must pre-register its own OOS protocol
+   because this holdout has now been used.
+
+**Open questions carried forward.**
+
+- Is the long-only pullback edge stable under a **new** out-of-sample window, or
+  was 2025 an accident? (Requires a future holdout, not a re-run of 2025.)
+- Why is the short side structurally negative while the long side works? Is it
+  the crypto long bias (a rising sample) rather than the geometry?
+- Can position sizing or a portfolio rule extract the long edge without the
+  combined-slot competition that made the combined run worse than its own long
+  side?

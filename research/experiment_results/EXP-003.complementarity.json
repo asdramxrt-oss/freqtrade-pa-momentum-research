@@ -1,0 +1,38 @@
+{
+  "experiment_id": "EXP-003",
+  "note": "Descriptive preparation only. No combination is built and nothing is optimised from these numbers.",
+  "comparisons": [
+    {
+      "comparison": "pullback_combined_futures_vs_turtle_spot",
+      "pullback_trades": 1148,
+      "baseline_trades": 1347,
+      "exact_entry_overlap": 0,
+      "exact_overlap_pct_of_pullback": 0.0,
+      "near_entry_overlap_within_24h": 75,
+      "near_overlap_pct_of_pullback": 6.533101045296168,
+      "entry_day_overlap": 219,
+      "entry_day_overlap_pct_of_pullback": 30.501392757660167,
+      "exposure_pairday_jaccard": 0.16432160804020102,
+      "daily_return_correlation": 0.47854061410033005,
+      "drawdown_correlation": -0.007223725147108678,
+      "pullback_days": 729,
+      "baseline_days": 716
+    },
+    {
+      "comparison": "pullback_long_spot_vs_turtle_spot",
+      "pullback_trades": 607,
+      "baseline_trades": 1347,
+      "exact_entry_overlap": 0,
+      "exact_overlap_pct_of_pullback": 0.0,
+      "near_entry_overlap_within_24h": 67,
+      "near_overlap_pct_of_pullback": 11.037891268533773,
+      "entry_day_overlap": 150,
+      "entry_day_overlap_pct_of_pullback": 35.294117647058826,
+      "exposure_pairday_jaccard": 0.19289340101522842,
+      "daily_return_correlation": 0.4911068494247813,
+      "drawdown_correlation": 0.15711676303559405,
+      "pullback_days": 399,
+      "baseline_days": 716
+    }
+  ]
+}

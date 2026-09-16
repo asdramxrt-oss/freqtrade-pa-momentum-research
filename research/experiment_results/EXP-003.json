@@ -1,0 +1,143 @@
+{
+  "experiment_id": "EXP-003",
+  "title": "Pullback continuation — standalone baseline",
+  "strategy_classes": ["PullbackContinuation", "PullbackContinuationLong", "PullbackContinuationShort"],
+  "version": "pullback-continuation-v1",
+  "status": "MIXED_REQUIRES_FURTHER_VALIDATION",
+  "hypothesis_doc": "research/hypotheses/pullback_continuation.md",
+  "spec_doc": "research/experiment_specs/EXP-003.md",
+  "result_doc": "research/experiment_results/EXP-003.md",
+  "raw_results": "research/experiment_results/EXP-003.raw.json",
+  "geometry_results": "research/experiment_results/EXP-003.geometry.json",
+  "complementarity_results": "research/experiment_results/EXP-003.complementarity.json",
+  "github_branch": "research/pullback-continuation",
+  "baseline_strategy_commit": "12acbf7017a04418dbfa54771edf5c97b358d618",
+  "experiment_freeze_commit": "a07e966",
+  "implementation_commit": "c4bee8e",
+  "run_date": "2026-09-16",
+  "environment": {
+    "freqtrade": "2026.9-dev",
+    "ccxt": "4.5.71",
+    "python": "3.12.10",
+    "pandas": "3.0.5",
+    "numpy": "2.4.6"
+  },
+  "dataset": {
+    "exchange": "binance",
+    "underlying_candles": "spot 4h (identical to EXP-001/EXP-002)",
+    "futures_mirror": "user_data/data/binance/futures/<BASE>_<QUOTE>_<QUOTE>-4h-futures.feather (byte-identical OHLCV, funding excluded)",
+    "timeframe": "4h",
+    "pairs": ["BTC/USDT", "ETH/USDT", "BNB/USDT", "SOL/USDT", "XRP/USDT", "ADA/USDT", "DOGE/USDT", "LINK/USDT", "AVAX/USDT", "DOT/USDT"],
+    "full_period": "2019-01-01..2026-01-01",
+    "oos_period": "2025-01-01..2026-01-01",
+    "mode_note": "shorts/combined use trading_mode=futures, margin_mode=isolated, leverage 1.0 (spot cannot short; binance margin unsupported in freqtrade)"
+  },
+  "configuration": {
+    "swing_left": 2,
+    "swing_right": 2,
+    "atr_period": 20,
+    "impulse_min_atr": 3.0,
+    "pullback_min_atr": 0.5,
+    "pullback_max_atr": 2.0,
+    "max_pullback_bars": 10,
+    "confirm_bars": 3,
+    "exit_period": 10,
+    "atr_stop_multiple": 2.0,
+    "risk_per_trade": 0.01,
+    "max_open_trades": 5,
+    "tuned_parameters": "none",
+    "strategy_logic_changed_after_run": false
+  },
+  "summary": {
+    "combined": {
+      "full_sample_base": { "trades": 1148, "profit_factor": 1.1494, "net_return_pct": 209.49, "cagr_pct": 17.54, "p_value": 0.23659, "sharpe": 0.3, "sortino": 1.679, "sqn": 1.184, "win_rate_pct": 29.3, "expectancy": 18.248, "avg_trade_pct": 0.374, "median_trade_pct": -2.648, "wallet_max_drawdown_pct": 36.39, "turnover_usdt": 11246620, "fees_paid_usdt": 5623, "position_time_ratio": 1.534 },
+      "full_sample_stress": { "trades": 1140, "profit_factor": 1.0545, "net_return_pct": 58.97, "wallet_max_drawdown_pct": 46.75 },
+      "oos_base": { "trades": 175, "profit_factor": 0.9534, "net_return_pct": -3.57, "p_value": 0.82154, "wallet_max_drawdown_pct": 13.81 },
+      "side_split_base": { "long": { "trades": 552, "profit_factor": 1.663, "net_profit_abs_usdt": 44459.22 }, "short": { "trades": 596, "profit_factor": 0.678, "net_profit_abs_usdt": -23510.68 } }
+    },
+    "long_only": {
+      "full_sample_base": { "trades": 607, "profit_factor": 1.5671, "net_return_pct": 718.62, "cagr_pct": 35.08, "p_value": 0.0112, "sharpe": 0.47, "sortino": 2.676, "sqn": 2.544, "win_rate_pct": 31.8, "expectancy": 118.389, "avg_trade_pct": 1.728, "median_trade_pct": -2.678, "wallet_max_drawdown_pct": 24.43, "turnover_usdt": 10576901, "fees_paid_usdt": 5288, "position_time_ratio": 0.885 },
+      "full_sample_stress": { "trades": 607, "profit_factor": 1.4226, "net_return_pct": 469.99, "wallet_max_drawdown_pct": 27.05 },
+      "oos_base": { "trades": 88, "profit_factor": 1.3377, "net_return_pct": 14.01, "p_value": 0.38926, "wallet_max_drawdown_pct": 11.38 }
+    },
+    "short_only": {
+      "full_sample_base": { "trades": 641, "profit_factor": 0.7279, "net_return_pct": -55.95, "cagr_pct": -11.06, "p_value": 0.00491, "sharpe": -0.535, "sortino": -1.773, "sqn": -2.822, "win_rate_pct": 28.7, "expectancy": -8.728, "wallet_max_drawdown_pct": 61.73, "turnover_usdt": 1544795, "fees_paid_usdt": 772, "position_time_ratio": 0.818 },
+      "full_sample_stress": { "trades": 626, "profit_factor": 0.6435, "net_return_pct": -68.71, "wallet_max_drawdown_pct": 72.14 },
+      "oos_base": { "trades": 95, "profit_factor": 1.0732, "net_return_pct": 3.03, "p_value": 0.82315, "wallet_max_drawdown_pct": 16.16 }
+    },
+    "spot_control_long": {
+      "full_sample_base": { "trades": 607, "profit_factor": 1.5666, "net_return_pct": 717.93, "wallet_max_drawdown_pct": 28.64 },
+      "oos_base": { "trades": 88, "profit_factor": 1.3377, "net_return_pct": 14.03, "wallet_max_drawdown_pct": 14.37 },
+      "note": "identical trade count and near-identical PF/return to the futures long run; mode deviation immaterial for longs"
+    },
+    "baseline_reference": { "trades": 1347, "profit_factor": 1.228, "net_return_pct": 4817.29, "wallet_max_drawdown_pct": 61.55, "note": "reproduces EXP-001 exactly" }
+  },
+  "per_year": {
+    "combined": { "2019": 6.04, "2020": 86.38, "2021": 31.78, "2022": -9.99, "2023": 32.01, "2024": 18.02, "2025": -3.57 },
+    "long_only": { "2019": 29.22, "2020": 96.22, "2021": 51.54, "2022": -8.93, "2023": 56.16, "2024": 30.62, "2025": 14.01 },
+    "short_only": { "2019": -18.49, "2020": -11.65, "2021": -10.63, "2022": -1.28, "2023": -14.23, "2024": -13.81, "2025": 3.03 }
+  },
+  "per_pair_full_sample_base": {
+    "long_only": { "XRP": 268.02, "DOGE": 148.04, "LINK": 57.2, "DOT": 55.78, "ETH": 54.27, "AVAX": 43.55, "BNB": 36.07, "SOL": 20.82, "BTC": 17.81, "ADA": 17.07 },
+    "short_only_profitable_pairs": 1,
+    "combined_best": "XRP +127.99%",
+    "combined_worst": "ADA -47.90%"
+  },
+  "geometry": {
+    "long": { "signals": 823, "traded": 552, "winners": 172, "losers": 380, "impulse_atr_mean": 4.566, "pullback_depth_atr_mean": 1.083, "pullback_depth_pct_mean": 0.031, "pullback_bars_mean": 5.2, "distance_from_structure_atr_mean": 3.536, "trigger_margin_atr_mean": 0.268, "mae_median_pct": 4.157, "mfe_median_pct": 4.756 },
+    "short": { "signals": 926, "traded": 596, "winners": 164, "losers": 432, "impulse_atr_mean": 4.464, "pullback_depth_atr_mean": 1.108, "pullback_depth_pct_mean": 0.039, "pullback_bars_mean": 5.086, "distance_from_structure_atr_mean": 3.513, "trigger_margin_atr_mean": 0.272, "mae_median_pct": 4.141, "mfe_median_pct": 4.273 },
+    "finding": "winners and losers are geometrically almost identical; the setup geometry does not discriminate outcomes"
+  },
+  "complementarity": {
+    "pullback_combined_futures_vs_baseline": { "exact_entry_overlap": 0, "near_overlap_within_24h_pct": 6.53, "exposure_pairday_jaccard": 0.164, "daily_return_correlation": 0.479, "drawdown_correlation": -0.007 },
+    "pullback_long_spot_vs_baseline": { "exact_entry_overlap": 0, "near_overlap_within_24h_pct": 11.04, "exposure_pairday_jaccard": 0.193, "daily_return_correlation": 0.491, "drawdown_correlation": 0.157 },
+    "note": "descriptive only; combination is EXP-004 and is not authorised"
+  },
+  "acceptance_criteria": {
+    "combined_primary": {
+      "A1_min_trades": { "threshold": ">=200", "measured": 1148, "pass": true },
+      "A2_profit_factor_base": { "threshold": ">=1.10", "measured": 1.1494, "pass": true },
+      "A3_expectancy_p_value": { "threshold": "<0.05", "measured": 0.23659, "pass": false },
+      "A4_oos_net_return": { "threshold": ">=0", "measured": -3.57, "pass": false },
+      "A5_oos_profit_factor": { "threshold": ">=1.00", "measured": 0.9534, "pass": false },
+      "A6_wallet_max_drawdown": { "threshold": "<35%", "measured": 36.39, "pass": false },
+      "A7_profitable_years": { "threshold": ">=60%", "measured": 71.4, "pass": true },
+      "A8_profit_factor_stress": { "threshold": ">=1.05", "measured": 1.0545, "pass": true },
+      "passed": 4,
+      "total": 8
+    },
+    "long_only": {
+      "A1_min_trades": { "threshold": ">=200", "measured": 607, "pass": true },
+      "A2_profit_factor_base": { "threshold": ">=1.10", "measured": 1.5671, "pass": true },
+      "A3_expectancy_p_value": { "threshold": "<0.05", "measured": 0.0112, "pass": true },
+      "A4_oos_net_return": { "threshold": ">=0", "measured": 14.01, "pass": true },
+      "A5_oos_profit_factor": { "threshold": ">=1.00", "measured": 1.3377, "pass": true },
+      "A6_wallet_max_drawdown": { "threshold": "<35%", "measured": 24.43, "pass": true },
+      "A7_profitable_years": { "threshold": ">=60%", "measured": 85.7, "pass": true },
+      "A8_profit_factor_stress": { "threshold": ">=1.05", "measured": 1.4226, "pass": true },
+      "passed": 8,
+      "total": 8
+    },
+    "short_only": {
+      "A1_min_trades": { "threshold": ">=200", "measured": 641, "pass": true },
+      "A2_profit_factor_base": { "threshold": ">=1.10", "measured": 0.7279, "pass": false },
+      "A3_expectancy_p_value": { "threshold": "<0.05", "measured": 0.00491, "pass": true },
+      "A4_oos_net_return": { "threshold": ">=0", "measured": 3.03, "pass": true },
+      "A5_oos_profit_factor": { "threshold": ">=1.00", "measured": 1.0732, "pass": true },
+      "A6_wallet_max_drawdown": { "threshold": "<35%", "measured": 61.73, "pass": false },
+      "A7_profitable_years": { "threshold": ">=60%", "measured": 14.3, "pass": false },
+      "A8_profit_factor_stress": { "threshold": ">=1.05", "measured": 0.6435, "pass": false },
+      "passed": 4,
+      "total": 8
+    }
+  },
+  "integrity_criteria": {
+    "E1_direction_coverage": { "measured": "long 607 trades, short 641 trades", "pass": true },
+    "E2_causality_prefix_invariance": { "measured": "unit tests pass", "pass": true },
+    "E3_no_baseline_coupling": { "measured": "no import/reference to breakout baseline signals", "pass": true }
+  },
+  "decision": "MIXED / REQUIRES FURTHER VALIDATION. Combined object FAILS (4/8) driven entirely by the short side. Short side rejected. Long side passes 8/8 but is a pre-registered variant on a single holdout — promising, not validated, not production-ready.",
+  "decision_record": "DEC-004",
+  "next_experiment": "EXP-004",
+  "next_experiment_started": false
+}
