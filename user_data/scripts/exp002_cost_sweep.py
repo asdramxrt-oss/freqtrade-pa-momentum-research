@@ -37,7 +37,7 @@ import os
 import subprocess
 import sys
 import zipfile
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -144,8 +144,7 @@ def run_backtest(run: dict) -> subprocess.CompletedProcess:
     )
     if completed.returncode != 0:
         raise RuntimeError(
-            f"backtest failed for {run['label']} (exit {completed.returncode}); "
-            f"see {log_file}"
+            f"backtest failed for {run['label']} (exit {completed.returncode}); see {log_file}"
         )
     run["command"] = " ".join(command)
     run["log_file"] = str(log_file)
@@ -243,9 +242,7 @@ def analyse(result: dict) -> dict:
             "max_relative_drawdown", strategy["max_relative_drawdown"]
         )
         * 100,
-        "max_drawdown_wallet_abs_usdt": strategy.get("wallet_stats", {}).get(
-            "max_drawdown_abs"
-        ),
+        "max_drawdown_wallet_abs_usdt": strategy.get("wallet_stats", {}).get("max_drawdown_abs"),
         "wallet_high_balance_usdt": strategy.get("wallet_stats", {}).get("high_balance"),
         "market_change_pct": strategy["market_change"] * 100,
         "turnover_usdt": turnover,
@@ -273,7 +270,7 @@ def interpolate_breakeven(points: list[tuple[float, float]], target: float) -> f
     :return: Interpolated x, or ``None`` if the series never crosses.
     """
     ordered = sorted(points)
-    for (x0, y0), (x1, y1) in zip(ordered, ordered[1:]):
+    for (x0, y0), (x1, y1) in zip(ordered, ordered[1:], strict=False):
         if (y0 - target) * (y1 - target) <= 0 and y1 != y0:
             return x0 + (target - y0) * (x1 - x0) / (y1 - y0)
     return None
@@ -294,11 +291,7 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    runs = [
-        run
-        for run in build_run_list()
-        if args.group == "all" or run["group"] == args.group
-    ]
+    runs = [run for run in build_run_list() if args.group == "all" or run["group"] == args.group]
 
     print(f"EXP-002 cost sweep: {len(runs)} runs")
     merged: dict[str, dict] = {}
@@ -327,7 +320,7 @@ def main() -> int:
             "experiment_id": "EXP-002",
             "strategy": STRATEGY,
             "config": str(CONFIG.relative_to(PROJECT_ROOT)),
-            "generated_utc": datetime.now(timezone.utc).isoformat(),
+            "generated_utc": datetime.now(UTC).isoformat(),
             "run_count": len(ordered),
             "breakeven": breakeven,
             "runs": ordered,

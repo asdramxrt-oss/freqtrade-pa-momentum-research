@@ -39,7 +39,7 @@ https://app.notion.com/p/1a91654b27394de48575b6d8b5b117db
 | ID | Notion | Branch | Spec | Result | Status |
 |----|--------|--------|------|--------|--------|
 | EXP-001 | https://app.notion.com/p/3dd017d63ac7815d9a4ce01b206bf95c | `research/turtle-baseline` | `research/experiment_specs/EXP-001.md` | `research/experiment_results/EXP-001.md` + `.json` | FAIL |
-| EXP-002 | https://app.notion.com/p/3dd017d63ac781aab9d6f98bbf828732 | not created | not written | not written | PLANNED |
+| EXP-002 | https://app.notion.com/p/3dd017d63ac781aab9d6f98bbf828732 | `research/turtle-costs` | `research/experiment_specs/EXP-002.md` | `research/experiment_results/EXP-002.md` + `.json` + `.raw.json` | FAIL |
 | EXP-003 | https://app.notion.com/p/3dd017d63ac78101b610feddc1529963 | not created | not written | not written | PLANNED |
 | EXP-004 | https://app.notion.com/p/3dd017d63ac781199c41c8ea668e358d | not created | not written | not written | PLANNED |
 | EXP-005 | https://app.notion.com/p/3dd017d63ac781d6a113d58b5e80e34d | not created | not written | not written | PLANNED |

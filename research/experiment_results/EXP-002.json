@@ -1,0 +1,150 @@
+{
+  "experiment_id": "EXP-002",
+  "strategy": "turtle",
+  "strategy_class": "DonchianTurtleBaseline",
+  "version": "baseline-v1",
+  "status": "FAIL",
+  "title": "Turtle with realistic transaction costs",
+  "hypothesis_doc": "research/hypotheses/turtle.md",
+  "spec_doc": "research/experiment_specs/EXP-002.md",
+  "result_doc": "research/experiment_results/EXP-002.md",
+  "raw_results": "research/experiment_results/EXP-002.raw.json",
+  "github_branch": "research/turtle-costs",
+  "baseline_strategy_commit": "12acbf7017a04418dbfa54771edf5c97b358d618",
+  "experiment_freeze_commit": "8646616",
+  "tooling_commit": "eea3479",
+  "results_commit": null,
+  "run_date": "2026-09-16",
+  "environment": {
+    "freqtrade": "2026.9-dev",
+    "ccxt": "4.5.71",
+    "python": "3.12.10",
+    "pandas": "3.0.5",
+    "numpy": "2.4.6"
+  },
+  "dataset": {
+    "exchange": "binance",
+    "market": "spot",
+    "timeframe": "4h",
+    "pairs": [
+      "BTC/USDT",
+      "ETH/USDT",
+      "BNB/USDT",
+      "SOL/USDT",
+      "XRP/USDT",
+      "ADA/USDT",
+      "DOGE/USDT",
+      "LINK/USDT",
+      "AVAX/USDT",
+      "DOT/USDT"
+    ],
+    "full_period": "2019-01-01..2026-01-01",
+    "oos_period": "2025-01-01..2026-01-01",
+    "downloaded_on": "2026-09-16"
+  },
+  "configuration": {
+    "config_file": "user_data/configs/EXP-002.json",
+    "config_identical_to": "user_data/configs/EXP-001.json",
+    "entry_period": 20,
+    "exit_period": 10,
+    "atr_period": 20,
+    "atr_stop_multiple": 2.0,
+    "risk_per_trade": 0.01,
+    "max_open_trades": 5,
+    "dry_run_wallet": 10000,
+    "stake_amount": 1000,
+    "tradable_balance_ratio": 0.99,
+    "strategy_logic_changed": false,
+    "tuned_parameters": "none"
+  },
+  "cost_model": {
+    "native_slippage_model": false,
+    "method": "slippage represented as additional per-side cost via the fee parameter",
+    "interpretation": {
+      "0.0005": "taker only",
+      "0.0010": "taker + ~0.05% slippage",
+      "0.0020": "taker + ~0.15% slippage",
+      "0.0030": "heavy slippage / thin book (bracket)",
+      "0.0050": "severe (bracket)",
+      "0.0100": "extreme (edge-loss bracket)"
+    }
+  },
+  "runs": {
+    "count": 30,
+    "full_sample": [
+      { "fee": 0.0005, "trades": 1347, "profit_factor": 1.228, "net_return_pct": 4817.29, "cagr_pct": 74.57, "p_value": 0.06582, "sharpe": 0.506, "wallet_max_drawdown_pct": 61.55, "fees_paid_usdt": 82268.6, "turnover_usdt": 164537181.9, "gross_profit_usdt": 563998, "fees_pct_of_gross_profit": 14.59 },
+      { "fee": 0.001, "trades": 1347, "profit_factor": 1.1972, "net_return_pct": 3638.73, "cagr_pct": 67.86, "p_value": 0.10785, "sharpe": 0.442, "wallet_max_drawdown_pct": 65.07, "fees_paid_usdt": 138340.4, "turnover_usdt": 138340380.3, "gross_profit_usdt": 502213, "fees_pct_of_gross_profit": 27.55 },
+      { "fee": 0.002, "trades": 1343, "profit_factor": 1.145, "net_return_pct": 2067.47, "cagr_pct": 55.27, "p_value": 0.23646, "sharpe": 0.325, "wallet_max_drawdown_pct": 71.18, "fees_paid_usdt": 198701.2, "turnover_usdt": 99350587.5, "gross_profit_usdt": 405448, "fees_pct_of_gross_profit": 49.01 },
+      { "fee": 0.003, "trades": 1343, "profit_factor": 1.1034, "net_return_pct": 1151.36, "cagr_pct": 43.53, "p_value": 0.40718, "sharpe": 0.228, "wallet_max_drawdown_pct": 76.23, "fees_paid_usdt": 217062.6, "turnover_usdt": 72354189.0, "gross_profit_usdt": 332198, "fees_pct_of_gross_profit": 65.34 },
+      { "fee": 0.005, "trades": 1337, "profit_factor": 1.0436, "net_return_pct": 306.54, "cagr_pct": 22.21, "p_value": 0.7446, "sharpe": 0.089, "wallet_max_drawdown_pct": 85.42, "fees_paid_usdt": 201247.8, "turnover_usdt": 40249557.9, "gross_profit_usdt": 231901, "fees_pct_of_gross_profit": 86.78 },
+      { "fee": 0.01, "trades": 1278, "profit_factor": 0.9718, "net_return_pct": -72.82, "cagr_pct": -17.0, "p_value": 0.85518, "sharpe": -0.049, "wallet_max_drawdown_pct": 97.69, "fees_paid_usdt": 116674.8, "turnover_usdt": 11667479.1, "gross_profit_usdt": 109392, "fees_pct_of_gross_profit": 106.66 }
+    ],
+    "oos": [
+      { "fee": 0.0005, "trades": 180, "profit_factor": 0.7962, "net_return_pct": -18.98, "p_value": 0.3174, "sharpe": -0.706, "wallet_max_drawdown_pct": 39.56, "fees_paid_usdt": 406.3, "turnover_usdt": 812661.0 },
+      { "fee": 0.001, "trades": 178, "profit_factor": 0.7624, "net_return_pct": -22.31, "p_value": 0.22914, "sharpe": -0.845, "wallet_max_drawdown_pct": 41.03, "fees_paid_usdt": 792.1, "turnover_usdt": 792148.0 },
+      { "fee": 0.002, "trades": 178, "profit_factor": 0.697, "net_return_pct": -28.98, "p_value": 0.1021, "sharpe": -1.151, "wallet_max_drawdown_pct": 43.88, "fees_paid_usdt": 1518.9, "turnover_usdt": 759452.1 }
+    ],
+    "oos_evaluation_accounting": {
+      "selection_relevant_evaluations": 1,
+      "note": "single selection-relevant holdout evaluation performed by EXP-001 for this strategy version; the three runs here are non-selection cost views"
+    },
+    "per_year": {
+      "2019": { "trades": 161, "profit_factor": { "0.05": 1.3611, "0.10": 1.322, "0.20": 1.2523 }, "net_return_pct": { "0.05": 51.6, "0.10": 46.36, "0.20": 36.82 }, "wallet_max_drawdown_pct": { "0.05": 32.85, "0.10": 34.26, "0.20": 36.99 }, "fees_paid_usdt": { "0.05": 555.0, "0.10": 1089.6, "0.20": 2101.7 } },
+      "2020": { "trades": 156, "profit_factor": { "0.05": 3.5933, "0.10": 3.4642, "0.20": 3.2376 }, "net_return_pct": { "0.05": 340.73, "0.10": 327.34, "0.20": 302.66 }, "wallet_max_drawdown_pct": { "0.05": 16.83, "0.10": 16.97, "0.20": 17.25 }, "fees_paid_usdt": { "0.05": 707.6, "0.10": 1390.1, "0.20": 2682.8 } },
+      "2021": { "trades": 236, "profit_factor": { "0.05": 1.7809, "0.10": 1.7519, "0.20": 1.6972 }, "net_return_pct": { "0.05": 506.38, "0.10": 487.52, "0.20": 451.51 }, "wallet_max_drawdown_pct": { "0.05": 32.16, "0.10": 32.57, "0.20": 33.37 }, "fees_paid_usdt": { "0.05": 1715.0, "0.10": 3368.9, "0.20": 6500.4 } },
+      "2022": { "trades": 206, "profit_factor": { "0.05": 0.6436, "0.10": 0.6252, "0.20": 0.5867 }, "net_return_pct": { "0.05": -36.22, "0.10": -38.13, "0.20": -42.58 }, "wallet_max_drawdown_pct": { "0.05": 41.72, "0.10": 42.94, "0.20": 46.54 }, "fees_paid_usdt": { "0.05": 341.7, "0.10": 667.7, "0.20": 1286.1 } },
+      "2023": { "trades": 180, "profit_factor": { "0.05": 1.1536, "0.10": 1.1067, "0.20": 1.0163 }, "net_return_pct": { "0.05": 17.53, "0.10": 12.27, "0.20": 1.9 }, "wallet_max_drawdown_pct": { "0.05": 37.55, "0.10": 39.75, "0.20": 44.19 }, "fees_paid_usdt": { "0.05": 511.9, "0.10": 1000.1, "0.20": 1908.8 } },
+      "2024": { "trades": 184, "profit_factor": { "0.05": 1.8197, "0.10": 1.7491, "0.20": 1.6128 }, "net_return_pct": { "0.05": 86.72, "0.10": 79.8, "0.20": 66.26 }, "wallet_max_drawdown_pct": { "0.05": 18.91, "0.10": 20.18, "0.20": 22.87 }, "fees_paid_usdt": { "0.05": 506.4, "0.10": 991.0, "0.20": 1898.3 } },
+      "2025": { "trades": 180, "profit_factor": { "0.05": 0.7962, "0.10": 0.7624, "0.20": 0.697 }, "net_return_pct": { "0.05": -18.98, "0.10": -22.31, "0.20": -28.98 }, "wallet_max_drawdown_pct": { "0.05": 39.56, "0.10": 41.03, "0.20": 43.88 }, "fees_paid_usdt": { "0.05": 406.3, "0.10": 792.1, "0.20": 1518.9 } }
+    },
+    "per_pair_full_sample_base": {
+      "BNB/USDT": { "trades": 171, "profit_factor": 1.754, "net_return_pct": 1503.53 },
+      "DOGE/USDT": { "trades": 88, "profit_factor": 1.715, "net_return_pct": 1143.66 },
+      "AVAX/USDT": { "trades": 88, "profit_factor": 1.543, "net_return_pct": 912.45 },
+      "SOL/USDT": { "trades": 118, "profit_factor": 1.452, "net_return_pct": 890.77 },
+      "XRP/USDT": { "trades": 126, "profit_factor": 1.38, "net_return_pct": 727.19 },
+      "BTC/USDT": { "trades": 184, "profit_factor": 1.217, "net_return_pct": 637.9 },
+      "ETH/USDT": { "trades": 189, "profit_factor": 1.11, "net_return_pct": 340.61 },
+      "DOT/USDT": { "trades": 94, "profit_factor": 0.93, "net_return_pct": -112.77 },
+      "ADA/USDT": { "trades": 139, "profit_factor": 0.712, "net_return_pct": -584.14 },
+      "LINK/USDT": { "trades": 150, "profit_factor": 0.722, "net_return_pct": -641.9 }
+    }
+  },
+  "breakeven_full_sample": {
+    "fee_at_profit_factor_1_00_per_side": 0.008037,
+    "round_trip_cost_at_pf_1_00": 0.016074,
+    "fee_at_net_return_0_per_side": 0.00904,
+    "round_trip_cost_at_net_return_0": 0.01808
+  },
+  "acceptance_criteria": {
+    "A1_min_trades": { "threshold": ">=200", "measured": 1347, "pass": true },
+    "A2_profit_factor_base": { "threshold": ">=1.10", "measured": 1.228, "pass": true },
+    "A3_expectancy_p_value": { "threshold": "<0.05", "measured": 0.06582, "pass": false },
+    "A4_oos_net_return": { "threshold": ">=0", "measured": -18.98, "pass": false },
+    "A5_oos_profit_factor": { "threshold": ">=1.00", "measured": 0.796, "pass": false },
+    "A6_wallet_max_drawdown": { "threshold": "<35%", "measured": 61.55, "pass": false },
+    "A7_profitable_years": { "threshold": ">=60%", "measured": 71.4, "pass": true },
+    "A8_profit_factor_stress": { "threshold": ">=1.05", "measured": 1.145, "pass": true },
+    "M1_profit_factor_mid": { "threshold": ">=1.10", "measured": 1.197, "pass": true }
+  },
+  "criteria_passed": 5,
+  "criteria_total": 9,
+  "key_findings": [
+    "Cost is a real but not binding constraint: fees are 14.6% of gross profit at base and 49.0% at stress.",
+    "The strategy passes every cost-specific threshold (A2, A8, M1); profit factor stays above 1.00 until ~0.80% per side (1.61% round trip).",
+    "Failure is not cost-driven: the same four criteria fail as in EXP-001 (p-value, OOS return, OOS PF, wallet drawdown).",
+    "Slippage assumption would need to exceed ~4x the stress scenario to change the cost verdict.",
+    "Single-pair dependence persists (BNB ~31% of gross return; three pairs net negative)."
+  ],
+  "reproducibility": {
+    "verified_against": "research/experiment_results/EXP-001.json",
+    "full_sample_base_match": true,
+    "full_sample_stress_match": true,
+    "oos_base_match": true,
+    "per_year_base_match_all_years": true
+  },
+  "decision": "FAIL. Costs are characterised and are not the binding constraint; the strategy fails A3/A4/A5/A6 at every fee level. Baseline retained unchanged as the reference.",
+  "decision_record": "DEC-003",
+  "next_experiment": "EXP-003",
+  "next_experiment_started": false
+}
