@@ -23,9 +23,11 @@ EXP-002 results commit (results + DEC-003 + map):
 `2fdcc8f4acd25593dd37337e9cbe3b2abdcd5b3a`
 
 EXP-003 freeze commit (spec + configs, on `research/pullback-continuation`):
-`a07e966`
+`a07e966eba904192fa51c29b2e8d9512358624b8`
 EXP-003 implementation commit (strategy, shared primitives, tests):
-`c4bee8e`
+`c4bee8e264a111aa2e72dbce203bd49db1484d8b`
+EXP-003 results commit (results + DEC-004 + map):
+`552fd763b08971f302cbc73f035115cc2a86813a`
 Baseline strategy logic unchanged at `12acbf7017a04418dbfa54771edf5c97b358d618`.
 
 ---

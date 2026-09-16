@@ -12,8 +12,9 @@
   "complementarity_results": "research/experiment_results/EXP-003.complementarity.json",
   "github_branch": "research/pullback-continuation",
   "baseline_strategy_commit": "12acbf7017a04418dbfa54771edf5c97b358d618",
-  "experiment_freeze_commit": "a07e966",
-  "implementation_commit": "c4bee8e",
+  "experiment_freeze_commit": "a07e966eba904192fa51c29b2e8d9512358624b8",
+  "implementation_commit": "c4bee8e264a111aa2e72dbce203bd49db1484d8b",
+  "results_commit": "552fd763b08971f302cbc73f035115cc2a86813a",
   "run_date": "2026-09-16",
   "environment": {
     "freqtrade": "2026.9-dev",
