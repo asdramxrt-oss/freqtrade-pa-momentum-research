@@ -291,14 +291,19 @@ def main() -> int:
     ]
 
     print(f"EXP-002 cost sweep: {len(runs)} runs")
-    results = []
+    merged: dict[str, dict] = {}
+    if OUTPUT.exists():
+        prior = json.loads(OUTPUT.read_text(encoding="utf-8"))
+        for record in prior.get("runs", []):
+            merged[record["label"]] = record
+
     for index, run in enumerate(runs, start=1):
         print(f"  [{index}/{len(runs)}] {run['label']} fee={run['fee']:.4f} ...", flush=True)
         run_backtest(run)
         metrics = analyse(load_latest_result())
         record = dict(run)
         record["metrics"] = metrics
-        results.append(record)
+        merged[record["label"]] = record
         print(
             f"      trades={metrics['trades']} "
             f"PF={metrics['profit_factor']:.3f} "
@@ -306,6 +311,12 @@ def main() -> int:
             f"fees={metrics['fees_paid_usdt']:,.0f} USDT",
             flush=True,
         )
+
+    group_rank = {"full_sample": 0, "oos": 1, "per_year": 2}
+    results = sorted(
+        merged.values(),
+        key=lambda r: (group_rank[r["group"]], r.get("year", 0), r["fee"]),
+    )
 
     full_sample = [r for r in results if r["group"] == "full_sample"]
     breakeven = {
