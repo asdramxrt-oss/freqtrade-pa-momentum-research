@@ -54,6 +54,18 @@ https://app.notion.com/p/1a91654b27394de48575b6d8b5b117db
 | EXP-014 | https://app.notion.com/p/3dd017d63ac78198a003eb831cfcfcc3 | not created | not written | not written | PLANNED |
 | EXP-015 | https://app.notion.com/p/3dd017d63ac781b6afbae2b73119c7ac | not created | not written | not written | PLANNED |
 
+## Phase 2 diagnostics
+
+| Artifact | Path |
+|----------|------|
+| Specification | `research/experiment_specs/PHASE2_DIAGNOSTIC.md` |
+| Report | `research/experiment_results/PHASE2_DIAGNOSTIC.md` |
+| Machine-readable | `PHASE2_data_quality.json`, `PHASE2_market_regimes.json`, `PHASE2_turtle_followthrough.json`, `PHASE2_pullback_geometry.json`, `PHASE2_trade_diagnostics.json`, `PHASE2_statistics.json`, `PHASE2_lineage.json` |
+| Scripts | `user_data/scripts/diagnostics/` |
+| Branch | `research/diagnostic-generalization` |
+
+Diagnostic only. No strategy change and no strategy verdict.
+
 ## Update procedure after each experiment
 
 1. Write `research/experiment_specs/<ID>.md` and `user_data/configs/<ID>.json`,

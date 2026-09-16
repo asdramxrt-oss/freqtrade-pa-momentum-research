@@ -316,3 +316,19 @@ FAIL because net return < 0 (A4) and profit factor < 1.00 (A5).
 - The Turtle and Pullback families have now both failed fresh evaluation; the
   programme's next step should be an explicit strategy-selection decision, not an
   automatic continuation.
+
+---
+
+## PHASE 2 — diagnostic reference (no strategy decision)
+
+A diagnostic-only investigation of generalization failure is recorded in
+`research/experiment_results/PHASE2_DIAGNOSTIC.md` (specification
+`research/experiment_specs/PHASE2_DIAGNOSTIC.md`, branch
+`research/diagnostic-generalization`). It changes no strategy, adds no filter and
+reaches **no strategy verdict**.
+
+Outcome: **multiple plausible explanations** — sampling variation /
+trade-concentration and a market-regime shift (volatility compression plus a
+long-only bear holdout) — with breakout follow-through, transaction costs and
+data quality ruled out as primary causes, and permanent strategy decay recorded
+as **unproven**. No strategy is validated by this phase.
