@@ -64,3 +64,49 @@ recorded decision because it changes the price series behind any result.
 
 Funded carry/basis research is now feasible from perp listing; OI-based research
 is not, on this exchange and period.
+
+---
+
+# UPDATE 2026-09-16 — genuine futures dataset acquired (SI-1 resolved)
+
+**SI-1 is resolved for OHLCV availability.** Genuine Binance USDT-M futures
+candles have been downloaded into a **separate datadir** so the historical spot
+mirror is untouched.
+
+| Item | Value |
+|------|-------|
+| Datadir | `user_data/data_p3/` (git-ignored) |
+| Spot mirror | `user_data/data/binance/futures/` — **unchanged**, still a spot copy |
+| Download script | `user_data/scripts/download_futures_data.ps1` (reproducible) |
+| Manifest | `research/experiment_results/P3_FUTURES_DATA_MANIFEST.json` |
+| Manifest builder | `user_data/scripts/futures_data_manifest.py` |
+
+## Verified coverage (all 10 USDT perps, 4h)
+
+| Candle type | Files | Rows | Duplicates | Missing (4h grid) | Earliest → Latest |
+|-------------|------:|-----:|-----------:|------------------:|-------------------|
+| `futures` (genuine OHLCV) | 10 | 141,668 | 0 | **0** | 2019-09-08 16:00 → 2026-09-16 04:00 |
+| `mark` | 10 | 141,271 | 0 | 0 | 2019-12-23 08:00 → 2026-09-16 04:00 |
+| `index` | 10 | 141,560 | 0 | 0 | 2019-12-23 08:00 → 2026-09-16 04:00 |
+| `premiumIndex` | 10 | 140,869 | 0 | 0 | 2019-12-24 00:00 → 2026-09-16 04:00 |
+| `funding_rate` | 10 | 70,957 | 0 | n/a (not a 4h grid) | 2019-09-10 08:00 → 2026-09-16 08:00 |
+
+## Manifest fields (reproducibility)
+
+exchange, market type (USDT-margined perpetual), symbols, timeframe, earliest and
+latest timestamps, download timestamp, data source/API, **per-file SHA-256
+checksums**, candle counts, missing-candle statistics, duplicate timestamps,
+timestamp convention (candle **open** time, epoch ms, UTC), timezone (UTC),
+schema, and transformation history (none: no resampling/fill/adjustment).
+
+## Provenance and separation
+
+- `user_data/data/` = historical **spot** candles and the **spot mirror** used
+  only to keep EXP-001…EXP-004 reproducible.
+- `user_data/data_p3/` = **genuine** Binance USDT-M futures dataset for Phase 3.
+- These are never interchanged. P3-EXP-001 uses `data_p3`.
+
+## Still unavailable
+
+- **Open interest** (Binance `openInterestHist` historical `startTime` rejected).
+  No OI component may be implemented. No synthetic OI.

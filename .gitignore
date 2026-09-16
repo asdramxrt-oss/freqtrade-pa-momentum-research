@@ -58,3 +58,7 @@ env/
 .vscode/
 Thumbs.db
 desktop.ini
+
+# --- Phase 3 genuine futures dataset (separate from the spot mirror) --------
+user_data/data_p3/
+
