@@ -11,9 +11,9 @@
   "raw_results": "research/experiment_results/EXP-002.raw.json",
   "github_branch": "research/turtle-costs",
   "baseline_strategy_commit": "12acbf7017a04418dbfa54771edf5c97b358d618",
-  "experiment_freeze_commit": "8646616",
-  "tooling_commit": "eea3479",
-  "results_commit": null,
+  "experiment_freeze_commit": "8646616af81d7fae2ef0ae18d2eab25ca0468f78",
+  "tooling_commit": "eea3479eef5219ce38181c49897d45c7f6293ee1",
+  "results_commit": "2fdcc8f4acd25593dd37337e9cbe3b2abdcd5b3a",
   "run_date": "2026-09-16",
   "environment": {
     "freqtrade": "2026.9-dev",

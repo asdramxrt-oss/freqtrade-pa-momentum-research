@@ -15,9 +15,11 @@ Founding commit (foundation + EXP-001 implementation, on `main`):
 Experiment branch: `research/turtle-baseline` (same tree).
 
 EXP-002 freeze commit (spec + config + cost-sweep tooling, on `research/turtle-costs`):
-`8646616`
+`8646616af81d7fae2ef0ae18d2eab25ca0468f78`
 Baseline strategy logic unchanged at `12acbf7017a04418dbfa54771edf5c97b358d618`.
 EXP-002 branch: `research/turtle-costs`.
+EXP-002 results commit (results + DEC-003 + map):
+`2fdcc8f4acd25593dd37337e9cbe3b2abdcd5b3a`
 
 ---
 
