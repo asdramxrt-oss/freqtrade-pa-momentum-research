@@ -57,29 +57,48 @@ def fixed_atr_stop_price(
     raise ValueError(f"side must be 'long' or 'short', got {side!r}")
 
 
-def stoploss_ratio_from_fixed_stop(stop_price: float, current_rate: float) -> float:
+def stoploss_ratio_from_fixed_stop(
+    stop_price: float,
+    current_rate: float,
+    side: str = "long",
+) -> float:
     """
     Convert an absolute stop price into the ratio ``freqtrade`` expects.
 
-    ``freqtrade``'s ``custom_stoploss`` returns the stop distance relative to
-    the *current* rate, i.e. ``-0.05`` means "5% below the current rate".
+    ``freqtrade``'s ``custom_stoploss`` returns the stop distance relative to the
+    *current* rate. The engine always applies ``abs()`` and then places the stop
+    **below** the current rate for a long and **above** it for a short, so the
+    magnitude is what matters. The signs below therefore follow the documented
+    convention (long negative, short positive) rather than the engine's internal
+    handling:
 
-    If the stop price has already been passed, the returned ratio is clamped to
-    a tiny negative number. Clamping is deliberate: returning a non-negative
-    value is rejected by ``freqtrade``, while a stop fractionally below the
-    current rate triggers an immediate exit, which is the intended behaviour.
+    * long: a stop below the current rate returns a negative ratio.
+    * short: a stop above the current rate returns a positive ratio.
+
+    If the stop has already been passed (stop above current for a long, or below
+    current for a short), the ratio is clamped to a tiny value on the correct
+    side of zero. Clamping is deliberate: a fractionally-through stop triggers an
+    immediate exit, which is the intended behaviour when the stop is already hit.
 
     :param stop_price: Absolute stop price.
     :param current_rate: Current market rate. Must be positive.
-    :return: Ratio in ``[-1, 0)``.
-    :raises ValueError: If ``current_rate`` is not strictly positive.
+    :param side: ``"long"`` or ``"short"``.
+    :return: Ratio in ``[-1, 0)`` for longs and ``(0, 1]`` for shorts.
+    :raises ValueError: If ``current_rate`` is not strictly positive, or ``side``
+        is not ``"long"`` or ``"short"``.
     """
     if current_rate <= 0:
         raise ValueError(f"current_rate must be > 0, got {current_rate!r}")
+    if side not in ("long", "short"):
+        raise ValueError(f"side must be 'long' or 'short', got {side!r}")
     ratio = (stop_price - current_rate) / current_rate
-    if ratio >= 0:
-        return -1e-9
-    return max(ratio, -1.0)
+    if side == "long":
+        if ratio >= 0:
+            return -1e-9
+        return max(ratio, -1.0)
+    if ratio <= 0:
+        return 1e-9
+    return min(ratio, 1.0)
 
 
 def risk_based_stake(

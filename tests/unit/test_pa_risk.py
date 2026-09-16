@@ -63,6 +63,28 @@ class TestStoplossRatio:
         with pytest.raises(ValueError):
             stoploss_ratio_from_fixed_stop(95.0, 0.0)
 
+    def test_short_ratio_is_positive_above_current_rate(self) -> None:
+        assert stoploss_ratio_from_fixed_stop(105.0, 100.0, side="short") == pytest.approx(0.05)
+
+    def test_short_ratio_clamped_when_stop_already_passed(self) -> None:
+        result = stoploss_ratio_from_fixed_stop(95.0, 100.0, side="short")
+
+        assert result > 0
+        assert result < 1e-6
+
+    def test_short_ratio_is_never_above_one(self) -> None:
+        assert stoploss_ratio_from_fixed_stop(1_000.0, 100.0, side="short") <= 1.0
+
+    def test_long_and_short_are_mirror_images(self) -> None:
+        long_ratio = stoploss_ratio_from_fixed_stop(96.0, 100.0, side="long")
+        short_ratio = stoploss_ratio_from_fixed_stop(104.0, 100.0, side="short")
+
+        assert long_ratio == pytest.approx(-short_ratio)
+
+    def test_rejects_unknown_side(self) -> None:
+        with pytest.raises(ValueError):
+            stoploss_ratio_from_fixed_stop(95.0, 100.0, side="sideways")
+
 
 class TestRiskBasedStake:
     """Risk-scaled position sizing."""
