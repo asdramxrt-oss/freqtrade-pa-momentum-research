@@ -1,6 +1,6 @@
 {
   "manifest": "P3 natural genuine Binance USDT-M futures dataset",
-  "generated_utc": "2026-09-16T11:01:28.629806+00:00",
+  "generated_utc": "2026-09-16T11:49:48.016902+00:00",
   "datadir": "user_data\\data_p3",
   "exchange": "binance",
   "market_type": "USDT-margined perpetual futures",
@@ -65,12 +65,12 @@
       "latest": "2026-09-16 04:00:00+00:00"
     },
     "mark": {
-      "files": 10,
-      "total_rows": 141271,
+      "files": 20,
+      "total_rows": 706360,
       "duplicate_timestamps": 0,
-      "missing_rows": 0,
+      "missing_rows": "n/a (not on a uniform 4h grid)",
       "earliest": "2019-12-23 08:00:00+00:00",
-      "latest": "2026-09-16 04:00:00+00:00"
+      "latest": "2026-09-16 10:00:00+00:00"
     },
     "premiumIndex": {
       "files": 10,
@@ -105,6 +105,34 @@
       "max_gap_hours": 8.0,
       "sha256": "14b173f118f3215f4b09b40ea4aa883be8cadb1799ac49efd3da7958a6585922",
       "size_bytes": 72146
+    },
+    {
+      "file": "ADA_USDT_USDT-1h-mark.feather",
+      "pair": "ADA/USDT:USDT",
+      "timeframe": "1h",
+      "candle_type": "mark",
+      "columns": [
+        "date",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "rows": 58370,
+      "first": "2020-01-19 09:00:00+00:00",
+      "last": "2026-09-16 10:00:00+00:00",
+      "duplicate_timestamps": 0,
+      "is_monotonic_increasing": true,
+      "timezone_aware_utc": true,
+      "on_uniform_grid": false,
+      "expected_rows_on_4h_grid": null,
+      "missing_rows": null,
+      "gaps_gt_one_step": null,
+      "median_gap_hours": 1.0,
+      "max_gap_hours": 1.0,
+      "sha256": "006a6059b6fb5c0d5dbeccc0ecb783677cb00da3270e83786fc4646b189b218a",
+      "size_bytes": 1775698
     },
     {
       "file": "ADA_USDT_USDT-4h-futures.feather",
@@ -243,6 +271,34 @@
       "size_bytes": 68162
     },
     {
+      "file": "AVAX_USDT_USDT-1h-mark.feather",
+      "pair": "AVAX/USDT:USDT",
+      "timeframe": "1h",
+      "candle_type": "mark",
+      "columns": [
+        "date",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "rows": 52442,
+      "first": "2020-09-22 09:00:00+00:00",
+      "last": "2026-09-16 10:00:00+00:00",
+      "duplicate_timestamps": 0,
+      "is_monotonic_increasing": true,
+      "timezone_aware_utc": true,
+      "on_uniform_grid": false,
+      "expected_rows_on_4h_grid": null,
+      "missing_rows": null,
+      "gaps_gt_one_step": null,
+      "median_gap_hours": 1.0,
+      "max_gap_hours": 1.0,
+      "sha256": "1492fd5dd1f62419f4213cbc14f76aba0f3f49b1fb50cb0afc22692100dd9a43",
+      "size_bytes": 1612178
+    },
+    {
       "file": "AVAX_USDT_USDT-4h-futures.feather",
       "pair": "AVAX/USDT:USDT",
       "timeframe": "4h",
@@ -377,6 +433,34 @@
       "max_gap_hours": 8.0,
       "sha256": "cc9fde835209b95ae273fe44dff4bae0b29d89bcbe942cd1f9eccacfd4934516",
       "size_bytes": 70914
+    },
+    {
+      "file": "BNB_USDT_USDT-1h-mark.feather",
+      "pair": "BNB/USDT:USDT",
+      "timeframe": "1h",
+      "candle_type": "mark",
+      "columns": [
+        "date",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "rows": 59016,
+      "first": "2019-12-23 11:00:00+00:00",
+      "last": "2026-09-16 10:00:00+00:00",
+      "duplicate_timestamps": 0,
+      "is_monotonic_increasing": true,
+      "timezone_aware_utc": true,
+      "on_uniform_grid": false,
+      "expected_rows_on_4h_grid": null,
+      "missing_rows": null,
+      "gaps_gt_one_step": null,
+      "median_gap_hours": 1.0,
+      "max_gap_hours": 1.0,
+      "sha256": "a71098ed8b79927742e5fe2d752ec07d7f90279a411a67fdebc3c86b122ddb44",
+      "size_bytes": 1784706
     },
     {
       "file": "BNB_USDT_USDT-4h-futures.feather",
@@ -515,6 +599,34 @@
       "size_bytes": 78602
     },
     {
+      "file": "BTC_USDT_USDT-1h-mark.feather",
+      "pair": "BTC/USDT:USDT",
+      "timeframe": "1h",
+      "candle_type": "mark",
+      "columns": [
+        "date",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "rows": 59016,
+      "first": "2019-12-23 11:00:00+00:00",
+      "last": "2026-09-16 10:00:00+00:00",
+      "duplicate_timestamps": 0,
+      "is_monotonic_increasing": true,
+      "timezone_aware_utc": true,
+      "on_uniform_grid": false,
+      "expected_rows_on_4h_grid": null,
+      "missing_rows": null,
+      "gaps_gt_one_step": null,
+      "median_gap_hours": 1.0,
+      "max_gap_hours": 1.0,
+      "sha256": "ce15bef0d6a77f04765d73fece77e23b7b9746d051b077c7efc9a68b725890dd",
+      "size_bytes": 1838490
+    },
+    {
       "file": "BTC_USDT_USDT-4h-futures.feather",
       "pair": "BTC/USDT:USDT",
       "timeframe": "4h",
@@ -649,6 +761,34 @@
       "max_gap_hours": 8.0,
       "sha256": "795ca3a61e25850e8939c1c965577ebeb8f5e71067a11687f81aff544856861e",
       "size_bytes": 68770
+    },
+    {
+      "file": "DOGE_USDT_USDT-1h-mark.feather",
+      "pair": "DOGE/USDT:USDT",
+      "timeframe": "1h",
+      "candle_type": "mark",
+      "columns": [
+        "date",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "rows": 54224,
+      "first": "2020-07-10 03:00:00+00:00",
+      "last": "2026-09-16 10:00:00+00:00",
+      "duplicate_timestamps": 0,
+      "is_monotonic_increasing": true,
+      "timezone_aware_utc": true,
+      "on_uniform_grid": false,
+      "expected_rows_on_4h_grid": null,
+      "missing_rows": null,
+      "gaps_gt_one_step": null,
+      "median_gap_hours": 1.0,
+      "max_gap_hours": 1.0,
+      "sha256": "f4e4add3f43f9401b5103677b3455c531fc6d5554a2efc5bdc3822388b290515",
+      "size_bytes": 1735362
     },
     {
       "file": "DOGE_USDT_USDT-4h-futures.feather",
@@ -787,6 +927,34 @@
       "size_bytes": 70458
     },
     {
+      "file": "DOT_USDT_USDT-1h-mark.feather",
+      "pair": "DOT/USDT:USDT",
+      "timeframe": "1h",
+      "candle_type": "mark",
+      "columns": [
+        "date",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "rows": 53241,
+      "first": "2020-08-20 02:00:00+00:00",
+      "last": "2026-09-16 10:00:00+00:00",
+      "duplicate_timestamps": 0,
+      "is_monotonic_increasing": true,
+      "timezone_aware_utc": true,
+      "on_uniform_grid": false,
+      "expected_rows_on_4h_grid": null,
+      "missing_rows": null,
+      "gaps_gt_one_step": null,
+      "median_gap_hours": 1.0,
+      "max_gap_hours": 1.0,
+      "sha256": "5b6b190d474670734d1aad71301d580eade0e2ddb9c87deff780833ddf3a957a",
+      "size_bytes": 1576986
+    },
+    {
       "file": "DOT_USDT_USDT-4h-futures.feather",
       "pair": "DOT/USDT:USDT",
       "timeframe": "4h",
@@ -921,6 +1089,34 @@
       "max_gap_hours": 8.0,
       "sha256": "26ee8277dd9c03174002d81e16f039ca5511ee8477ef4fd47b05e974ef9fd938",
       "size_bytes": 77162
+    },
+    {
+      "file": "ETH_USDT_USDT-1h-mark.feather",
+      "pair": "ETH/USDT:USDT",
+      "timeframe": "1h",
+      "candle_type": "mark",
+      "columns": [
+        "date",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "rows": 59016,
+      "first": "2019-12-23 11:00:00+00:00",
+      "last": "2026-09-16 10:00:00+00:00",
+      "duplicate_timestamps": 0,
+      "is_monotonic_increasing": true,
+      "timezone_aware_utc": true,
+      "on_uniform_grid": false,
+      "expected_rows_on_4h_grid": null,
+      "missing_rows": null,
+      "gaps_gt_one_step": null,
+      "median_gap_hours": 1.0,
+      "max_gap_hours": 1.0,
+      "sha256": "be8bba2c69ca7bc64d3784bdec0bccb04716cd3ab7701e1fdbb4be8c18b56f8d",
+      "size_bytes": 1825218
     },
     {
       "file": "ETH_USDT_USDT-4h-futures.feather",
@@ -1059,6 +1255,34 @@
       "size_bytes": 70762
     },
     {
+      "file": "LINK_USDT_USDT-1h-mark.feather",
+      "pair": "LINK/USDT:USDT",
+      "timeframe": "1h",
+      "candle_type": "mark",
+      "columns": [
+        "date",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "rows": 58420,
+      "first": "2020-01-17 07:00:00+00:00",
+      "last": "2026-09-16 10:00:00+00:00",
+      "duplicate_timestamps": 0,
+      "is_monotonic_increasing": true,
+      "timezone_aware_utc": true,
+      "on_uniform_grid": false,
+      "expected_rows_on_4h_grid": null,
+      "missing_rows": null,
+      "gaps_gt_one_step": null,
+      "median_gap_hours": 1.0,
+      "max_gap_hours": 1.0,
+      "sha256": "1012c9585d68a912b289f6a936943582eb75d7fa1d6482203d8367f27252de7b",
+      "size_bytes": 1770250
+    },
+    {
       "file": "LINK_USDT_USDT-4h-futures.feather",
       "pair": "LINK/USDT:USDT",
       "timeframe": "4h",
@@ -1195,6 +1419,34 @@
       "size_bytes": 70418
     },
     {
+      "file": "SOL_USDT_USDT-1h-mark.feather",
+      "pair": "SOL/USDT:USDT",
+      "timeframe": "1h",
+      "candle_type": "mark",
+      "columns": [
+        "date",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "rows": 52656,
+      "first": "2020-09-13 11:00:00+00:00",
+      "last": "2026-09-16 10:00:00+00:00",
+      "duplicate_timestamps": 0,
+      "is_monotonic_increasing": true,
+      "timezone_aware_utc": true,
+      "on_uniform_grid": false,
+      "expected_rows_on_4h_grid": null,
+      "missing_rows": null,
+      "gaps_gt_one_step": null,
+      "median_gap_hours": 1.0,
+      "max_gap_hours": 1.0,
+      "sha256": "eefb08aa3eafeb17f4a519bb095150896bc6c9609150490d4cb8f5031d39980e",
+      "size_bytes": 1603834
+    },
+    {
       "file": "SOL_USDT_USDT-4h-futures.feather",
       "pair": "SOL/USDT:USDT",
       "timeframe": "4h",
@@ -1329,6 +1581,34 @@
       "max_gap_hours": 8.0,
       "sha256": "18f26aee07ae1bf019b5708a5445e97355e342f5747ebc5d41c9e3c23f9d368b",
       "size_bytes": 74746
+    },
+    {
+      "file": "XRP_USDT_USDT-1h-mark.feather",
+      "pair": "XRP/USDT:USDT",
+      "timeframe": "1h",
+      "candle_type": "mark",
+      "columns": [
+        "date",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "rows": 58688,
+      "first": "2020-01-06 03:00:00+00:00",
+      "last": "2026-09-16 10:00:00+00:00",
+      "duplicate_timestamps": 0,
+      "is_monotonic_increasing": true,
+      "timezone_aware_utc": true,
+      "on_uniform_grid": false,
+      "expected_rows_on_4h_grid": null,
+      "missing_rows": null,
+      "gaps_gt_one_step": null,
+      "median_gap_hours": 1.0,
+      "max_gap_hours": 1.0,
+      "sha256": "b879fa506294ff13828f91fab0959821df97d79143673d86b7a7d65748d46c0e",
+      "size_bytes": 1741050
     },
     {
       "file": "XRP_USDT_USDT-4h-futures.feather",

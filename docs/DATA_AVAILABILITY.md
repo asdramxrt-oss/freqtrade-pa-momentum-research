@@ -110,3 +110,21 @@ schema, and transformation history (none: no resampling/fill/adjustment).
 
 - **Open interest** (Binance `openInterestHist` historical `startTime` rejected).
   No OI component may be implemented. No synthetic OI.
+
+---
+
+# UPDATE 2026-09-16 (2) — 1h mark added; funding defect fixed (SI-4)
+
+freqtrade requires **1h mark** candles to apply funding to open positions
+(`mark_ohlcv_timeframe = "1h"`). The first Phase-3 download stored mark at 4h
+only, so funding was **silently zero** in the first futures runs.
+
+**Fixed:** 1h mark candles downloaded into `user_data/data_p3` (10 files, ~59k
+rows each). `mark` now totals **20 files** (10×4h + 10×1h). Full detail, impact
+and verification: `docs/ISSUES_LOG.md` **SI-4**.
+
+Verified: a real LINK short (2025-02-10 → 2025-02-24, 53.19 units) now reports
+**0.4259 USDT** funding, matching an independent manual calculation exactly.
+
+Affected experiments (**P3-EXP-001/002**) and the first **P3-EXP-003** attempt were
+re-run with funding applied; the earlier results are **superseded**, not deleted.

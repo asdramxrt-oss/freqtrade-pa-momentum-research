@@ -3,7 +3,9 @@
   "title": "Real futures Turtle baseline (long/short x signal/sizing)",
   "status": "COMPLETED",
   "verdict": "FAIL",
-  "dataset": "user_data/data_p3 (genuine Binance USDT-M futures OHLCV, 4h, 10 perps)",
+  "funding_applied": true,
+  "correction_note": "The first run silently excluded funding (engine requires 1h mark; only 4h mark was present). All 16 runs were re-executed after downloading 1h mark. These are the funding-inclusive results; the earlier no-funding numbers are superseded. See docs/ISSUES_LOG.md SI-4.",
+  "dataset": "user_data/data_p3 (genuine Binance USDT-M futures OHLCV, 4h, 10 perps, funding + 1h mark)",
   "config": "user_data/configs/P3-EXP-001.json",
   "research_strategy": "research_lib/strategies/TurtleFuturesResearch.py",
   "production_strategy_changed": false,
@@ -15,33 +17,33 @@
     "validation": "20230101-20241231",
     "test": "20250101-20260916 (non-pristine)"
   },
-  "command_template": "python -m freqtrade backtesting --userdir user_data -d user_data/data_p3 --strategy-path research_lib/strategies -c user_data/configs/P3-EXP-001.json --strategy <ARM> --timerange <WINDOW> --cache none --export trades --fee 0.0005",
   "raw_results": "research/experiment_results/P3-EXP-001.raw.json",
   "ablations": {
-    "long_vol": { "full": { "trades": 1326, "profit_factor": 1.171, "net_profit_pct": 2453.2, "wallet_dd_pct": 55.9, "p_value": 0.138 }, "test": { "trades": 306, "profit_factor": 0.830, "net_profit_pct": -25.1, "wallet_dd_pct": 43.3, "p_value": 0.324 } },
-    "long_raw": { "full": { "trades": 1482, "profit_factor": 1.602, "net_profit_pct": 252.9, "wallet_dd_pct": 12.5, "p_value": 0.0005 }, "test": { "trades": 389, "profit_factor": 0.871, "net_profit_pct": -11.7, "wallet_dd_pct": 25.0, "p_value": 0.372 } },
-    "short_vol": { "full": { "trades": 1168, "profit_factor": 0.962, "net_profit_pct": -20.3, "wallet_dd_pct": 57.4, "p_value": 0.644 }, "test": { "trades": 314, "profit_factor": 0.924, "net_profit_pct": -11.5, "wallet_dd_pct": 35.1 } },
-    "short_raw": { "full": { "trades": 1278, "profit_factor": 0.883, "net_profit_pct": -43.6, "wallet_dd_pct": 68.0, "p_value": 0.122 }, "test": { "trades": 376, "profit_factor": 0.977, "net_profit_pct": -2.1, "wallet_dd_pct": 20.3 } }
+    "long_vol": { "full": { "trades": 1325, "profit_factor": 1.149, "net_profit_pct": 1462.3, "wallet_dd_pct": 57.0, "p_value": 0.1922 }, "test": { "trades": 306, "profit_factor": 0.813, "net_profit_pct": -27.5, "wallet_dd_pct": 44.7, "p_value": 0.2691 } },
+    "long_raw": { "full": { "trades": 1482, "profit_factor": 1.503, "net_profit_pct": 216.3, "wallet_dd_pct": 14.0, "p_value": 0.0020 }, "test": { "trades": 389, "profit_factor": 0.852, "net_profit_pct": -13.6, "wallet_dd_pct": 26.4, "p_value": 0.2982 } },
+    "short_vol": { "full": { "trades": 1173, "profit_factor": 0.970, "net_profit_pct": -16.6, "wallet_dd_pct": 55.0, "p_value": 0.7128 }, "test": { "trades": 314, "profit_factor": 0.924, "net_profit_pct": -11.5, "wallet_dd_pct": 34.9 } },
+    "short_raw": { "full": { "trades": 1307, "profit_factor": 0.901, "net_profit_pct": -37.4, "wallet_dd_pct": 64.0, "p_value": 0.1823 }, "test": { "trades": 376, "profit_factor": 0.974, "net_profit_pct": -2.4, "wallet_dd_pct": 20.2 } }
   },
   "key_finding_signal_vs_sizing": {
     "statement": "On the same signal, fixed-notional sizing beat volatility-scaled sizing on profit factor, drawdown and significance; the volatility-scaled compounded headline is a sizing/compounding artifact.",
-    "fixed_notional": { "profit_factor": 1.602, "wallet_dd_pct": 12.5, "p_value": 0.0005, "net_profit_pct": 252.9 },
-    "volatility_scaled": { "profit_factor": 1.171, "wallet_dd_pct": 55.9, "p_value": 0.138, "net_profit_pct": 2453.2 }
+    "fixed_notional": { "profit_factor": 1.503, "wallet_dd_pct": 14.0, "p_value": 0.0020, "net_profit_pct": 216.3 },
+    "volatility_scaled": { "profit_factor": 1.149, "wallet_dd_pct": 57.0, "p_value": 0.1922, "net_profit_pct": 1462.3 }
   },
   "acceptance": {
-    "oos_expectancy": "FAIL (negative for both long arms, all short arms)",
-    "oos_profit_factor": "FAIL (0.83 long_vol, 0.87 long_raw, <=0.98 short)",
+    "oos_expectancy": "FAIL (negative for both long arms and all short arms)",
+    "oos_profit_factor": "FAIL (0.813 long_vol, 0.852 long_raw, 0.924-0.974 short)",
     "oos_trade_count": "PASS (306-389)",
-    "wallet_drawdown": "MIXED (long_vol 43.3 FAIL, long_raw 25.0 PASS)",
-    "cost_stress": "NOT RUN (P3-EXP-002)"
+    "wallet_drawdown": "MIXED (long_vol 44.7 FAIL, long_raw 26.4 PASS)",
+    "cost_stress": "see P3-EXP-002"
   },
   "integrity": {
     "production_strategy_untouched": true,
     "spot_mirror_untouched": true,
     "used_genuine_futures_data": true,
+    "funding_verified_applied": true,
     "parameter_search": false,
     "causal_signal": true
   },
   "decision": "FAIL. Genuine-futures Turtle does not show a robust positive OOS edge in either direction; the short side is negative throughout; volatility-scaled sizing worsened PF/drawdown versus fixed notional. No long Turtle configuration may be promoted; no combination may proceed on this basis.",
-  "next_experiment": "P3-EXP-002 (cost/slippage robustness of the long baseline)"
+  "next_experiment": "P3-EXP-002 (cost/slippage)"
 }

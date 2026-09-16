@@ -2,9 +2,12 @@
   "experiment_id": "P3-EXP-002",
   "title": "Turtle long cost / slippage sensitivity",
   "status": "COMPLETED",
-  "verdict": "PASS (cost robustness, full sample)",
-  "scope_note": "Cost result only. Does not overturn P3-EXP-001's out-of-sample FAIL and confers no validation.",
-  "dataset": "user_data/data_p3 (genuine Binance USDT-M futures OHLCV, 4h)",
+  "verdict": "FAIL",
+  "verdict_detail": "Cost robustness is NOT met by the volatility-scaled arm (stress PF 1.037 < 1.05); met by the fixed-notional arm (1.259). Mixed by sizing -> not a clean pass.",
+  "funding_applied": true,
+  "correction_note": "First run silently excluded funding (SI-4). Re-run after downloading 1h mark; the volatility-scaled arm's stress PF dropped from 1.051 to 1.037, below the 1.05 acceptance threshold, changing the verdict from PASS to FAIL.",
+  "scope_note": "Cost result only. Does not overturn P3-EXP-001's out-of-sample FAIL.",
+  "dataset": "user_data/data_p3 (genuine futures OHLCV + 1h mark + funding)",
   "config": "user_data/configs/P3-EXP-001.json",
   "research_strategy": "research_lib/strategies/TurtleFuturesResearch.py",
   "production_strategy_changed": false,
@@ -12,56 +15,50 @@
     "fee_levels_per_side": [0.0005, 0.001, 0.002],
     "slippage_levels_per_side": [0.0, 0.0005, 0.0015],
     "effective_cost_equals": "fee + slippage (freqtrade models slippage via the fee)",
-    "unique_effective_costs": {
-      "0.0005": ["fee0.05%+slip0.00%"],
-      "0.0010": ["fee0.05%+slip0.05%", "fee0.10%+slip0.00%"],
-      "0.0015": ["fee0.10%+slip0.05%"],
-      "0.0020": ["fee0.05%+slip0.15%", "fee0.20%+slip0.00%"],
-      "0.0025": ["fee0.10%+slip0.15%", "fee0.20%+slip0.05%"],
-      "0.0035": ["fee0.20%+slip0.15%"]
-    }
+    "unique_effective_costs": ["0.0005", "0.0010", "0.0015", "0.0020", "0.0025", "0.0035"]
   },
   "full_sample": {
     "long_vol": {
-      "0.0005": { "profit_factor": 1.171, "net_profit_pct": 2453.2, "wallet_dd_pct": 55.9, "fees_usdt": 57439 },
-      "0.0010": { "profit_factor": 1.144, "net_profit_pct": 1837.7, "wallet_dd_pct": 59.5, "fees_usdt": 98080 },
-      "0.0015": { "profit_factor": 1.120, "net_profit_pct": 1369.5, "wallet_dd_pct": 62.8, "fees_usdt": 126226 },
-      "0.0020": { "profit_factor": 1.099, "net_profit_pct": 1013.9, "wallet_dd_pct": 65.9, "fees_usdt": 145069 },
-      "0.0025": { "profit_factor": 1.081, "net_profit_pct": 744.5, "wallet_dd_pct": 71.1, "fees_usdt": 157204 },
-      "0.0035": { "profit_factor": 1.051, "net_profit_pct": 385.2, "wallet_dd_pct": 81.2, "fees_usdt": 167983 }
+      "0.0005": { "profit_factor": 1.149, "net_profit_pct": 1462.3, "wallet_dd_pct": 57.0, "fees_usdt": 38102 },
+      "0.0010": { "profit_factor": 1.124, "net_profit_pct": 1084.7, "wallet_dd_pct": 60.6, "fees_usdt": 65321 },
+      "0.0015": { "profit_factor": 1.102, "net_profit_pct": 797.7, "wallet_dd_pct": 63.8, "fees_usdt": 84401 },
+      "0.0020": { "profit_factor": 1.082, "net_profit_pct": 580.4, "wallet_dd_pct": 68.7, "fees_usdt": 97489 },
+      "0.0025": { "profit_factor": 1.065, "net_profit_pct": 415.7, "wallet_dd_pct": 74.7, "fees_usdt": 106119 },
+      "0.0035": { "profit_factor": 1.037, "net_profit_pct": 197.2, "wallet_dd_pct": 83.7, "fees_usdt": 114674 }
     },
     "long_raw": {
-      "0.0005": { "profit_factor": 1.602, "net_profit_pct": 252.9, "wallet_dd_pct": 12.5, "fees_usdt": 1488 },
-      "0.0010": { "profit_factor": 1.553, "net_profit_pct": 238.0, "wallet_dd_pct": 13.8, "fees_usdt": 2976 },
-      "0.0015": { "profit_factor": 1.507, "net_profit_pct": 223.1, "wallet_dd_pct": 15.2, "fees_usdt": 4464 },
-      "0.0020": { "profit_factor": 1.462, "net_profit_pct": 208.2, "wallet_dd_pct": 16.7, "fees_usdt": 5952 },
-      "0.0025": { "profit_factor": 1.420, "net_profit_pct": 193.3, "wallet_dd_pct": 18.2, "fees_usdt": 7440 },
-      "0.0035": { "profit_factor": 1.340, "net_profit_pct": 163.6, "wallet_dd_pct": 23.7, "fees_usdt": 10417 }
+      "0.0005": { "profit_factor": 1.504, "net_profit_pct": 216.3, "wallet_dd_pct": 14.0, "fees_usdt": 1488 },
+      "0.0010": { "profit_factor": 1.458, "net_profit_pct": 201.4, "wallet_dd_pct": 15.5, "fees_usdt": 2976 },
+      "0.0015": { "profit_factor": 1.415, "net_profit_pct": 186.5, "wallet_dd_pct": 17.1, "fees_usdt": 4464 },
+      "0.0020": { "profit_factor": 1.373, "net_profit_pct": 171.7, "wallet_dd_pct": 18.8, "fees_usdt": 5952 },
+      "0.0025": { "profit_factor": 1.333, "net_profit_pct": 156.8, "wallet_dd_pct": 20.9, "fees_usdt": 7440 },
+      "0.0035": { "profit_factor": 1.259, "net_profit_pct": 127.0, "wallet_dd_pct": 28.7, "fees_usdt": 10417 }
     }
   },
   "test_window_at_stress": {
     "timerange": "20250101-20260916",
     "effective_cost": 0.0035,
-    "long_vol": { "profit_factor": 0.629, "net_profit_pct": -53.1, "wallet_dd_pct": 64.0 },
-    "long_raw": { "profit_factor": 0.676, "net_profit_pct": -34.9, "wallet_dd_pct": 45.4 }
+    "long_vol": { "profit_factor": 0.627, "net_profit_pct": -53.6, "wallet_dd_pct": 64.1 },
+    "long_raw": { "profit_factor": 0.662, "net_profit_pct": -36.7, "wallet_dd_pct": 46.8 }
   },
   "acceptance": {
-    "pf_at_stress_full_sample": "PASS (long_vol 1.051, long_raw 1.340; threshold >= 1.05)",
+    "pf_at_stress_full_sample": "FAIL (long_vol 1.037 < 1.05; long_raw 1.259 >= 1.05)",
     "pf_below_1_in_any_plausible_scenario": "PASS (no full-sample scenario below 1.00)",
     "monotone_explainable_cost_pattern": "PASS"
   },
   "key_findings": [
-    "Full-sample PF degrades monotonically with cost for both arms; no unexplained pattern.",
-    "Costs are not the binding constraint: PF stays >= 1.05 (vol) and >= 1.34 (raw) even at 7x base cost.",
-    "Sizing dominates cost exposure: long_raw pays 10.4k USDT fees at stress with PF 1.340 / DD 23.7%; long_vol pays 168k with PF 1.051 / DD 81.2%.",
-    "The out-of-sample window is negative at every cost level and worsens with cost (PF 0.63-0.68 at stress)."
+    "Full-sample PF degrades monotonically with cost for both arms.",
+    "Cost robustness holds for fixed-notional sizing (stress PF 1.259) but NOT for volatility-scaled sizing (1.037).",
+    "Sizing dominates cost exposure: long_raw pays 10.4k USDT fees at stress with PF 1.259 / DD 28.7%; long_vol pays 114.7k with PF 1.037 / DD 83.7%.",
+    "The out-of-sample window is negative at every cost level (PF 0.63-0.66 at stress)."
   ],
   "integrity": {
     "production_strategy_untouched": true,
     "spot_mirror_untouched": true,
     "no_parameter_search": true,
-    "cost_scenarios_fixed_before_run": true
+    "cost_scenarios_fixed_before_run": true,
+    "funding_verified_applied": true
   },
-  "decision": "PASS on the preregistered cost-robustness criteria (full sample). Costs are not the cause of the Turtle failure; the failure is out-of-sample. The long baseline remains rejected overall (P3-EXP-001). No promotion or combination authorised.",
-  "next_experiment": "P3-EXP-003 (carry / basis standalone)"
+  "decision": "FAIL. The preregistered cost-robustness criterion (full-sample PF >= 1.05 at stress) is met by fixed-notional sizing but NOT by volatility-scaled sizing, so the experiment does not robustly pass. Costs are not the cause of failure; the failure is out-of-sample (P3-EXP-001). No promotion or combination is authorised.",
+  "next_experiment": "P3-EXP-003 (carry)"
 }

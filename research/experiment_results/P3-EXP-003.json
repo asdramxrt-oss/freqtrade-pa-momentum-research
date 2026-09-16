@@ -1,0 +1,45 @@
+{
+  "experiment_id": "P3-EXP-003",
+  "title": "Carry / basis standalone",
+  "status": "COMPLETED",
+  "verdict": "FAIL",
+  "dataset": "user_data/data_p3 (genuine futures OHLCV + 1h mark + funding_rate)",
+  "config": "user_data/configs/P3-EXP-003.json",
+  "research_strategy": "research_lib/strategies/FundingCarryResearch.py",
+  "production_strategy_changed": false,
+  "funding_applied": true,
+  "data_integrity_note": "First attempt invalid (funding silently zero, SI-4). Corrected run uses 1h mark; spot-check trade funding (0.4259 USDT) matches an independent manual calculation.",
+  "definition": {
+    "signal": "sign of trailing 3-day mean funding rate",
+    "position": "funding-receiving side (mean>0 -> short; mean<0 -> long)",
+    "rebalance": "daily at 00:00 UTC",
+    "sizing": "10% of equity per active pair (10 positions = 1x gross)",
+    "stop": "none by specification; exit is the funding-sign flip"
+  },
+  "results": {
+    "full": { "trades": 428, "profit_factor": 1.348, "net_profit_pct": 495.9, "wallet_dd_pct": 48.9, "p_value": 0.1601, "funding_pnl_usdt": -11306 },
+    "train": { "trades": 165, "profit_factor": 1.525, "net_profit_pct": 198.4, "wallet_dd_pct": 48.9, "p_value": 0.2236, "funding_pnl_usdt": -5141 },
+    "validation": { "trades": 100, "profit_factor": 2.413, "net_profit_pct": 170.0, "wallet_dd_pct": 34.8, "p_value": 0.0803, "funding_pnl_usdt": -2664 },
+    "test": { "trades": 159, "profit_factor": 0.805, "net_profit_pct": -20.7, "wallet_dd_pct": 35.1, "p_value": 0.4049, "funding_pnl_usdt": 205 }
+  },
+  "key_findings": [
+    "The strategy PAID funding in aggregate (full-sample funding PnL -11,306 USDT): it is not harvesting carry, its return is directional price exposure.",
+    "Out-of-sample failure: test PF 0.805, -20.7%, p=0.405.",
+    "Not statistically significant even in-sample (p=0.160).",
+    "Validation strength (PF 2.41) rests on only 100 trades."
+  ],
+  "acceptance": {
+    "oos_expectancy": "FAIL",
+    "oos_profit_factor": "FAIL",
+    "distinct_from_beta": "FAIL (funding PnL negative; return directional)",
+    "trade_count": "PASS"
+  },
+  "integrity": {
+    "production_strategy_untouched": true,
+    "spot_mirror_untouched": true,
+    "no_parameter_search": true,
+    "funding_verified_applied": true
+  },
+  "decision": "FAIL. Carry as preregistered does not provide a robust standalone return: it failed out-of-sample and did not actually earn funding (net funding PnL negative). Not eligible for combination.",
+  "next_experiment": "P3-EXP-004A (cross-sectional momentum)"
+}

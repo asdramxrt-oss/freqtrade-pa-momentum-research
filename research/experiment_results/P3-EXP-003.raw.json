@@ -1,0 +1,485 @@
+{
+  "experiment_id": "P3-EXP-003",
+  "dataset": "user_data\\data_p3",
+  "config": "user_data\\configs\\P3-EXP-003.json",
+  "strategy": "FundingCarry",
+  "generated_utc": "2026-09-16T11:29:54.888674+00:00",
+  "runs": {
+    "full": {
+      "timerange": "20190908-20260916",
+      "command": "C:\\Users\\rahul\\AppData\\Local\\Programs\\Python\\Python312\\python.exe -m freqtrade backtesting --userdir C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research\\user_data -d C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research\\user_data\\data_p3 --strategy-path C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research\\research_lib\\strategies -c C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research\\user_data\\configs\\P3-EXP-003.json --strategy FundingCarry --timerange 20190908-20260916 --cache none --export trades --fee 0.0005",
+      "funding_fees_applied_usdt": -11305.87362512767,
+      "trades": 428,
+      "metrics": {
+        "strategy_class": "FundingCarry",
+        "trades": 428,
+        "starting_balance": 10000.0,
+        "final_balance": 59593.45473484,
+        "net_profit_abs_usdt": 49593.454734839994,
+        "net_profit_pct": 495.9345473484,
+        "cagr_pct": 28.98118350237622,
+        "profit_factor": 1.3482840942157612,
+        "expectancy": 115.87255779168231,
+        "expectancy_ratio": 0.16437707250370037,
+        "avg_trade_pct": 7.01527214081425,
+        "median_trade_pct": 0.7889912088758284,
+        "sharpe": 0.21750340352828396,
+        "sortino": 0.3513981306740468,
+        "sqn": 1.4071,
+        "p_value": 0.16012058553509054,
+        "winrate_pct": 52.80373831775701,
+        "wins": 226,
+        "losses": 202,
+        "draws": 0,
+        "max_drawdown_trade_pct": 48.9052188742,
+        "max_drawdown_wallet_pct": 48.9052188742,
+        "holding_avg_seconds": 4110180.0,
+        "market_change_pct": 1088.1626853724783,
+        "turnover_usdt": 3401780.463842,
+        "fees_paid_usdt": 1700.8902319210001,
+        "time_in_market_ratio": 7.953385416666666,
+        "long_side": {
+          "trades": 213,
+          "net_profit_abs_usdt": 69579.72962566999,
+          "profit_factor": 2.2639887535901404,
+          "win_count": 103,
+          "win_rate_pct": 48.35680751173709,
+          "fees_paid_usdt": 861.3102816835,
+          "turnover_usdt": 1722620.563367
+        },
+        "short_side": {
+          "trades": 215,
+          "net_profit_abs_usdt": -19986.274890830002,
+          "profit_factor": 0.7711825496862563,
+          "win_count": 123,
+          "win_rate_pct": 57.20930232558139,
+          "fees_paid_usdt": 839.5799502375,
+          "turnover_usdt": 1679159.900475
+        },
+        "excursions": {
+          "long": {
+            "mae_mean_pct": 14.876388292578323,
+            "mae_median_pct": 8.686431691903131,
+            "mfe_mean_pct": 72.14520447593685,
+            "mfe_median_pct": 9.529326574945681
+          },
+          "short": {
+            "mae_mean_pct": 25.282661216298568,
+            "mae_median_pct": 11.166977032898826,
+            "mfe_mean_pct": 16.96856958179776,
+            "mfe_median_pct": 11.526855763427875
+          }
+        },
+        "results_per_pair": {
+          "DOGE/USDT:USDT": {
+            "trades": 50,
+            "net_profit_pct": 226.7488048382,
+            "profit_factor": 2.5292545816261303
+          },
+          "XRP/USDT:USDT": {
+            "trades": 55,
+            "net_profit_pct": 155.3966596402,
+            "profit_factor": 2.3928063245990976
+          },
+          "SOL/USDT:USDT": {
+            "trades": 54,
+            "net_profit_pct": 154.649834843,
+            "profit_factor": 1.8199329375723168
+          },
+          "BNB/USDT:USDT": {
+            "trades": 35,
+            "net_profit_pct": 79.754579499,
+            "profit_factor": 1.874816672568885
+          },
+          "BTC/USDT:USDT": {
+            "trades": 28,
+            "net_profit_pct": 47.387076197700004,
+            "profit_factor": 1.9362513909356278
+          },
+          "ETH/USDT:USDT": {
+            "trades": 32,
+            "net_profit_pct": 8.123660777799987,
+            "profit_factor": 1.0586979126728795
+          },
+          "DOT/USDT:USDT": {
+            "trades": 46,
+            "net_profit_pct": 2.953439207999995,
+            "profit_factor": 1.0286082701618648
+          },
+          "LINK/USDT:USDT": {
+            "trades": 33,
+            "net_profit_pct": -30.121222045699987,
+            "profit_factor": 0.7751369253436005
+          },
+          "ADA/USDT:USDT": {
+            "trades": 37,
+            "net_profit_pct": -58.634771235700015,
+            "profit_factor": 0.6617294072984716
+          },
+          "AVAX/USDT:USDT": {
+            "trades": 58,
+            "net_profit_pct": -90.32351437410003,
+            "profit_factor": 0.6828224401228785
+          }
+        }
+      }
+    },
+    "train": {
+      "timerange": "20190908-20221231",
+      "command": "C:\\Users\\rahul\\AppData\\Local\\Programs\\Python\\Python312\\python.exe -m freqtrade backtesting --userdir C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research\\user_data -d C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research\\user_data\\data_p3 --strategy-path C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research\\research_lib\\strategies -c C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research\\user_data\\configs\\P3-EXP-003.json --strategy FundingCarry --timerange 20190908-20221231 --cache none --export trades --fee 0.0005",
+      "funding_fees_applied_usdt": -5141.3939648561845,
+      "trades": 165,
+      "metrics": {
+        "strategy_class": "FundingCarry",
+        "trades": 165,
+        "starting_balance": 10000.0,
+        "final_balance": 29837.10867421,
+        "net_profit_abs_usdt": 19837.108674209998,
+        "net_profit_pct": 198.37108674209998,
+        "cagr_pct": 39.253455993977404,
+        "profit_factor": 1.5246858535948016,
+        "expectancy": 120.22490105581812,
+        "expectancy_ratio": 0.27665254098634984,
+        "avg_trade_pct": 12.618320365605332,
+        "median_trade_pct": -0.6587976670759822,
+        "sharpe": 0.249533194924605,
+        "sortino": 0.6139085709564661,
+        "sqn": 1.2215,
+        "p_value": 0.22363547512621276,
+        "winrate_pct": 47.27272727272727,
+        "wins": 78,
+        "losses": 87,
+        "draws": 0,
+        "max_drawdown_trade_pct": 48.9052188742,
+        "max_drawdown_wallet_pct": 48.9052188742,
+        "holding_avg_seconds": 4011420.0,
+        "market_change_pct": 429.0387411602557,
+        "turnover_usdt": 759472.345722,
+        "fees_paid_usdt": 379.736172861,
+        "time_in_market_ratio": 6.357399723374827,
+        "long_side": {
+          "trades": 81,
+          "net_profit_abs_usdt": 20403.51308469,
+          "profit_factor": 2.1336199947246857,
+          "win_count": 33,
+          "win_rate_pct": 40.74074074074074,
+          "fees_paid_usdt": 192.1834914085,
+          "turnover_usdt": 384366.982817
+        },
+        "short_side": {
+          "trades": 84,
+          "net_profit_abs_usdt": -566.4044104800001,
+          "profit_factor": 0.9714067781079497,
+          "win_count": 45,
+          "win_rate_pct": 53.57142857142857,
+          "fees_paid_usdt": 187.5526814525,
+          "turnover_usdt": 375105.362905
+        },
+        "excursions": {
+          "long": {
+            "mae_mean_pct": 18.509093373643584,
+            "mae_median_pct": 12.007168458781354,
+            "mfe_mean_pct": 124.53446260754896,
+            "mfe_median_pct": 10.763807285546418
+          },
+          "short": {
+            "mae_mean_pct": 28.74324368854527,
+            "mae_median_pct": 13.155576636400589,
+            "mfe_mean_pct": 19.28424761941474,
+            "mfe_median_pct": 13.90590200445435
+          }
+        },
+        "results_per_pair": {
+          "DOGE/USDT:USDT": {
+            "trades": 22,
+            "net_profit_pct": 107.05333458299997,
+            "profit_factor": 2.6045664491164473
+          },
+          "BNB/USDT:USDT": {
+            "trades": 16,
+            "net_profit_pct": 44.426482948200004,
+            "profit_factor": 2.390571638432894
+          },
+          "AVAX/USDT:USDT": {
+            "trades": 24,
+            "net_profit_pct": 37.757637652099994,
+            "profit_factor": 1.6242051751700064
+          },
+          "ETH/USDT:USDT": {
+            "trades": 17,
+            "net_profit_pct": 37.1830548614,
+            "profit_factor": 2.7404957003826014
+          },
+          "BTC/USDT:USDT": {
+            "trades": 17,
+            "net_profit_pct": 11.596423662799998,
+            "profit_factor": 1.7328321816085246
+          },
+          "XRP/USDT:USDT": {
+            "trades": 26,
+            "net_profit_pct": 3.5796059284999973,
+            "profit_factor": 1.0804231825290571
+          },
+          "SOL/USDT:USDT": {
+            "trades": 13,
+            "net_profit_pct": 2.9290329686999996,
+            "profit_factor": 1.0698474917716538
+          },
+          "DOT/USDT:USDT": {
+            "trades": 7,
+            "net_profit_pct": -3.9705834736,
+            "profit_factor": 0.7682358064060649
+          },
+          "ADA/USDT:USDT": {
+            "trades": 12,
+            "net_profit_pct": -4.1923035557000015,
+            "profit_factor": 0.8898377021763707
+          },
+          "LINK/USDT:USDT": {
+            "trades": 11,
+            "net_profit_pct": -37.9915988333,
+            "profit_factor": 0.052599217666785325
+          }
+        }
+      }
+    },
+    "validation": {
+      "timerange": "20230101-20241231",
+      "command": "C:\\Users\\rahul\\AppData\\Local\\Programs\\Python\\Python312\\python.exe -m freqtrade backtesting --userdir C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research\\user_data -d C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research\\user_data\\data_p3 --strategy-path C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research\\research_lib\\strategies -c C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research\\user_data\\configs\\P3-EXP-003.json --strategy FundingCarry --timerange 20230101-20241231 --cache none --export trades --fee 0.0005",
+      "funding_fees_applied_usdt": -2664.2414233716204,
+      "trades": 100,
+      "metrics": {
+        "strategy_class": "FundingCarry",
+        "trades": 100,
+        "starting_balance": 10000.0,
+        "final_balance": 27001.071872110002,
+        "net_profit_abs_usdt": 17001.07187211,
+        "net_profit_pct": 170.01071872109998,
+        "cagr_pct": 64.3200288221433,
+        "profit_factor": 2.412783901369414,
+        "expectancy": 170.01071872109998,
+        "expectancy_ratio": 0.4944743654792949,
+        "avg_trade_pct": 11.748823719830606,
+        "median_trade_pct": 3.4017479790077068,
+        "sharpe": 0.46482260563249816,
+        "sortino": 0.917207553588644,
+        "sqn": 1.7672,
+        "p_value": 0.08027927108295886,
+        "winrate_pct": 65.0,
+        "wins": 65,
+        "losses": 35,
+        "draws": 0,
+        "max_drawdown_trade_pct": 34.816577595596904,
+        "max_drawdown_wallet_pct": 34.816577595596904,
+        "holding_avg_seconds": 5150880.0,
+        "market_change_pct": 426.7662216897401,
+        "turnover_usdt": 282001.78897,
+        "fees_paid_usdt": 141.000894485,
+        "time_in_market_ratio": 8.166666666666666,
+        "long_side": {
+          "trades": 51,
+          "net_profit_abs_usdt": 23855.90679967,
+          "profit_factor": 16.38534584599996,
+          "win_count": 35,
+          "win_rate_pct": 68.62745098039215,
+          "fees_paid_usdt": 76.64225105,
+          "turnover_usdt": 153284.5021
+        },
+        "short_side": {
+          "trades": 49,
+          "net_profit_abs_usdt": -6854.83492756,
+          "profit_factor": 0.34611099019436214,
+          "win_count": 30,
+          "win_rate_pct": 61.224489795918366,
+          "fees_paid_usdt": 64.358643435,
+          "turnover_usdt": 128717.28687
+        },
+        "excursions": {
+          "long": {
+            "mae_mean_pct": 9.06915427304096,
+            "mae_median_pct": 5.655430711610487,
+            "mfe_mean_pct": 76.80735527261423,
+            "mfe_median_pct": 11.672220798085958
+          },
+          "short": {
+            "mae_mean_pct": 28.034992148659395,
+            "mae_median_pct": 12.479212399388008,
+            "mfe_mean_pct": 12.51050160910345,
+            "mfe_median_pct": 7.832532051282051
+          }
+        },
+        "results_per_pair": {
+          "SOL/USDT:USDT": {
+            "trades": 8,
+            "net_profit_pct": 77.77778195359998,
+            "profit_factor": 39.66418871999496
+          },
+          "DOGE/USDT:USDT": {
+            "trades": 11,
+            "net_profit_pct": 56.5753877915,
+            "profit_factor": 44.43782646829858
+          },
+          "XRP/USDT:USDT": {
+            "trades": 12,
+            "net_profit_pct": 38.1882526906,
+            "profit_factor": 3.2466642753586394
+          },
+          "LINK/USDT:USDT": {
+            "trades": 5,
+            "net_profit_pct": 24.5408570869,
+            "profit_factor": 191.97821210577604
+          },
+          "DOT/USDT:USDT": {
+            "trades": 15,
+            "net_profit_pct": 22.606958437999996,
+            "profit_factor": 9.77438845852793
+          },
+          "BTC/USDT:USDT": {
+            "trades": 8,
+            "net_profit_pct": 2.2487633577000032,
+            "profit_factor": 1.1778740190526351
+          },
+          "BNB/USDT:USDT": {
+            "trades": 13,
+            "net_profit_pct": -1.0343282286000004,
+            "profit_factor": 0.9289868632335079
+          },
+          "ETH/USDT:USDT": {
+            "trades": 3,
+            "net_profit_pct": -5.3087357425,
+            "profit_factor": 0.2718308637506116
+          },
+          "AVAX/USDT:USDT": {
+            "trades": 13,
+            "net_profit_pct": -20.8488414977,
+            "profit_factor": 0.33356292281167893
+          },
+          "ADA/USDT:USDT": {
+            "trades": 12,
+            "net_profit_pct": -24.7353771284,
+            "profit_factor": 0.215702720688965
+          }
+        }
+      }
+    },
+    "test": {
+      "timerange": "20250101-20260916",
+      "command": "C:\\Users\\rahul\\AppData\\Local\\Programs\\Python\\Python312\\python.exe -m freqtrade backtesting --userdir C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research\\user_data -d C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research\\user_data\\data_p3 --strategy-path C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research\\research_lib\\strategies -c C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research\\user_data\\configs\\P3-EXP-003.json --strategy FundingCarry --timerange 20250101-20260916 --cache none --export trades --fee 0.0005",
+      "funding_fees_applied_usdt": 204.69729242369613,
+      "trades": 159,
+      "metrics": {
+        "strategy_class": "FundingCarry",
+        "trades": 159,
+        "starting_balance": 10000.0,
+        "final_balance": 7928.39680774,
+        "net_profit_abs_usdt": -2071.6031922600005,
+        "net_profit_pct": -20.716031922600003,
+        "cagr_pct": -12.715876813930539,
+        "profit_factor": 0.8053931338592193,
+        "expectancy": -13.028950894716964,
+        "expectancy_ratio": -0.09301963413018455,
+        "avg_trade_pct": -1.0661921211688579,
+        "median_trade_pct": 0.8523421238013985,
+        "sharpe": -0.3239241762305138,
+        "sortino": -0.3349579112286158,
+        "sqn": -0.8351,
+        "p_value": 0.4049462202834739,
+        "winrate_pct": 52.20125786163522,
+        "wins": 83,
+        "losses": 76,
+        "draws": 0,
+        "max_drawdown_trade_pct": 35.143626572231184,
+        "max_drawdown_wallet_pct": 35.143626572231184,
+        "holding_avg_seconds": 2968320.0,
+        "market_change_pct": -49.706692267119536,
+        "turnover_usdt": 270600.90927,
+        "fees_paid_usdt": 135.300454635,
+        "time_in_market_ratio": 8.768057784911717,
+        "long_side": {
+          "trades": 81,
+          "net_profit_abs_usdt": -2001.30299465,
+          "profit_factor": 0.6062866055417794,
+          "win_count": 36,
+          "win_rate_pct": 44.44444444444444,
+          "fees_paid_usdt": 68.414979945,
+          "turnover_usdt": 136829.95989
+        },
+        "short_side": {
+          "trades": 78,
+          "net_profit_abs_usdt": -70.30019760999996,
+          "profit_factor": 0.9873604454237137,
+          "win_count": 47,
+          "win_rate_pct": 60.256410256410255,
+          "fees_paid_usdt": 66.88547469,
+          "turnover_usdt": 133770.94938
+        },
+        "excursions": {
+          "long": {
+            "mae_mean_pct": 14.032019602206699,
+            "mae_median_pct": 9.154735682819384,
+            "mfe_mean_pct": 15.609027892748019,
+            "mfe_median_pct": 8.63599677158999
+          },
+          "short": {
+            "mae_mean_pct": 17.86093099770158,
+            "mae_median_pct": 8.180854821617787,
+            "mfe_mean_pct": 16.274007591064827,
+            "mfe_median_pct": 10.406538810833906
+          }
+        },
+        "results_per_pair": {
+          "BNB/USDT:USDT": {
+            "trades": 5,
+            "net_profit_pct": 6.9953245643,
+            "profit_factor": 3.439914017242258
+          },
+          "XRP/USDT:USDT": {
+            "trades": 19,
+            "net_profit_pct": 4.8060516697999995,
+            "profit_factor": 2.214816970161661
+          },
+          "BTC/USDT:USDT": {
+            "trades": 4,
+            "net_profit_pct": 2.8995322147,
+            "profit_factor": 3.4236067333206983
+          },
+          "ADA/USDT:USDT": {
+            "trades": 13,
+            "net_profit_pct": 2.0782858837,
+            "profit_factor": 1.2837284825196962
+          },
+          "ETH/USDT:USDT": {
+            "trades": 10,
+            "net_profit_pct": -1.408208449100001,
+            "profit_factor": 0.9000404578374995
+          },
+          "DOT/USDT:USDT": {
+            "trades": 25,
+            "net_profit_pct": -4.366326065999999,
+            "profit_factor": 0.6427761320079354
+          },
+          "DOGE/USDT:USDT": {
+            "trades": 18,
+            "net_profit_pct": -4.6411372682000005,
+            "profit_factor": 0.6014050178413092
+          },
+          "SOL/USDT:USDT": {
+            "trades": 33,
+            "net_profit_pct": -6.093111120399999,
+            "profit_factor": 0.6984283371316398
+          },
+          "AVAX/USDT:USDT": {
+            "trades": 21,
+            "net_profit_pct": -10.0229979748,
+            "profit_factor": 0.4933235135914292
+          },
+          "LINK/USDT:USDT": {
+            "trades": 11,
+            "net_profit_pct": -10.963445376600001,
+            "profit_factor": 0.16724824005567293
+          }
+        }
+      }
+    }
+  }
+}
