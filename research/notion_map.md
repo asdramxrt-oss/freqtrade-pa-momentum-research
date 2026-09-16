@@ -58,6 +58,7 @@ https://app.notion.com/p/1a91654b27394de48575b6d8b5b117db
 
 | Artifact | Path |
 |----------|------|
+| Notion record | https://app.notion.com/p/3dd017d63ac7814491b3d3b759a36086 |
 | Specification | `research/experiment_specs/PHASE2_DIAGNOSTIC.md` |
 | Report | `research/experiment_results/PHASE2_DIAGNOSTIC.md` |
 | Machine-readable | `PHASE2_data_quality.json`, `PHASE2_market_regimes.json`, `PHASE2_turtle_followthrough.json`, `PHASE2_pullback_geometry.json`, `PHASE2_trade_diagnostics.json`, `PHASE2_statistics.json`, `PHASE2_lineage.json` |
