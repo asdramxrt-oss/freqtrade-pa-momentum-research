@@ -8,7 +8,7 @@
   "spec_doc": "research/experiment_specs/EXP-001.md",
   "result_doc": "research/experiment_results/EXP-001.md",
   "github_branch": "research/turtle-baseline",
-  "git_commit": "recorded at commit time; see git log for 'EXP-001'",
+  "git_commit": "12acbf7017a04418dbfa54771edf5c97b358d618",
   "run_date": "2026-09-16",
   "environment": {
     "freqtrade": "2026.9-dev",

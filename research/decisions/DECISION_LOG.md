@@ -9,6 +9,10 @@ decision is a new entry that supersedes the old one.
 | DEC-001 | 2026-09-16 | Governance | Research charter and experiment protocol frozen. Project established as a standalone repository, isolated from all pre-existing trading/research repositories. | `research/preregistration/research_charter.md`, `research/preregistration/experiment_protocol.md` |
 | DEC-002 | 2026-09-16 | Strategy verdict | **EXP-001 (Turtle raw baseline) = FAIL.** 4 of 8 acceptance criteria passed. Failures: per-trade expectancy not significant (p=0.066), OOS 2025 negative (−18.98%, PF 0.80), wallet max drawdown 61.55%. | `research/experiment_results/EXP-001.md`, `EXP-001.json` |
 
+Founding commit (foundation + EXP-001 implementation, on `main`):
+`12acbf7017a04418dbfa54771edf5c97b358d618`
+Experiment branch: `research/turtle-baseline` (same tree).
+
 ---
 
 ## DEC-002 — detail
