@@ -54,5 +54,9 @@
     "long_only_selected_using_2025": "No, strictly. Long-only was pre-registered in the EXP-003 specification before any run. However, its treatment as the leading candidate was reinforced by the 2025 result.",
     "2025_result_used_to_justify_continuation": true,
     "conclusion": "The 2025 long-only result was produced by a pre-registered variant with a-priori parameters, and then used to justify a fresh holdout test. That is defensible, but the 2025 number carries the selection weight of one holdout on one variant chosen from a three-way split, and it was concentrated (see PHASE2_trade_diagnostics: removing the top 3 winners turns 2025 negative). Its evidential weight is therefore low-to-moderate, not confirmatory."
+  },
+  "commits": {
+    "spec": "1085045b0c6415180d94a16a4913981e4d31cac3",
+    "results": "eab0b242cab146f92e0e3e6e26a54559ea6c459e"
   }
 }

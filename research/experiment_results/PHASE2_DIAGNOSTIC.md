@@ -4,7 +4,8 @@
 |-------|-------|
 | **Phase** | 2 (diagnostic — no strategy change) |
 | **Branch** | `research/diagnostic-generalization` |
-| **Specification** | `research/experiment_specs/PHASE2_DIAGNOSTIC.md` (`1085045`) |
+| **Specification** | `research/experiment_specs/PHASE2_DIAGNOSTIC.md` (`1085045b0c6415180d94a16a4913981e4d31cac3`) |
+| **Results commit** | `eab0b242cab146f92e0e3e6e26a54559ea6c459e` |
 | **Frozen subjects** | Turtle `12acbf7`; Pullback long `c4bee8e` (unchanged, hashes verified) |
 | **Run date** | 2026-09-16 |
 | **Status** | COMPLETED |
