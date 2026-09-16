@@ -79,7 +79,7 @@ Diagnostic only. No strategy change and no strategy verdict.
 | PHASE A — Repository Audit (summary) | https://app.notion.com/p/3dd017d63ac78108b4dfee3d4d850df1 |
 | Research Area 1 — Turtle/trend robustness (evidence pass) | https://app.notion.com/p/3dd017d63ac7819f85ace7bacf9b0cce |
 
-Git-side audit documents: `docs/REPOSITORY_AUDIT.md`, `docs/DATA_AVAILABILITY.md`.
+Git-side audit documents: `docs/REPOSITORY_AUDIT.md`, `docs/DATA_AVAILABILITY.md`, `docs/EXTERNAL_EVIDENCE.md`.
 
 ## Update procedure after each experiment
 
