@@ -1,0 +1,76 @@
+{
+    "$schema": "https://schema.freqtrade.io/schema.json",
+    "bot_name": "pa-momentum-research-p3",
+    "initial_state": "running",
+    "dry_run": true,
+    "dry_run_wallet": 10000,
+    "trading_mode": "futures",
+    "margin_mode": "isolated",
+    "max_open_trades": 5,
+    "stake_currency": "USDT",
+    "stake_amount": 1000,
+    "tradable_balance_ratio": 0.99,
+    "fiat_display_currency": "USD",
+    "timeframe": "4h",
+    "fee": 0.0005,
+    "force_entry_enable": false,
+    "cancel_open_orders_on_exit": false,
+    "dataformat_ohlcv": "feather",
+    "dataformat_trades": "feather",
+    "strategy": "TurtleFuturesLong",
+    "recursive_strategy_search": true,
+    "exchange": {
+        "name": "binance",
+        "key": "",
+        "secret": "",
+        "ccxt_config": {},
+        "ccxt_async_config": {},
+        "pair_whitelist": [
+            "BTC/USDT:USDT",
+            "ETH/USDT:USDT",
+            "BNB/USDT:USDT",
+            "SOL/USDT:USDT",
+            "XRP/USDT:USDT",
+            "ADA/USDT:USDT",
+            "DOGE/USDT:USDT",
+            "LINK/USDT:USDT",
+            "AVAX/USDT:USDT",
+            "DOT/USDT:USDT"
+        ],
+        "pair_blacklist": []
+    },
+    "pairlists": [
+        {
+            "method": "StaticPairList"
+        }
+    ],
+    "entry_pricing": {
+        "price_side": "same",
+        "use_order_book": true,
+        "order_book_top": 1,
+        "price_last_balance": 0.0,
+        "check_depth_of_market": {
+            "enabled": false,
+            "bids_to_ask_delta": 1
+        }
+    },
+    "exit_pricing": {
+        "price_side": "same",
+        "use_order_book": true,
+        "order_book_top": 1
+    },
+    "unfilledtimeout": {
+        "entry": 10,
+        "exit": 10,
+        "exit_timeout_count": 0,
+        "unit": "minutes"
+    },
+    "telegram": {
+        "enabled": false,
+        "token": "",
+        "chat_id": ""
+    },
+    "internals": {
+        "process_throttle_secs": 5
+    }
+}
