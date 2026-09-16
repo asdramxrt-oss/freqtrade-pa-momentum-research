@@ -77,8 +77,9 @@ Diagnostic only. No strategy change and no strategy verdict.
 | Validation Framework | https://app.notion.com/p/3dd017d63ac78177bdeada6bba71e941 |
 | Strategy Candidates — Research Decision Matrix (database) | https://app.notion.com/p/978de4a87da6436692d0d5f5671075b1 |
 | PHASE A — Repository Audit (summary) | https://app.notion.com/p/3dd017d63ac78108b4dfee3d4d850df1 |
+| Research Area 1 — Turtle/trend robustness (evidence pass) | https://app.notion.com/p/3dd017d63ac7819f85ace7bacf9b0cce |
 
-Git-side audit document: `docs/REPOSITORY_AUDIT.md`.
+Git-side audit documents: `docs/REPOSITORY_AUDIT.md`, `docs/DATA_AVAILABILITY.md`.
 
 ## Update procedure after each experiment
 
