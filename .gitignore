@@ -1,0 +1,60 @@
+# --- Secrets / credentials (NEVER commit) ---------------------------------
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets.json
+config_private*.json
+
+# --- Downloaded market data (reproducible, large) -------------------------
+user_data/data/*
+!user_data/data/.gitkeep
+*.feather
+*.json.gz
+*.h5
+*.parquet
+
+# --- Generated backtest output (reproducible) ----------------------------
+user_data/backtest_results/
+user_data/backtest_results_*/
+user_data/hyperopt_results/
+user_data/hyperopts/*
+!user_data/hyperopts/.gitkeep
+*.last_result.json
+*.meta.json
+backtest-result-*.json
+backtest-result-*.zip
+
+# --- Logs -----------------------------------------------------------------
+user_data/logs/*
+!user_data/logs/.gitkeep
+*.log
+
+# --- Model binaries -------------------------------------------------------
+ml/**/*.pkl
+ml/**/*.joblib
+ml/**/*.onnx
+ml/**/*.h5
+ml/**/models/
+*.model
+
+# --- Cache -----------------------------------------------------------------
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# --- Environments ---------------------------------------------------------
+.venv/
+venv/
+env/
+
+# --- Editor / OS ----------------------------------------------------------
+.idea/
+.vscode/
+Thumbs.db
+desktop.ini

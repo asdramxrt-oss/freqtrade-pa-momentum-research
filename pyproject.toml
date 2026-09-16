@@ -1,0 +1,47 @@
+[project]
+name = "freqtrade-pa-momentum-research"
+version = "0.1.0"
+description = "Evidence-based research into price-action momentum strategies on Freqtrade."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+
+# freqtrade is intentionally NOT pinned here. It is supplied as a source
+# checkout via the FREQTRADE_SRC environment variable (see README) so that the
+# exact framework revision used for a research run can be recorded explicitly
+# instead of drifting with a floating PyPI release.
+dependencies = [
+    "numpy",
+    "pandas",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "pytest-mock",
+    "pytest-timeout",
+    "ruff",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers --strict-config"
+markers = [
+    "research: marks tests that require downloaded market data or a full backtest",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4", "SIM"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101"]
+
+[tool.coverage.run]
+source = ["user_data/strategies/shared", "user_data/strategies/turtle"]
+branch = true

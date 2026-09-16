@@ -1,0 +1,150 @@
+{
+  "experiment_id": "EXP-001",
+  "strategy": "turtle",
+  "strategy_class": "DonchianTurtleBaseline",
+  "version": "baseline-v1",
+  "status": "FAIL",
+  "hypothesis_doc": "research/hypotheses/turtle.md",
+  "spec_doc": "research/experiment_specs/EXP-001.md",
+  "result_doc": "research/experiment_results/EXP-001.md",
+  "github_branch": "research/turtle-baseline",
+  "git_commit": "recorded at commit time; see git log for 'EXP-001'",
+  "run_date": "2026-09-16",
+  "environment": {
+    "freqtrade": "2026.9-dev",
+    "ccxt": "4.5.71",
+    "python": "3.12.10",
+    "pandas": "3.0.5",
+    "numpy": "2.4.6"
+  },
+  "dataset": {
+    "exchange": "binance",
+    "market": "spot",
+    "timeframe": "4h",
+    "pairs": [
+      "BTC/USDT",
+      "ETH/USDT",
+      "BNB/USDT",
+      "SOL/USDT",
+      "XRP/USDT",
+      "ADA/USDT",
+      "DOGE/USDT",
+      "LINK/USDT",
+      "AVAX/USDT",
+      "DOT/USDT"
+    ],
+    "full_period": "2019-01-01..2026-01-01",
+    "oos_period": "2025-01-01..2026-01-01",
+    "downloaded_on": "2026-09-16"
+  },
+  "configuration": {
+    "config_file": "user_data/configs/EXP-001.json",
+    "entry_period": 20,
+    "exit_period": 10,
+    "atr_period": 20,
+    "atr_stop_multiple": 2.0,
+    "risk_per_trade": 0.01,
+    "max_open_trades": 5,
+    "dry_run_wallet": 10000,
+    "stake_amount": 1000,
+    "tradable_balance_ratio": 0.99,
+    "tuned_parameters": "none"
+  },
+  "runs": [
+    {
+      "label": "full-sample-base-cost",
+      "timerange": "20190101-20260101",
+      "fee": 0.0005,
+      "metrics": {
+        "trades": 1347,
+        "final_balance": 491729.129,
+        "total_profit_pct": 4817.29,
+        "cagr_pct": 74.57,
+        "profit_factor": 1.23,
+        "win_rate_pct": 31.4,
+        "wins": 423,
+        "losses": 924,
+        "draws": 0,
+        "avg_profit_pct": 2.03,
+        "expectancy": 357.63,
+        "expectancy_ratio": 0.16,
+        "sharpe_closed": 0.51,
+        "sortino_closed": 2.01,
+        "sharpe_daily_wallet": 1.46,
+        "sqn": 1.84,
+        "mean_profit_p_value": 0.06582,
+        "max_drawdown_trade_pct": 57.11,
+        "max_drawdown_wallet_pct": 61.55,
+        "drawdown_duration_days": 771.83,
+        "max_consecutive_losses": 25,
+        "trade_volume_usdt": 164619450.502,
+        "avg_stake_usdt": 60866.067,
+        "market_change_pct": 2937.06,
+        "rejected_entry_signals": 753,
+        "best_pair": "BNB/USDT +1503.53%",
+        "worst_pair": "LINK/USDT -641.90%"
+      }
+    },
+    {
+      "label": "oos-holdout",
+      "timerange": "20250101-20260101",
+      "fee": 0.0005,
+      "evaluations_used": 1,
+      "metrics": {
+        "trades": 180,
+        "final_balance": 8102.376,
+        "total_profit_pct": -18.98,
+        "profit_factor": 0.80,
+        "sharpe_closed": -0.71,
+        "sharpe_daily_wallet": -0.44,
+        "sqn": -1.0,
+        "mean_profit_p_value": 0.3174,
+        "max_drawdown_trade_pct": 33.85,
+        "max_drawdown_wallet_pct": 39.56,
+        "market_change_pct": -34.34
+      }
+    },
+    {
+      "label": "full-sample-stress-cost",
+      "timerange": "20190101-20260101",
+      "fee": 0.002,
+      "metrics": {
+        "trades": 1343,
+        "final_balance": 216747.261,
+        "total_profit_pct": 2067.47,
+        "cagr_pct": 55.27,
+        "profit_factor": 1.14,
+        "sharpe_closed": 0.33,
+        "sharpe_daily_wallet": 1.19,
+        "sqn": 1.18,
+        "mean_profit_p_value": 0.2365,
+        "max_drawdown_trade_pct": 67.05,
+        "max_drawdown_wallet_pct": 71.18
+      }
+    }
+  ],
+  "per_year": {
+    "2019": { "trades": 161, "total_profit_pct": 51.60, "profit_factor": 1.36, "max_drawdown_wallet_pct": 32.85 },
+    "2020": { "trades": 156, "total_profit_pct": 340.73, "profit_factor": 3.59, "max_drawdown_wallet_pct": 16.83 },
+    "2021": { "trades": 236, "total_profit_pct": 506.38, "profit_factor": 1.78, "max_drawdown_wallet_pct": 32.16 },
+    "2022": { "trades": 206, "total_profit_pct": -36.22, "profit_factor": 0.64, "max_drawdown_wallet_pct": 41.72 },
+    "2023": { "trades": 180, "total_profit_pct": 17.53, "profit_factor": 1.15, "max_drawdown_wallet_pct": 37.55 },
+    "2024": { "trades": 184, "total_profit_pct": 86.72, "profit_factor": 1.82, "max_drawdown_wallet_pct": 18.91 },
+    "2025": { "trades": 180, "total_profit_pct": -18.98, "profit_factor": 0.80, "max_drawdown_wallet_pct": 39.56 }
+  },
+  "acceptance_criteria": {
+    "A1_min_trades": { "threshold": ">=200", "measured": 1347, "pass": true },
+    "A2_profit_factor_base": { "threshold": ">=1.10", "measured": 1.23, "pass": true },
+    "A3_expectancy_p_value": { "threshold": "<0.05", "measured": 0.06582, "pass": false },
+    "A4_oos_net_return": { "threshold": ">=0", "measured": -18.98, "pass": false },
+    "A5_oos_profit_factor": { "threshold": ">=1.00", "measured": 0.80, "pass": false },
+    "A6_wallet_max_drawdown": { "threshold": "<35%", "measured": 61.55, "pass": false },
+    "A7_profitable_years": { "threshold": ">=60%", "measured": 71.4, "pass": true },
+    "A8_profit_factor_stress": { "threshold": ">=1.05", "measured": 1.14, "pass": true }
+  },
+  "criteria_passed": 4,
+  "criteria_total": 8,
+  "decision": "FAIL as standalone edge evidence; retained as the reference baseline.",
+  "decision_record": "DEC-002",
+  "next_experiment": "EXP-002"
+}
