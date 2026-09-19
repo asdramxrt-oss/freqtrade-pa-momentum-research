@@ -29,6 +29,7 @@ EXPERIMENT_SCRIPTS = (
     "p3_exp001_run.py",
     "p3_exp002_costs.py",
     "p3_exp003_carry.py",
+    "p3_exp004a_run.py",
 )
 
 ProcessRunner = Callable[..., "subprocess.CompletedProcess[str]"]
