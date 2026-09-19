@@ -1,7 +1,10 @@
 $ErrorActionPreference = "Stop"
 $root = Split-Path -Parent $PSScriptRoot
 $gatePath = Join-Path $root ".mece\PHASE_GATE.json"
-$runner = Join-Path $root "user_data\scripts\p3_exp004a_run.py"
+$runner004a = Join-Path $root "user_data\scripts\p3_exp004a_run.py"
+$runner004b = Join-Path $root "user_data\scripts\p3_exp004b_run.py"
+$completion004a = Join-Path $root "phase_runs\p3_exp004a\P3-EXP-004A_COMPLETED.json"
+$completion004b = Join-Path $root "phase_runs\p3_exp004b\P3-EXP-004B_COMPLETED.json"
 $logDir = Join-Path $root "phase_runs\phase3_auto_controller"
 New-Item -ItemType Directory -Force -Path $logDir | Out-Null
 
@@ -21,8 +24,8 @@ if (!(Test-Path $gatePath)) {
     "BLOCKER: gate missing. FAIL CLOSED." | Tee-Object -FilePath $log -Append
     exit 2
 }
-if (!(Test-Path $runner)) {
-    "BLOCKER: P3-EXP-004A runner missing." | Tee-Object -FilePath $log -Append
+if (!(Test-Path $runner004a) -or !(Test-Path $runner004b)) {
+    "BLOCKER: required Phase-3 runner missing (004A/004B)." | Tee-Object -FilePath $log -Append
     exit 2
 }
 
@@ -46,7 +49,19 @@ if (!($gate.allow_new_experiments -eq $true -and $gate.stop_after_phase_completi
     exit 0
 }
 
-"AUTHORIZATION DETECTED. Starting the single preregistered 004A runner." | Tee-Object -FilePath $log -Append
+if (!(Test-Path $completion004a)) {
+    $runner = $runner004a
+    $label = "004A"
+} elseif (!(Test-Path $completion004b)) {
+    $runner = $runner004b
+    $label = "004B"
+} else {
+    "ACTION=WAIT" | Tee-Object -FilePath $log -Append
+    "All currently implemented Phase-3 experiments (004A/004B) have completion markers." | Tee-Object -FilePath $log -Append
+    exit 0
+}
+
+"AUTHORIZATION DETECTED. Starting the next single preregistered runner: P3-EXP-$label." | Tee-Object -FilePath $log -Append
 $python = Join-Path $root ".venv\Scripts\python.exe"
 if (!(Test-Path $python)) { $python = "python" }
 
