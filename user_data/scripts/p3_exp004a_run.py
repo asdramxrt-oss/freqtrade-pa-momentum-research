@@ -19,6 +19,8 @@ RUNS = ROOT / "phase_runs" / "p3_exp004a"
 COMPLETION = RUNS / "P3-EXP-004A_COMPLETED.json"
 DATA = USER_DATA / "data_p3"
 TIMERANGE = "20190101-20260916"
+FULL_SAMPLE = "20190101-20260101"
+OOS = "20250101-20260101"
 FEE = 0.0005
 STRATEGY = "CrossSectionalMomentum"
 
@@ -164,6 +166,31 @@ def main() -> int:
     export = find_export()
     result = read_export(export)
 
+    # Frozen protocol slices: headline full sample and one untouched OOS evaluation.
+    slices = {}
+    for label, timerange in (("full_sample", FULL_SAMPLE), ("oos", OOS)):
+        slice_cmd = command.copy()
+        timerange_index = slice_cmd.index("--timerange")
+        slice_cmd[timerange_index + 1] = timerange
+        cp_slice = subprocess.run(
+            slice_cmd, cwd=str(ROOT), capture_output=True, text=True, check=False
+        )
+        slice_log = RUNS / f"p3_exp004a_{label}_{datetime.now(UTC).strftime('%Y%m%d_%H%M%S')}.log"
+        slice_log.write_text(
+            "$ " + " ".join(slice_cmd) + "\n\nSTDOUT\n" + cp_slice.stdout
+            + "\nSTDERR\n" + cp_slice.stderr,
+            encoding="utf-8",
+        )
+        if cp_slice.returncode != 0:
+            raise RuntimeError(f"P3-EXP-004A {label} backtest failed; see {slice_log}")
+        slice_export = find_export()
+        slices[label] = {
+            "timerange": timerange,
+            "export": str(slice_export.relative_to(ROOT)),
+            "log": str(slice_log.relative_to(ROOT)),
+            "result": read_export(slice_export),
+        }
+
     after_gate = load_gate()
     after = {
         "gate": after_gate,
@@ -180,6 +207,7 @@ def main() -> int:
         "live_trading": False,
         "promotion": False,
         "timerange": TIMERANGE,
+        "preregistered_slices": {"full_sample": FULL_SAMPLE, "oos": OOS},
         "fee_per_side": FEE,
         "strategy": STRATEGY,
         "config": str(CONFIG.relative_to(ROOT)),
@@ -192,6 +220,7 @@ def main() -> int:
         "integrity_before": before,
         "integrity_after": after,
         "result": result,
+        "slice_results": slices,
     }
     stamp = datetime.now(UTC).strftime("%Y%m%d_%H%M%S")
     raw = RUNS / f"P3-EXP-004A_RAW_{stamp}.json"
