@@ -33,6 +33,11 @@ $gate = Get-Content -Raw -LiteralPath $gatePath | ConvertFrom-Json
 
 $spec = Join-Path $root "docs\FROZEN_IMPLEMENTATION_SPEC.md"
 $specSha = Get-Sha256 $spec
+$specExpected = "E9B3145A51AC6BD587844F26AD1675720AB531556992027DE78097FE06543DF2"
+if ($specSha.ToUpper() -ne $specExpected) {
+    "BLOCKER: frozen specification hash changed. FAIL CLOSED." | Tee-Object -FilePath $log -Append
+    exit 2
+}
 "FrozenSpecSHA256=$specSha" | Tee-Object -FilePath $log -Append
 
 if (!($gate.allow_new_experiments -eq $true -and $gate.stop_after_phase_completion -eq $false)) {
