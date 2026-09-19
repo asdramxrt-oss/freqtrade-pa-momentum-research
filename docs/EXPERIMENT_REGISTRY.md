@@ -4,9 +4,8 @@ Mirror of the Notion **Phase 3 — Experiment Registry** database
 (`collection://c2c4f6e5-47ad-477a-b360-8bfce6add095`). Git is the executable
 source of truth; Notion is the human-readable control plane.
 
-**Status: P3-EXP-001, P3-EXP-002 and P3-EXP-003 have been EXECUTED** (verdicts:
-FAIL / FAIL / FAIL). All other experiments remain PREREGISTERED and **not**
-executed. No production strategy code has been written or modified; Phase-3
+**Status: P3-EXP-001, P3-EXP-002, P3-EXP-003 and P3-EXP-004A have been EXECUTED** (verdicts:
+FAIL / FAIL / FAIL / FAIL). P3-EXP-004B is implemented and remains **not executed**. No production strategy code has been written or modified; Phase-3
 implementations live in `research_lib/strategies/` and results under
 `research/experiment_results/`.
 
@@ -34,8 +33,8 @@ does **not** change any verdict; 2025–2026 windows are NON-PRISTINE.
 | P3-EXP-001 | Real futures Turtle baseline (long + short; signal vs vol-scaled sizing) | EXECUTED | **FAIL** — genuine `data_p3` futures OHLCV (funding + 1h mark); both long arms negative OOS (PF 0.813 / 0.852), short negative throughout. `research/experiment_results/P3-EXP-001.md` |
 | P3-EXP-002 | Turtle cost / slippage sensitivity | EXECUTED | **FAIL (corrected)** — stress PF 1.037 (`long_vol`, below the 1.05 threshold) vs 1.259 (`long_raw`); costs are not the cause of failure. `research/experiment_results/P3-EXP-002.md` |
 | P3-EXP-003 | Carry / basis standalone | EXECUTED | **FAIL** — net funding PnL −11,306 USDT (paid funding, did not harvest it); OOS PF 0.805. `research/experiment_results/P3-EXP-003.md` |
-| P3-EXP-004A | Cross-sectional momentum | NO | research candidate implemented in `research_lib/strategies/CrossSectionalMomentumResearch.py` with dry-run config `user_data/configs/P3-EXP-004A.json`; not backtested/validated because local Freqtrade is blocked by the Pydantic dependency mismatch |
-| P3-EXP-004B | Residual momentum | NO | code not written; genuine futures OHLCV |
+| P3-EXP-004A | Cross-sectional momentum | EXECUTED | **FAIL** — executed once on genuine Phase-3 futures data; OOS expectancy and base PF were negative/below 1.00. Raw result recorded locally; production unchanged. |
+| P3-EXP-004B | Residual momentum | READY / NOT EXECUTED | research implementation `research_lib/strategies/ResidualMomentumResearch.py`, dry-run config `user_data/configs/P3-EXP-004B.json`, and one-shot runner `user_data/scripts/p3_exp004b_run.py`; requires genuine `data_p3` futures and Phase-3 authorization. |
 | P3-EXP-005 | Turtle + complementary momentum | NO | depends on 001 and 004A/B |
 | P3-EXP-006 | Volatility estimator ablation (ATR vs GK; YZ excluded) | NO | estimator code not written |
 | P3-EXP-007 | Regime (selection / sizing / allocation) | NO | regime code not written |
@@ -91,7 +90,7 @@ leakage detected. **Otherwise: INSUFFICIENT EVIDENCE** (not PASS).
 
 | Dimension | Count so far | Notes |
 |-----------|--------------|-------|
-| Phase-3 hypotheses preregistered | 9 experiments (EXECUTED: 3) | P3-EXP-001…008 (004 split A/B); 001–003 run, all FAIL |
+| Phase-3 hypotheses preregistered | 9 experiments (EXECUTED: 4) | P3-EXP-001…008 (004 split A/B); 001–004A run, all FAIL |
 | Prior-programme experiments run | 4 (+1 diagnostic phase) | EXP-001…004, PHASE 2 |
 | Strategy families implemented | 2 rule-based + 2 Phase-3 research engines | Turtle, Pullback; `research_lib` adds futures Turtle + funding carry |
 | Parameter variants searched (Phase 3) | 0 | no search performed; fixed frozen parameters |
