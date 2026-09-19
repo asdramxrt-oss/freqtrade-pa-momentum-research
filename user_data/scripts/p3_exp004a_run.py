@@ -19,8 +19,10 @@ RUNS = ROOT / "phase_runs" / "p3_exp004a"
 COMPLETION = RUNS / "P3-EXP-004A_COMPLETED.json"
 DATA = USER_DATA / "data_p3"
 TIMERANGE = "20190101-20260916"
-FULL_SAMPLE = "20190101-20260101"
-OOS = "20250101-20260101"
+FULL_SAMPLE = "20190101-20260916"
+TRAIN = "20190101-20221231"
+VALIDATION = "20230101-20241231"
+OOS = "20250101-20260916"
 FEE = 0.0005
 STRATEGY = "CrossSectionalMomentum"
 
@@ -148,6 +150,7 @@ def main() -> int:
         "--strategy-path", str(STRATEGY_DIR),
         "-c", str(CONFIG),
         "--strategy", STRATEGY,
+        "-d", str(DATA),
         "--timerange", TIMERANGE,
         "--cache", "none",
         "--export", "trades",
@@ -168,7 +171,7 @@ def main() -> int:
 
     # Frozen protocol slices: headline full sample and one untouched OOS evaluation.
     slices = {}
-    for label, timerange in (("full_sample", FULL_SAMPLE), ("oos", OOS)):
+    for label, timerange in (("full_sample", FULL_SAMPLE), ("train", TRAIN), ("validation", VALIDATION), ("oos", OOS)):
         slice_cmd = command.copy()
         timerange_index = slice_cmd.index("--timerange")
         slice_cmd[timerange_index + 1] = timerange
@@ -207,7 +210,7 @@ def main() -> int:
         "live_trading": False,
         "promotion": False,
         "timerange": TIMERANGE,
-        "preregistered_slices": {"full_sample": FULL_SAMPLE, "oos": OOS},
+        "preregistered_slices": {"full_sample": FULL_SAMPLE, "train": TRAIN, "validation": VALIDATION, "oos": OOS},
         "fee_per_side": FEE,
         "strategy": STRATEGY,
         "config": str(CONFIG.relative_to(ROOT)),
