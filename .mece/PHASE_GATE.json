@@ -1,0 +1,5 @@
+{
+  "phase": "PHASE2",
+  "allow_new_experiments": false,
+  "stop_after_phase_completion": true
+}

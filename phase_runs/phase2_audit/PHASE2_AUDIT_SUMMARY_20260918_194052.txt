@@ -1,0 +1,12 @@
+FREQTRADE PHASE 2 AUDIT
+========================
+Repository: C:\Users\rahul\Downloads\freqtrade-develop\freqtrade-pa-momentum-research
+Newest run: C:\Users\rahul\Downloads\freqtrade-develop\freqtrade-pa-momentum-research\phase_runs\20260918_193645
+Gate phase: PHASE2
+allow_new_experiments: False
+stop_after_phase_completion: True
+Frozen methodology unchanged: True
+Manifest nonzero exit codes: 0
+Textual failure markers: 0
+Assessment: AUDIT_COMPLETE: Phase 2 run exists and governance remains stopped.
+Next action: WAIT_FOR_AUTHORIZED_GOVERNANCE_ADVANCEMENT

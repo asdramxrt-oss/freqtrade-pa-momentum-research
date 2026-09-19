@@ -191,6 +191,28 @@ What the tests pin down:
 
 ---
 
+## Automation bridge (Phase 2)
+
+A one-click, research-safe orchestration layer chains the phase gate, local
+Python/Freqtrade analysis, OpenCode (optional), validation, a deterministic
+derived report, and a next-task **proposal**:
+
+```powershell
+# validate, write reports/phase2_bridge_REPORT.md and .mece/NEXT_TASK.md
+./run_bridge.ps1
+
+# run the CrewAI orchestration stage (needs the optional 'bridge' extra)
+./run_bridge.ps1 -WithCrew
+
+# include the real diagnostic analysis and an OpenCode advisory
+./run_bridge.ps1 -RunAnalysis -WithOpenCode -Json
+```
+
+The bridge is orchestration only. It never changes the frozen production
+strategies, never modifies recorded results (it aborts if they change), reads
+`.mece/PHASE_GATE.json` as authoritative, and never executes the next task — it
+only proposes it. See `automation/README.md`.
+
 ## Running an experiment
 
 ```powershell

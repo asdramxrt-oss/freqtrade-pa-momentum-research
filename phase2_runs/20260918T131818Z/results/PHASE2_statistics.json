@@ -1,0 +1,94 @@
+{
+  "phase": "PHASE2",
+  "generated_utc": "2026-09-18T13:19:58.449422+00:00",
+  "notes": [
+    "Two-sided one-sample bootstrap of the mean per-trade profit (USDT).",
+    "Two-sided permutation test of a difference in means between periods.",
+    "Small pre-specified test set to limit multiple-comparison inflation.",
+    "Trade profits are in absolute USDT, so compounding-era development trades are large; the comparison is directional, not scale-free."
+  ],
+  "strategies": {
+    "turtle": {
+      "ci": {
+        "D_development": {
+          "n": 1153,
+          "point": 503.11214414657417,
+          "low": 115.89622184442756,
+          "high": 928.7445468222244,
+          "iterations": 5000
+        },
+        "C_consumed_2025": {
+          "n": 180,
+          "point": -10.542358077777779,
+          "low": -30.14677163083333,
+          "high": 11.049270251388878,
+          "iterations": 5000
+        },
+        "F_fresh_2026": {
+          "n": 123,
+          "point": -7.146279520325203,
+          "low": -35.27423185792683,
+          "high": 27.407124715447114,
+          "iterations": 5000
+        }
+      },
+      "permutation": {
+        "D_development_vs_F_fresh_2026": {
+          "observed_diff": 510.2584236668994,
+          "p_value": 0.41945805419458054,
+          "n_a": 1153,
+          "n_b": 123,
+          "iterations": 10000
+        },
+        "C_consumed_2025_vs_F_fresh_2026": {
+          "observed_diff": -3.396078557452576,
+          "p_value": 0.8571142885711429,
+          "n_a": 180,
+          "n_b": 123,
+          "iterations": 10000
+        }
+      }
+    },
+    "pullback_long": {
+      "ci": {
+        "D_development": {
+          "n": 516,
+          "point": 120.53273925387596,
+          "low": 29.47571174166666,
+          "high": 227.50268942490294,
+          "iterations": 5000
+        },
+        "C_consumed_2025": {
+          "n": 88,
+          "point": 15.937707249999995,
+          "low": -17.724716941477276,
+          "high": 53.168217534659085,
+          "iterations": 5000
+        },
+        "F_fresh_2026": {
+          "n": 64,
+          "point": -19.936328234374997,
+          "low": -44.7589274625,
+          "high": 9.568996165624997,
+          "iterations": 5000
+        }
+      },
+      "permutation": {
+        "D_development_vs_F_fresh_2026": {
+          "observed_diff": 140.46906748825097,
+          "p_value": 0.31426857314268575,
+          "n_a": 516,
+          "n_b": 64,
+          "iterations": 10000
+        },
+        "C_consumed_2025_vs_F_fresh_2026": {
+          "observed_diff": 35.87403548437499,
+          "p_value": 0.1551844815518448,
+          "n_a": 88,
+          "n_b": 64,
+          "iterations": 10000
+        }
+      }
+    }
+  }
+}

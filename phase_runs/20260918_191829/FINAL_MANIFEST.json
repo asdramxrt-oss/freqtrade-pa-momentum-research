@@ -1,0 +1,62 @@
+{
+  "run_id": "20260918_191829",
+  "root": "C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research",
+  "codex": false,
+  "chatgpt_data_analysis": false,
+  "diagnostic_only": true,
+  "live_trading": false,
+  "promotion": false,
+  "started": "2026-09-18T19:18:29.642464",
+  "phases": [
+    {
+      "phase": "PHASE2",
+      "status": "PASS",
+      "scripts": [
+        {
+          "script": "user_data/scripts/diagnostics/diagnose_data_quality.py",
+          "returncode": 0,
+          "log": "C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research\\phase_runs\\20260918_191829\\logs\\diagnose_data_quality.log"
+        },
+        {
+          "script": "user_data/scripts/diagnostics/diagnose_market_regimes.py",
+          "returncode": 0,
+          "log": "C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research\\phase_runs\\20260918_191829\\logs\\diagnose_market_regimes.log"
+        },
+        {
+          "script": "user_data/scripts/diagnostics/diagnose_turtle_followthrough.py",
+          "returncode": 0,
+          "log": "C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research\\phase_runs\\20260918_191829\\logs\\diagnose_turtle_followthrough.log"
+        },
+        {
+          "script": "user_data/scripts/diagnostics/diagnose_pullback_geometry.py",
+          "returncode": 0,
+          "log": "C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research\\phase_runs\\20260918_191829\\logs\\diagnose_pullback_geometry.log"
+        },
+        {
+          "script": "user_data/scripts/diagnostics/diagnose_trades.py",
+          "returncode": 0,
+          "log": "C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research\\phase_runs\\20260918_191829\\logs\\diagnose_trades.log"
+        },
+        {
+          "script": "user_data/scripts/diagnostics/diagnose_statistics.py",
+          "returncode": 0,
+          "log": "C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research\\phase_runs\\20260918_191829\\logs\\diagnose_statistics.log"
+        }
+      ],
+      "gate_before": {
+        "phase": "PHASE2",
+        "allow_new_experiments": false,
+        "stop_after_phase_completion": true
+      },
+      "gate_after": {
+        "phase": "PHASE2",
+        "allow_new_experiments": false,
+        "stop_after_phase_completion": true
+      }
+    }
+  ],
+  "frozen_sha256_before": "e9b3145a51ac6bd587844f26ad1675720ab531556992027de78097fe06543df2",
+  "frozen_sha256_after": "e9b3145a51ac6bd587844f26ad1675720ab531556992027de78097fe06543df2",
+  "status": "PHASE_COMPLETE",
+  "finished": "2026-09-18T19:20:28.924992"
+}

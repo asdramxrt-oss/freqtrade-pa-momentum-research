@@ -1,0 +1,65 @@
+{
+  "audit_timestamp": "2026-09-18T19:47:29.621966+05:30",
+  "audit": "PHASE2_RESULT_AUDIT",
+  "repository_root": "C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research",
+  "newest_phase_run": "C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research\\phase_runs\\20260918_194558",
+  "manifest": "C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research\\phase_runs\\20260918_194558\\FINAL_MANIFEST.json",
+  "safety": {
+    "CODEX": "OFF",
+    "CHATGPT_DATA_ANALYSIS": "OFF",
+    "LIVE_TRADING": "OFF",
+    "PROMOTION": "OFF"
+  },
+  "governance": {
+    "gate_source": ".mece\\PHASE_GATE.json",
+    "phase": "PHASE2",
+    "allow_new_experiments": false,
+    "stop_after_phase_completion": true
+  },
+  "frozen_methodology": {
+    "path": "docs/FROZEN_IMPLEMENTATION_SPEC.md",
+    "sha256_before_audit": "e9b3145a51ac6bd587844f26ad1675720ab531556992027de78097fe06543df2",
+    "sha256_after_audit": "e9b3145a51ac6bd587844f26ad1675720ab531556992027de78097fe06543df2",
+    "unchanged": true
+  },
+  "run_files": [
+    "FINAL_MANIFEST.json",
+    "FINAL_REPORT.md",
+    "logs\\diagnose_data_quality.log",
+    "logs\\diagnose_market_regimes.log",
+    "logs\\diagnose_pullback_geometry.log",
+    "logs\\diagnose_statistics.log",
+    "logs\\diagnose_trades.log",
+    "logs\\diagnose_turtle_followthrough.log"
+  ],
+  "manifest_exit_codes": [
+    [
+      "/phases[0]/scripts[0]/returncode",
+      0
+    ],
+    [
+      "/phases[0]/scripts[1]/returncode",
+      0
+    ],
+    [
+      "/phases[0]/scripts[2]/returncode",
+      0
+    ],
+    [
+      "/phases[0]/scripts[3]/returncode",
+      0
+    ],
+    [
+      "/phases[0]/scripts[4]/returncode",
+      0
+    ],
+    [
+      "/phases[0]/scripts[5]/returncode",
+      0
+    ]
+  ],
+  "nonzero_manifest_exit_codes": [],
+  "textual_failure_markers": [],
+  "assessment": "AUDIT_COMPLETE: Phase 2 run exists and governance remains stopped.",
+  "next_action": "WAIT_FOR_AUTHORIZED_GOVERNANCE_ADVANCEMENT"
+}

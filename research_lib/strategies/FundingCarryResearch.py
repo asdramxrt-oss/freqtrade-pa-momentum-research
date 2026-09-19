@@ -92,9 +92,9 @@ class FundingCarry(IStrategy):
 
         frame = funding.loc[:, ["date", "funding_rate"]].dropna().sort_values("date")
         frame = frame.set_index("date")
-        frame["mean3d"] = frame["funding_rate"].rolling(
-            f"{self.lookback_days}D", min_periods=1
-        ).mean()
+        frame["mean3d"] = (
+            frame["funding_rate"].rolling(f"{self.lookback_days}D", min_periods=1).mean()
+        )
         frame = frame.reset_index()
         left = pd.DataFrame({"date": pd.to_datetime(dates, utc=True).to_numpy()}).sort_values(
             "date"

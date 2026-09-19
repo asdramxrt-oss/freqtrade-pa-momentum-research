@@ -5,7 +5,19 @@ the preliminary charter criteria. Running walk-forward on EXP-001 as it stands
 would produce a lot of machinery built on a setup whose per-trade expectancy is
 not even significant.
 
-A strategy enters this directory only after it passes charter criteria A1–A8.
+> **Original entry rule (still in force for confirmatory use):**
+> "A strategy enters this directory only after it passes charter criteria A1–A8."
+
+**Reconciliation for diagnostic-only use (DEC-007, 2026-09-16).** The rule above
+continues to govern any *confirmatory* walk-forward and any strategy considered
+for promotion. It is reconciled — **by record, not by editing the frozen
+specification** — with `docs/FROZEN_IMPLEMENTATION_SPEC.md` §9 for
+**diagnostic-only** use: the already-implemented, already-failed engines
+(P3-EXP-001 long arms and P3-EXP-003 carry) may be walked forward strictly to
+measure **stability, decay and reproducibility across windows**. This is not
+validation, not promotion and not a strategy verdict. Any window overlapping
+2025–2026 is labelled **NON-PRISTINE**. See `research/decisions/DECISION_LOG.md`
+DEC-007 and `research/walk_forward/walk_forward_config.json`.
 
 ## What belongs here
 

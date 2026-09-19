@@ -128,13 +128,15 @@ def main() -> int:
             f"{data['gaps_gt_one_bar']:5} {data['duplicate_timestamps']:4}  "
             f"{'identical' if mirror.get('identical') else 'DIFFERS'}"
         )
+    # Exclude the pooled reference: it overlaps D and C, so summing every period
+    # would double-count the development/consumed gaps.
     missing_total = sum(
         p["missing_rows"]
         for data in report["pairs"].values()
-        for p in data["periods"].values()
-        if "missing_rows" in p
+        for label, p in data["periods"].items()
+        if label != "P_pooled_reference" and "missing_rows" in p
     )
-    print(f"\nTotal missing rows across pairs/periods: {missing_total}")
+    print(f"\nTotal missing rows across pairs (D+C+F, excluding pooled): {missing_total}")
     print(f"Wrote {OUTPUT}")
     return 0
 

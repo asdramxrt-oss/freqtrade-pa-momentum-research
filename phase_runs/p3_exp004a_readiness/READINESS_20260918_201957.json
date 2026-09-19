@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-09-18T20:19:57",
+  "project_root": "C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research",
+  "phase": "PHASE2",
+  "allow_new_experiments": false,
+  "stop_after_phase_completion": true,
+  "p3_exp004a_registered": true,
+  "p3_runners": [
+    "p3_exp001_run.py",
+    "p3_exp002_costs.py",
+    "p3_exp003_carry.py"
+  ],
+  "p3_exp004a_files": [
+    "P3-EXP-004A_READINESS.bat",
+    "automation\\p3_exp004a_readiness.py",
+    "user_data\\configs\\P3-EXP-004A.json"
+  ],
+  "frozen_spec_sha256": "e9b3145a51ac6bd587844f26ad1675720ab531556992027de78097fe06543df2",
+  "codex": false,
+  "chatgpt_data_analysis": false,
+  "work": false,
+  "live_trading": false,
+  "promotion": false,
+  "experiment_executed": false,
+  "gate_modified": false,
+  "action": "WAIT",
+  "reason": "Governance gate is closed; no experiment or later phase is executed."
+}

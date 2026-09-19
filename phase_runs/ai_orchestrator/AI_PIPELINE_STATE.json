@@ -1,0 +1,11 @@
+﻿{
+    "allow_new_experiments":  false,
+    "codex":  false,
+    "promotion":  false,
+    "chatgpt_data_analysis":  false,
+    "utc":  "2026-09-19T02:36:24.2584920Z",
+    "live_trading":  false,
+    "phase":  "PHASE2",
+    "status":  "WAIT",
+    "stop_after_phase_completion":  true
+}

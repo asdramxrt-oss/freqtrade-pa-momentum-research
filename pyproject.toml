@@ -24,11 +24,18 @@ dev = [
     "ruff",
 ]
 
+# Optional orchestration layer. Unpinned, matching the "framework not pinned"
+# policy for freqtrade: the bridge must run without CrewAI installed too.
+bridge = [
+    "crewai",
+]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-ra --strict-markers --strict-config"
 markers = [
     "research: marks tests that require downloaded market data or a full backtest",
+    "bridge: marks automation-bridge orchestration tests (no network, no backtest)",
 ]
 
 [tool.ruff]

@@ -5,9 +5,10 @@ Two problems are solved here, both without mutating the host environment:
 1. ``freqtrade`` is a research *dependency*, not a copy of this project. If it
    is not installed, the path to a source checkout can be supplied through the
    ``FREQTRADE_SRC`` environment variable. When that variable is absent the
-   conventional sibling layout (``../freqtrade-develop/freqtrade-develop``) is
-   probed. If neither works, the tests that need freqtrade skip themselves
-   instead of failing the whole session.
+   conventional sibling checkouts (``../freqtrade-develop`` and the nested
+   ``../freqtrade-develop/freqtrade-develop``) are probed. If none works, the
+   tests that need freqtrade skip themselves instead of failing the whole
+   session.
 2. ``user_data/strategies/shared`` is put on ``sys.path`` so that helper
    modules import exactly the way they do from inside a strategy file.
 """
@@ -52,7 +53,13 @@ def _ensure_freqtrade_importable() -> bool:
     env_path = os.environ.get("FREQTRADE_SRC")
     if env_path:
         candidates.append(Path(env_path))
-    candidates.append(PROJECT_ROOT.parent / "freqtrade-develop" / "freqtrade-develop")
+    candidates.extend(
+        [
+            PROJECT_ROOT.parent / "freqtrade-develop",
+            PROJECT_ROOT.parent / "freqtrade-develop" / "freqtrade-develop",
+            PROJECT_ROOT.parent,
+        ]
+    )
 
     for candidate in candidates:
         if (candidate / "freqtrade" / "__init__.py").is_file():

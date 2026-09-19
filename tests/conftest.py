@@ -9,8 +9,9 @@ Three things are handled here, none of which mutate the host environment:
 3. ``freqtrade`` is a research *dependency*, not a copy of this project. If it
    is not installed, a source checkout can be supplied through the
    ``FREQTRADE_SRC`` environment variable; otherwise the conventional sibling
-   layout is probed. If neither works, tests that need freqtrade skip
-   themselves instead of failing the whole session.
+   checkouts (``../freqtrade-develop`` and the nested
+   ``../freqtrade-develop/freqtrade-develop``) are probed. If none works, tests
+   that need freqtrade skip themselves instead of failing the whole session.
 """
 
 from __future__ import annotations
@@ -57,7 +58,13 @@ def _ensure_freqtrade_importable() -> bool:
     env_path = os.environ.get("FREQTRADE_SRC")
     if env_path:
         candidates.append(Path(env_path))
-    candidates.append(PROJECT_ROOT.parent / "freqtrade-develop" / "freqtrade-develop")
+    candidates.extend(
+        [
+            PROJECT_ROOT.parent / "freqtrade-develop",
+            PROJECT_ROOT.parent / "freqtrade-develop" / "freqtrade-develop",
+            PROJECT_ROOT.parent,
+        ]
+    )
 
     for candidate in candidates:
         if (candidate / "freqtrade" / "__init__.py").is_file():

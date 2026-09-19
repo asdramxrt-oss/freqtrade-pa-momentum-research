@@ -1,0 +1,58 @@
+{
+  "timestamp_utc": "2026-09-18T14:39:51.511504+00:00",
+  "project_root": "C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research",
+  "phase": "PHASE2",
+  "gate": {
+    "allow_new_experiments": false,
+    "stop_after_phase_completion": true
+  },
+  "frozen_sha256": "e9b3145a51ac6bd587844f26ad1675720ab531556992027de78097fe06543df2",
+  "existing_p3_runners": [
+    "p3_exp001_run.py",
+    "p3_exp002_costs.py",
+    "p3_exp003_carry.py"
+  ],
+  "candidates": [
+    {
+      "experiment": "P3-EXP-004A",
+      "registry_status": "NO",
+      "matching_runners": [],
+      "config_exists": true
+    },
+    {
+      "experiment": "P3-EXP-004B",
+      "registry_status": "NO",
+      "matching_runners": [],
+      "config_exists": false
+    },
+    {
+      "experiment": "P3-EXP-005",
+      "registry_status": "NO",
+      "matching_runners": [],
+      "config_exists": false
+    },
+    {
+      "experiment": "P3-EXP-006",
+      "registry_status": "NO",
+      "matching_runners": [],
+      "config_exists": false
+    },
+    {
+      "experiment": "P3-EXP-007",
+      "registry_status": "NO",
+      "matching_runners": [],
+      "config_exists": false
+    },
+    {
+      "experiment": "P3-EXP-008",
+      "registry_status": "NO",
+      "matching_runners": [],
+      "config_exists": false
+    }
+  ],
+  "executable_candidates": [],
+  "action": "WAIT",
+  "reason": "Governance gate forbids new experiments; the controller will not execute, enable, or force a later phase.",
+  "execution_performed": false,
+  "gate_modified": false
+}

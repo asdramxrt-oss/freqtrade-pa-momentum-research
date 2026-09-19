@@ -1,6 +1,6 @@
 {
   "phase": "PHASE2",
-  "generated_utc": "2026-09-16T05:56:20.273406+00:00",
+  "generated_utc": "2026-09-18T14:17:28.732745+00:00",
   "notes": [
     "Two-sided one-sample bootstrap of the mean per-trade profit (USDT).",
     "Two-sided permutation test of a difference in means between periods.",

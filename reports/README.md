@@ -23,3 +23,13 @@ Generated, human-readable artifacts derived from recorded experiment results.
 | `cost_sensitivity.md` | all result JSONs | Fee/slippage sweep across strategies |
 | `complementarity.md` | paired strategy results | Signal overlap, return and drawdown correlation |
 | `year_matrix.md` | all result JSONs | Strategy x year robustness grid |
+
+## Generated bridge report
+
+`reports/<run_id>_REPORT.md` is produced by `automation/report.py` via the
+one-click bridge (`run_bridge.ps1` / `python -m automation.bridge`). It obeys the
+rules above: it is a derived view over the recorded JSON, it is regenerable
+without re-running a backtest, and it contains no wall-clock timestamps, so
+identical inputs produce byte-identical output. It is never a source of truth
+and cannot declare a pass. The companion next-task file
+`.mece/NEXT_TASK.md` is a proposal only.

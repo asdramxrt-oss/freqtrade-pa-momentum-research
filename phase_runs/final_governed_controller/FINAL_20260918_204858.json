@@ -1,0 +1,19 @@
+﻿{
+    "promotion":  false,
+    "strategy":  "research_lib/strategies/CrossSectionalMomentumResearch.py",
+    "timestamp":  "2026-09-18T20:48:58.2387902+05:30",
+    "config":  "user_data/configs/P3-EXP-004A.json",
+    "project_root":  "C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research",
+    "blockers":  [
+                     "Governance gate is closed for new experiments.",
+                     "No P3-EXP-004A experiment execution runner is present."
+                 ],
+    "live_trading":  false,
+    "experiment_runner":  "NOT FOUND",
+    "allow_new_experiments":  false,
+    "gate_modified":  false,
+    "phase":  "PHASE2",
+    "registered":  true,
+    "stop_after_phase_completion":  true,
+    "execution":  "NOT_RUN"
+}

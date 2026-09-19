@@ -1,0 +1,590 @@
+{
+  "phase": "PHASE2",
+  "generated_utc": "2026-09-18T13:15:54.862368+00:00",
+  "step_hours": 4,
+  "pairs": {
+    "BTC": {
+      "rows": 16886,
+      "first": "2019-01-01 00:00:00+00:00",
+      "last": "2026-09-16 00:00:00+00:00",
+      "duplicate_timestamps": 0,
+      "is_monotonic_increasing": true,
+      "tz_aware": true,
+      "gaps_gt_one_bar": 4,
+      "max_gap_hours": 12.0,
+      "periods": {
+        "D_development": {
+          "rows": 13147,
+          "expected_rows": 13152,
+          "missing_rows": 5,
+          "first": "2019-01-01 00:00:00+00:00",
+          "last": "2024-12-31 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "C_consumed_2025": {
+          "rows": 2190,
+          "expected_rows": 2190,
+          "missing_rows": 0,
+          "first": "2025-01-01 00:00:00+00:00",
+          "last": "2025-12-31 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "F_fresh_2026": {
+          "rows": 1548,
+          "expected_rows": 1548,
+          "missing_rows": 0,
+          "first": "2026-01-01 00:00:00+00:00",
+          "last": "2026-09-15 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "P_pooled_reference": {
+          "rows": 15337,
+          "expected_rows": 15342,
+          "missing_rows": 5,
+          "first": "2019-01-01 00:00:00+00:00",
+          "last": "2025-12-31 20:00:00+00:00",
+          "duplicates": 0
+        }
+      },
+      "last_candle_complete": true
+    },
+    "ETH": {
+      "rows": 16886,
+      "first": "2019-01-01 00:00:00+00:00",
+      "last": "2026-09-16 00:00:00+00:00",
+      "duplicate_timestamps": 0,
+      "is_monotonic_increasing": true,
+      "tz_aware": true,
+      "gaps_gt_one_bar": 4,
+      "max_gap_hours": 12.0,
+      "periods": {
+        "D_development": {
+          "rows": 13147,
+          "expected_rows": 13152,
+          "missing_rows": 5,
+          "first": "2019-01-01 00:00:00+00:00",
+          "last": "2024-12-31 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "C_consumed_2025": {
+          "rows": 2190,
+          "expected_rows": 2190,
+          "missing_rows": 0,
+          "first": "2025-01-01 00:00:00+00:00",
+          "last": "2025-12-31 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "F_fresh_2026": {
+          "rows": 1548,
+          "expected_rows": 1548,
+          "missing_rows": 0,
+          "first": "2026-01-01 00:00:00+00:00",
+          "last": "2026-09-15 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "P_pooled_reference": {
+          "rows": 15337,
+          "expected_rows": 15342,
+          "missing_rows": 5,
+          "first": "2019-01-01 00:00:00+00:00",
+          "last": "2025-12-31 20:00:00+00:00",
+          "duplicates": 0
+        }
+      },
+      "last_candle_complete": true
+    },
+    "BNB": {
+      "rows": 16886,
+      "first": "2019-01-01 00:00:00+00:00",
+      "last": "2026-09-16 00:00:00+00:00",
+      "duplicate_timestamps": 0,
+      "is_monotonic_increasing": true,
+      "tz_aware": true,
+      "gaps_gt_one_bar": 4,
+      "max_gap_hours": 12.0,
+      "periods": {
+        "D_development": {
+          "rows": 13147,
+          "expected_rows": 13152,
+          "missing_rows": 5,
+          "first": "2019-01-01 00:00:00+00:00",
+          "last": "2024-12-31 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "C_consumed_2025": {
+          "rows": 2190,
+          "expected_rows": 2190,
+          "missing_rows": 0,
+          "first": "2025-01-01 00:00:00+00:00",
+          "last": "2025-12-31 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "F_fresh_2026": {
+          "rows": 1548,
+          "expected_rows": 1548,
+          "missing_rows": 0,
+          "first": "2026-01-01 00:00:00+00:00",
+          "last": "2026-09-15 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "P_pooled_reference": {
+          "rows": 15337,
+          "expected_rows": 15342,
+          "missing_rows": 5,
+          "first": "2019-01-01 00:00:00+00:00",
+          "last": "2025-12-31 20:00:00+00:00",
+          "duplicates": 0
+        }
+      },
+      "last_candle_complete": true
+    },
+    "SOL": {
+      "rows": 13362,
+      "first": "2020-08-11 04:00:00+00:00",
+      "last": "2026-09-16 00:00:00+00:00",
+      "duplicate_timestamps": 0,
+      "is_monotonic_increasing": true,
+      "tz_aware": true,
+      "gaps_gt_one_bar": 0,
+      "max_gap_hours": 4.0,
+      "periods": {
+        "D_development": {
+          "rows": 9623,
+          "expected_rows": 9623,
+          "missing_rows": 0,
+          "first": "2020-08-11 04:00:00+00:00",
+          "last": "2024-12-31 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "C_consumed_2025": {
+          "rows": 2190,
+          "expected_rows": 2190,
+          "missing_rows": 0,
+          "first": "2025-01-01 00:00:00+00:00",
+          "last": "2025-12-31 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "F_fresh_2026": {
+          "rows": 1548,
+          "expected_rows": 1548,
+          "missing_rows": 0,
+          "first": "2026-01-01 00:00:00+00:00",
+          "last": "2026-09-15 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "P_pooled_reference": {
+          "rows": 11813,
+          "expected_rows": 11813,
+          "missing_rows": 0,
+          "first": "2020-08-11 04:00:00+00:00",
+          "last": "2025-12-31 20:00:00+00:00",
+          "duplicates": 0
+        }
+      },
+      "last_candle_complete": true
+    },
+    "XRP": {
+      "rows": 16886,
+      "first": "2019-01-01 00:00:00+00:00",
+      "last": "2026-09-16 00:00:00+00:00",
+      "duplicate_timestamps": 0,
+      "is_monotonic_increasing": true,
+      "tz_aware": true,
+      "gaps_gt_one_bar": 4,
+      "max_gap_hours": 12.0,
+      "periods": {
+        "D_development": {
+          "rows": 13147,
+          "expected_rows": 13152,
+          "missing_rows": 5,
+          "first": "2019-01-01 00:00:00+00:00",
+          "last": "2024-12-31 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "C_consumed_2025": {
+          "rows": 2190,
+          "expected_rows": 2190,
+          "missing_rows": 0,
+          "first": "2025-01-01 00:00:00+00:00",
+          "last": "2025-12-31 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "F_fresh_2026": {
+          "rows": 1548,
+          "expected_rows": 1548,
+          "missing_rows": 0,
+          "first": "2026-01-01 00:00:00+00:00",
+          "last": "2026-09-15 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "P_pooled_reference": {
+          "rows": 15337,
+          "expected_rows": 15342,
+          "missing_rows": 5,
+          "first": "2019-01-01 00:00:00+00:00",
+          "last": "2025-12-31 20:00:00+00:00",
+          "duplicates": 0
+        }
+      },
+      "last_candle_complete": true
+    },
+    "ADA": {
+      "rows": 16886,
+      "first": "2019-01-01 00:00:00+00:00",
+      "last": "2026-09-16 00:00:00+00:00",
+      "duplicate_timestamps": 0,
+      "is_monotonic_increasing": true,
+      "tz_aware": true,
+      "gaps_gt_one_bar": 4,
+      "max_gap_hours": 12.0,
+      "periods": {
+        "D_development": {
+          "rows": 13147,
+          "expected_rows": 13152,
+          "missing_rows": 5,
+          "first": "2019-01-01 00:00:00+00:00",
+          "last": "2024-12-31 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "C_consumed_2025": {
+          "rows": 2190,
+          "expected_rows": 2190,
+          "missing_rows": 0,
+          "first": "2025-01-01 00:00:00+00:00",
+          "last": "2025-12-31 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "F_fresh_2026": {
+          "rows": 1548,
+          "expected_rows": 1548,
+          "missing_rows": 0,
+          "first": "2026-01-01 00:00:00+00:00",
+          "last": "2026-09-15 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "P_pooled_reference": {
+          "rows": 15337,
+          "expected_rows": 15342,
+          "missing_rows": 5,
+          "first": "2019-01-01 00:00:00+00:00",
+          "last": "2025-12-31 20:00:00+00:00",
+          "duplicates": 0
+        }
+      },
+      "last_candle_complete": true
+    },
+    "DOGE": {
+      "rows": 15776,
+      "first": "2019-07-05 12:00:00+00:00",
+      "last": "2026-09-16 00:00:00+00:00",
+      "duplicate_timestamps": 0,
+      "is_monotonic_increasing": true,
+      "tz_aware": true,
+      "gaps_gt_one_bar": 2,
+      "max_gap_hours": 8.0,
+      "periods": {
+        "D_development": {
+          "rows": 12037,
+          "expected_rows": 12039,
+          "missing_rows": 2,
+          "first": "2019-07-05 12:00:00+00:00",
+          "last": "2024-12-31 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "C_consumed_2025": {
+          "rows": 2190,
+          "expected_rows": 2190,
+          "missing_rows": 0,
+          "first": "2025-01-01 00:00:00+00:00",
+          "last": "2025-12-31 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "F_fresh_2026": {
+          "rows": 1548,
+          "expected_rows": 1548,
+          "missing_rows": 0,
+          "first": "2026-01-01 00:00:00+00:00",
+          "last": "2026-09-15 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "P_pooled_reference": {
+          "rows": 14227,
+          "expected_rows": 14229,
+          "missing_rows": 2,
+          "first": "2019-07-05 12:00:00+00:00",
+          "last": "2025-12-31 20:00:00+00:00",
+          "duplicates": 0
+        }
+      },
+      "last_candle_complete": true
+    },
+    "LINK": {
+      "rows": 16794,
+      "first": "2019-01-16 08:00:00+00:00",
+      "last": "2026-09-16 00:00:00+00:00",
+      "duplicate_timestamps": 0,
+      "is_monotonic_increasing": true,
+      "tz_aware": true,
+      "gaps_gt_one_bar": 4,
+      "max_gap_hours": 12.0,
+      "periods": {
+        "D_development": {
+          "rows": 13055,
+          "expected_rows": 13060,
+          "missing_rows": 5,
+          "first": "2019-01-16 08:00:00+00:00",
+          "last": "2024-12-31 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "C_consumed_2025": {
+          "rows": 2190,
+          "expected_rows": 2190,
+          "missing_rows": 0,
+          "first": "2025-01-01 00:00:00+00:00",
+          "last": "2025-12-31 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "F_fresh_2026": {
+          "rows": 1548,
+          "expected_rows": 1548,
+          "missing_rows": 0,
+          "first": "2026-01-01 00:00:00+00:00",
+          "last": "2026-09-15 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "P_pooled_reference": {
+          "rows": 15245,
+          "expected_rows": 15250,
+          "missing_rows": 5,
+          "first": "2019-01-16 08:00:00+00:00",
+          "last": "2025-12-31 20:00:00+00:00",
+          "duplicates": 0
+        }
+      },
+      "last_candle_complete": true
+    },
+    "AVAX": {
+      "rows": 13110,
+      "first": "2020-09-22 04:00:00+00:00",
+      "last": "2026-09-16 00:00:00+00:00",
+      "duplicate_timestamps": 0,
+      "is_monotonic_increasing": true,
+      "tz_aware": true,
+      "gaps_gt_one_bar": 0,
+      "max_gap_hours": 4.0,
+      "periods": {
+        "D_development": {
+          "rows": 9371,
+          "expected_rows": 9371,
+          "missing_rows": 0,
+          "first": "2020-09-22 04:00:00+00:00",
+          "last": "2024-12-31 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "C_consumed_2025": {
+          "rows": 2190,
+          "expected_rows": 2190,
+          "missing_rows": 0,
+          "first": "2025-01-01 00:00:00+00:00",
+          "last": "2025-12-31 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "F_fresh_2026": {
+          "rows": 1548,
+          "expected_rows": 1548,
+          "missing_rows": 0,
+          "first": "2026-01-01 00:00:00+00:00",
+          "last": "2026-09-15 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "P_pooled_reference": {
+          "rows": 11561,
+          "expected_rows": 11561,
+          "missing_rows": 0,
+          "first": "2020-09-22 04:00:00+00:00",
+          "last": "2025-12-31 20:00:00+00:00",
+          "duplicates": 0
+        }
+      },
+      "last_candle_complete": true
+    },
+    "DOT": {
+      "rows": 13316,
+      "first": "2020-08-18 20:00:00+00:00",
+      "last": "2026-09-16 00:00:00+00:00",
+      "duplicate_timestamps": 0,
+      "is_monotonic_increasing": true,
+      "tz_aware": true,
+      "gaps_gt_one_bar": 0,
+      "max_gap_hours": 4.0,
+      "periods": {
+        "D_development": {
+          "rows": 9577,
+          "expected_rows": 9577,
+          "missing_rows": 0,
+          "first": "2020-08-18 20:00:00+00:00",
+          "last": "2024-12-31 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "C_consumed_2025": {
+          "rows": 2190,
+          "expected_rows": 2190,
+          "missing_rows": 0,
+          "first": "2025-01-01 00:00:00+00:00",
+          "last": "2025-12-31 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "F_fresh_2026": {
+          "rows": 1548,
+          "expected_rows": 1548,
+          "missing_rows": 0,
+          "first": "2026-01-01 00:00:00+00:00",
+          "last": "2026-09-15 20:00:00+00:00",
+          "duplicates": 0
+        },
+        "P_pooled_reference": {
+          "rows": 11767,
+          "expected_rows": 11767,
+          "missing_rows": 0,
+          "first": "2020-08-18 20:00:00+00:00",
+          "last": "2025-12-31 20:00:00+00:00",
+          "duplicates": 0
+        }
+      },
+      "last_candle_complete": true
+    }
+  },
+  "mirror_checks": [
+    {
+      "symbol": "BTC",
+      "mirror_present": true,
+      "overlapping_rows": 16886,
+      "max_abs_diff": {
+        "open": 0.0,
+        "high": 0.0,
+        "low": 0.0,
+        "close": 0.0,
+        "volume": 0.0
+      },
+      "identical": true
+    },
+    {
+      "symbol": "ETH",
+      "mirror_present": true,
+      "overlapping_rows": 16886,
+      "max_abs_diff": {
+        "open": 0.0,
+        "high": 0.0,
+        "low": 0.0,
+        "close": 0.0,
+        "volume": 0.0
+      },
+      "identical": true
+    },
+    {
+      "symbol": "BNB",
+      "mirror_present": true,
+      "overlapping_rows": 16886,
+      "max_abs_diff": {
+        "open": 0.0,
+        "high": 0.0,
+        "low": 0.0,
+        "close": 0.0,
+        "volume": 0.0
+      },
+      "identical": true
+    },
+    {
+      "symbol": "SOL",
+      "mirror_present": true,
+      "overlapping_rows": 13362,
+      "max_abs_diff": {
+        "open": 0.0,
+        "high": 0.0,
+        "low": 0.0,
+        "close": 0.0,
+        "volume": 0.0
+      },
+      "identical": true
+    },
+    {
+      "symbol": "XRP",
+      "mirror_present": true,
+      "overlapping_rows": 16886,
+      "max_abs_diff": {
+        "open": 0.0,
+        "high": 0.0,
+        "low": 0.0,
+        "close": 0.0,
+        "volume": 0.0
+      },
+      "identical": true
+    },
+    {
+      "symbol": "ADA",
+      "mirror_present": true,
+      "overlapping_rows": 16886,
+      "max_abs_diff": {
+        "open": 0.0,
+        "high": 0.0,
+        "low": 0.0,
+        "close": 0.0,
+        "volume": 0.0
+      },
+      "identical": true
+    },
+    {
+      "symbol": "DOGE",
+      "mirror_present": true,
+      "overlapping_rows": 15776,
+      "max_abs_diff": {
+        "open": 0.0,
+        "high": 0.0,
+        "low": 0.0,
+        "close": 0.0,
+        "volume": 0.0
+      },
+      "identical": true
+    },
+    {
+      "symbol": "LINK",
+      "mirror_present": true,
+      "overlapping_rows": 16794,
+      "max_abs_diff": {
+        "open": 0.0,
+        "high": 0.0,
+        "low": 0.0,
+        "close": 0.0,
+        "volume": 0.0
+      },
+      "identical": true
+    },
+    {
+      "symbol": "AVAX",
+      "mirror_present": true,
+      "overlapping_rows": 13110,
+      "max_abs_diff": {
+        "open": 0.0,
+        "high": 0.0,
+        "low": 0.0,
+        "close": 0.0,
+        "volume": 0.0
+      },
+      "identical": true
+    },
+    {
+      "symbol": "DOT",
+      "mirror_present": true,
+      "overlapping_rows": 13316,
+      "max_abs_diff": {
+        "open": 0.0,
+        "high": 0.0,
+        "low": 0.0,
+        "close": 0.0,
+        "volume": 0.0
+      },
+      "identical": true
+    }
+  ],
+  "now_utc": "2026-09-18T13:15:55.240445+00:00"
+}

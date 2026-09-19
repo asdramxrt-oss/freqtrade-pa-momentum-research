@@ -1,0 +1,9 @@
+{
+  "task": "Authorized research task",
+  "constraints": {
+    "no_live_trading": true,
+    "no_auto_promotion": true,
+    "no_gate_modification": true,
+    "preserve_frozen_methodology": true
+  }
+}

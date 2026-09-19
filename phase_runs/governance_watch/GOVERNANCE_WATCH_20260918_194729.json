@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-09-18T19:47:29.712244+05:30",
+  "root": "C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research",
+  "gate_source": ".mece/PHASE_GATE.json",
+  "phase": "PHASE2",
+  "allow_new_experiments": false,
+  "stop_after_phase_completion": true,
+  "frozen_methodology_sha256": "e9b3145a51ac6bd587844f26ad1675720ab531556992027de78097fe06543df2",
+  "safety": {
+    "codex": false,
+    "chatgpt_data_analysis": false,
+    "live_trading": false,
+    "promotion": false
+  },
+  "action": "WAIT",
+  "reason": "Current governance gate is PHASE2 with stop_after_phase_completion=true; no later phase is forced."
+}

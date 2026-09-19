@@ -1,0 +1,175 @@
+{
+  "run_id": "20260918T131818Z",
+  "root": "C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research",
+  "started_utc": "2026-09-18T13:18:18.206419+00:00",
+  "mode": "diagnostic-only",
+  "codex": false,
+  "chatgpt_data_analysis": false,
+  "live_trading": false,
+  "strategy_promotion": false,
+  "steps": [
+    {
+      "name": "governance",
+      "status": "PASS",
+      "detail": "{\"phase\": \"PHASE2\", \"allow_new_experiments\": false, \"stop_after_phase_completion\": true}",
+      "gate": {
+        "phase": "PHASE2",
+        "allow_new_experiments": false,
+        "stop_after_phase_completion": true
+      }
+    },
+    {
+      "name": "frozen_files",
+      "status": "PASS",
+      "detail": "5 hashed; missing=[]",
+      "sha256": {
+        "docs/FROZEN_IMPLEMENTATION_SPEC.md": "e9b3145a51ac6bd587844f26ad1675720ab531556992027de78097fe06543df2",
+        "user_data/strategies/turtle/DonchianTurtleBaseline.py": "5a841a1307e68df53efff89cb7d01bef8e5518f73fc996314f9e81d6a96d9c03",
+        "user_data/strategies/pullback/PullbackContinuation.py": "750616345f17f59ac621f4946577b0883efb26c9285bc9719fbeb9b1dd6e58d4",
+        "user_data/strategies/shared/pa_pullback.py": "eef725bd298cb642c2c6f4e19f6de5d5bc616c465ba0ebe3d41935740bd975e9",
+        "user_data/strategies/shared/pa_structure.py": "4413bf2fc5530afb76136285e0a08797ecbf4dcbf57cad1d7a23348f638fdf86"
+      }
+    },
+    {
+      "name": "python",
+      "status": "PASS",
+      "detail": "repo .venv",
+      "python": "C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research\\.venv\\Scripts\\python.exe",
+      "duration_s": 0.06
+    },
+    {
+      "name": "dependencies",
+      "status": "PASS",
+      "detail": "missing=[]; freqtrade_import=True",
+      "checks": [
+        {
+          "package": "numpy",
+          "ok": true,
+          "duration_s": 0.17
+        },
+        {
+          "package": "pandas",
+          "ok": true,
+          "duration_s": 0.54
+        },
+        {
+          "package": "scipy",
+          "ok": true,
+          "duration_s": 0.14
+        },
+        {
+          "package": "pyarrow",
+          "ok": true,
+          "duration_s": 0.2
+        },
+        {
+          "package": "freqtrade",
+          "ok": true,
+          "duration_s": 0.1
+        }
+      ]
+    },
+    {
+      "name": "environment_ready",
+      "status": "PASS",
+      "detail": "All diagnostic runtime dependencies import successfully."
+    },
+    {
+      "name": "dataset_discovery",
+      "status": "PASS",
+      "detail": "60 data artifacts discovered",
+      "count": 60,
+      "sample": [
+        "user_data\\data\\binance\\ADA_USDT-4h.feather",
+        "user_data\\data\\binance\\AVAX_USDT-4h.feather",
+        "user_data\\data\\binance\\BNB_USDT-4h.feather",
+        "user_data\\data\\binance\\BTC_USDT-4h.feather",
+        "user_data\\data\\binance\\DOGE_USDT-4h.feather",
+        "user_data\\data\\binance\\DOT_USDT-4h.feather",
+        "user_data\\data\\binance\\ETH_USDT-4h.feather",
+        "user_data\\data\\binance\\LINK_USDT-4h.feather",
+        "user_data\\data\\binance\\SOL_USDT-4h.feather",
+        "user_data\\data\\binance\\XRP_USDT-4h.feather",
+        "user_data\\data\\binance\\futures\\ADA_USDT_USDT-1h-funding_rate.feather",
+        "user_data\\data\\binance\\futures\\ADA_USDT_USDT-4h-futures.feather",
+        "user_data\\data\\binance\\futures\\ADA_USDT_USDT-4h-index.feather",
+        "user_data\\data\\binance\\futures\\ADA_USDT_USDT-4h-mark.feather",
+        "user_data\\data\\binance\\futures\\ADA_USDT_USDT-4h-premiumIndex.feather",
+        "user_data\\data\\binance\\futures\\AVAX_USDT_USDT-1h-funding_rate.feather",
+        "user_data\\data\\binance\\futures\\AVAX_USDT_USDT-4h-futures.feather",
+        "user_data\\data\\binance\\futures\\AVAX_USDT_USDT-4h-index.feather",
+        "user_data\\data\\binance\\futures\\AVAX_USDT_USDT-4h-mark.feather",
+        "user_data\\data\\binance\\futures\\AVAX_USDT_USDT-4h-premiumIndex.feather",
+        "user_data\\data\\binance\\futures\\BNB_USDT_USDT-1h-funding_rate.feather",
+        "user_data\\data\\binance\\futures\\BNB_USDT_USDT-4h-futures.feather",
+        "user_data\\data\\binance\\futures\\BNB_USDT_USDT-4h-index.feather",
+        "user_data\\data\\binance\\futures\\BNB_USDT_USDT-4h-mark.feather",
+        "user_data\\data\\binance\\futures\\BNB_USDT_USDT-4h-premiumIndex.feather",
+        "user_data\\data\\binance\\futures\\BTC_USDT_USDT-1h-funding_rate.feather",
+        "user_data\\data\\binance\\futures\\BTC_USDT_USDT-4h-futures.feather",
+        "user_data\\data\\binance\\futures\\BTC_USDT_USDT-4h-index.feather",
+        "user_data\\data\\binance\\futures\\BTC_USDT_USDT-4h-mark.feather",
+        "user_data\\data\\binance\\futures\\BTC_USDT_USDT-4h-premiumIndex.feather"
+      ]
+    },
+    {
+      "name": "diagnose_data_quality.py",
+      "status": "PASS",
+      "detail": "exit=0",
+      "duration_s": 0.78,
+      "log": "phase2_runs\\20260918T131818Z\\logs\\01_diagnose_data_quality.log"
+    },
+    {
+      "name": "diagnose_market_regimes.py",
+      "status": "PASS",
+      "detail": "exit=0",
+      "duration_s": 1.32,
+      "log": "phase2_runs\\20260918T131818Z\\logs\\02_diagnose_market_regimes.log"
+    },
+    {
+      "name": "diagnose_turtle_followthrough.py",
+      "status": "PASS",
+      "detail": "exit=0",
+      "duration_s": 1.32,
+      "log": "phase2_runs\\20260918T131818Z\\logs\\03_diagnose_turtle_followthrough.log"
+    },
+    {
+      "name": "diagnose_pullback_geometry.py",
+      "status": "PASS",
+      "detail": "exit=0",
+      "duration_s": 1.59,
+      "log": "phase2_runs\\20260918T131818Z\\logs\\04_diagnose_pullback_geometry.log"
+    },
+    {
+      "name": "diagnose_trades.py",
+      "status": "PASS",
+      "detail": "exit=0",
+      "duration_s": 93.49,
+      "log": "phase2_runs\\20260918T131818Z\\logs\\05_diagnose_trades.log"
+    },
+    {
+      "name": "diagnose_statistics.py",
+      "status": "PASS",
+      "detail": "exit=0",
+      "duration_s": 1.33,
+      "log": "phase2_runs\\20260918T131818Z\\logs\\06_diagnose_statistics.log"
+    },
+    {
+      "name": "result_aggregation",
+      "status": "PASS",
+      "detail": "7 PHASE2 JSON outputs captured",
+      "outputs": [
+        "research\\experiment_results\\PHASE2_data_quality.json",
+        "research\\experiment_results\\PHASE2_lineage.json",
+        "research\\experiment_results\\PHASE2_market_regimes.json",
+        "research\\experiment_results\\PHASE2_pullback_geometry.json",
+        "research\\experiment_results\\PHASE2_statistics.json",
+        "research\\experiment_results\\PHASE2_trade_diagnostics.json",
+        "research\\experiment_results\\PHASE2_turtle_followthrough.json"
+      ]
+    }
+  ],
+  "freqtrade_source": "C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-develop",
+  "finished_utc": "2026-09-18T13:19:59.321465+00:00",
+  "overall": "PASS"
+}

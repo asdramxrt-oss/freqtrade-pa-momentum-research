@@ -1,6 +1,6 @@
 {
   "phase": "PHASE2",
-  "generated_utc": "2026-09-16T05:54:31.697255+00:00",
+  "generated_utc": "2026-09-18T14:16:04.968604+00:00",
   "note": "frozen strategies re-run deterministically for measurement only",
   "strategies": {
     "turtle": {
@@ -1261,7 +1261,7 @@
         "turnover_usdt": 812661.0399334,
         "fees_paid_usdt": 406.3305199667,
         "time_in_market_ratio": 1.482648401826484,
-        "p_value": 0.3174047856888539,
+        "p_value": 0.31740478568885383,
         "distribution": {
           "trades": 180,
           "wins": 49,
@@ -1769,7 +1769,7 @@
           "mean_trade_pct": 2.03176541926191,
           "median_trade_pct": -2.5852132358246056,
           "std_usdt": 7128.938952937847,
-          "skew": 5.219453910415047,
+          "skew": 5.219453910415048,
           "gross_profit_usdt": 2594613.84891788,
           "gross_loss_usdt": -2112884.71942092,
           "profit_factor": 1.2279959361100343,
@@ -4174,7 +4174,7 @@
           "mean_trade_pct": 1.7280189042379273,
           "median_trade_pct": -2.6776929240361143,
           "std_usdt": 1145.8336333282375,
-          "skew": 5.930417884727795,
+          "skew": 5.930417884727794,
           "gross_profit_usdt": 198506.62136191002,
           "gross_loss_usdt": -126713.70792707999,
           "profit_factor": 1.5665757447185173,

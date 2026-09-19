@@ -1,0 +1,37 @@
+{
+  "name": "freqtrade_all_phases_local_controller",
+  "mode": "gate_driven",
+  "phase_detection": "read .mece/PHASE_GATE.json",
+  "source_of_truth": [
+    ".mece/PHASE_GATE.json",
+    ".mece/NEXT_TASK.md",
+    ".mece/WAVE.md",
+    ".mece/SYNTHESIS.md"
+  ],
+  "execution_policy": {
+    "closed_gate": "safe_stop",
+    "never_use_force": true,
+    "never_bypass_governance": true,
+    "never_assume_phase_complete": true,
+    "production_subtrees_are_protected": true
+  },
+  "bridge_command": "python -m automation.bridge --json",
+  "automatic_flags": [],
+  "operator_opt_in_flags": [
+    "--with-crew",
+    "--run-analysis",
+    "--include-experiments",
+    "--with-opencode"
+  ],
+  "retry": {
+    "max_retries": 2,
+    "delay_seconds": 15
+  },
+  "continuous": {
+    "delay_seconds": 60
+  },
+  "task_scheduler": {
+    "task_name": "Freqtrade All Phases Research Controller",
+    "trigger": "ONLOGON"
+  }
+}

@@ -1,0 +1,33 @@
+﻿{
+    "timestamp":  "2026-09-18T20:54:36.6346888+05:30",
+    "status":  "NOT_READY",
+    "project_root":  "C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research",
+    "phase":  "PHASE2",
+    "allow_new_experiments":  false,
+    "stop_after_phase_completion":  true,
+    "registered":  true,
+    "strategy":  "research_lib/strategies/CrossSectionalMomentumResearch.py",
+    "config":  "user_data/configs/P3-EXP-004A.json",
+    "experiment_runner":  "NOT FOUND",
+    "futures_data_files":  50,
+    "futures_symbols":  [
+                            "ADA",
+                            "AVAX",
+                            "BNB",
+                            "BTC",
+                            "DOGE",
+                            "DOT",
+                            "ETH",
+                            "LINK",
+                            "SOL",
+                            "XRP"
+                        ],
+    "blockers":  [
+                     "Governance gate is closed; execution is prohibited.",
+                     "No P3-EXP-004A experiment execution runner is present."
+                 ],
+    "execution":  "NOT_RUN",
+    "live_trading":  false,
+    "promotion":  false,
+    "gate_modified":  false
+}

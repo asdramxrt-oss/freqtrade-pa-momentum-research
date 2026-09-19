@@ -12,6 +12,7 @@ decision is a new entry that supersedes the old one.
 | DEC-004 | 2026-09-16 | Strategy verdict | **EXP-003 (Pullback continuation) = MIXED / REQUIRES FURTHER VALIDATION.** Combined object fails A1–A8 (4/8: A3, A4, A5, A6), caused entirely by the short side (PF 0.73, −55.95%, DD 61.73%, 9/10 pairs negative, expectancy significantly negative). Long-only passes all 8 (PF 1.567, DD 24.4%, OOS +14.01%, 6/7 years, all 10 pairs profitable) but is a pre-registered variant on a single holdout — promising, not validated. Short side rejected. Geometry does not separate winners from losers. | `research/experiment_results/EXP-003.md`, `EXP-003.json`, `EXP-003.raw.json` |
 | DEC-005 | 2026-09-16 | Governance | **EXP-004 slot re-scoped.** The frozen charter sequence listed EXP-004 as "Turtle + Pullback". At the research owner's explicit direction the EXP-004 slot is instead a **fresh out-of-sample validation of the frozen long-only pullback strategy** (`c4bee8e`), with combination research explicitly prohibited for this slot. The charter sequence and this experiment are therefore reconciled by record, not by silent divergence. Turtle+Pullback is deferred and not authorised. | `research/experiment_specs/EXP-004.md` |
 | DEC-006 | 2026-09-16 | Strategy verdict | **EXP-004 (frozen long pullback, fresh OOS) = FAILS FRESH OOS.** On the previously unevaluated window 2026-01-01 → 2026-09-16 the frozen strategy produced 64 trades, PF 0.607, net −12.75%, 25% win rate, expectancy −19.93 USDT (p = 0.164), wallet DD 21.70%. Only A6 passed; A1, A2, A3, A4, A5, A7 failed (A8 N/A). The EXP-003 long-only result did **not** replicate. No tuning, no pair removal, no parameter change, no combination. | `research/experiment_results/EXP-004.md`, `EXP-004.json`, `EXP-004.raw.json` |
+| DEC-007 | 2026-09-16 | Governance | **Diagnostic-only walk-forward authorised.** The `research/walk_forward/README.md` "A1–A8 passers only" entry rule is reconciled with frozen spec §9 by record: walk-forward may be applied to already-implemented, already-failed engines strictly to measure stability/decay/reproducibility — it is **not** validation, promotion, or a strategy verdict. Authorised scope: P3-EXP-001 long arms (`TurtleFuturesLong`, `TurtleFuturesLongRaw`) and P3-EXP-003 (`FundingCarry`), implementations unchanged. Windows frozen in `research/walk_forward/walk_forward_config.json` before any run; 2025–2026 windows labelled NON-PRISTINE. No gate change, no parameter search, no promotion, no commit/push. | `research/walk_forward/walk_forward_config.json`, `research/experiment_results/DEC-007_WALK_FORWARD.md` |
 
 Founding commit (foundation + EXP-001 implementation, on `main`):
 `12acbf7017a04418dbfa54771edf5c97b358d618`
@@ -332,3 +333,55 @@ trade-concentration and a market-regime shift (volatility compression plus a
 long-only bear holdout) — with breakout follow-through, transaction costs and
 data quality ruled out as primary causes, and permanent strategy decay recorded
 as **unproven**. No strategy is validated by this phase.
+
+---
+
+## DEC-007 — detail
+
+**Decision.** The `research/walk_forward/README.md` entry rule ("a strategy
+enters this directory only after it passes charter criteria A1–A8") is
+**reconciled with frozen specification §9 by record** — not by silently editing
+the frozen text — so that a **diagnostic-only** walk-forward may be applied to
+engines that have already been implemented and already failed. The purpose is to
+measure each engine's **stability, decay and reproducibility across windows**,
+because the binding methodological limitation is a single non-pristine test
+window. This is explicitly **not** validation, **not** promotion, and **not** a
+strategy verdict.
+
+**Reasoning.**
+
+1. All three implemented Phase-3 engines are FAIL (P3-EXP-001 long arms
+   test PF 0.813 / 0.852; P3-EXP-003 test PF 0.805 with funding PnL −11,306
+   USDT). No engine is a candidate for promotion, so walk-forward here cannot be
+   a selection step.
+2. The README's A1–A8 gate predates three failed genuine-futures experiments.
+   Measuring *whether a failed setup is at least stable or uniformly poor* is a
+   different question from confirming an edge, and it is the single
+   highest-information, lowest-overfitting next action.
+3. The frozen specification requires that a change to the research plan be
+   recorded rather than made silently (frozen-spec preamble). This entry is that
+   record. `docs/FROZEN_IMPLEMENTATION_SPEC.md` §9 is **not** edited.
+
+**Authorised scope (exact).**
+
+- Arms: `TurtleFuturesLong` (`long_vol`), `TurtleFuturesLongRaw` (`long_raw`)
+  from P3-EXP-001; `FundingCarry` (`carry`) from P3-EXP-003.
+- Implementations, configs and universe are used **unchanged**.
+- Windows: resolved from §9 + README + actual data availability and **frozen**
+  in `research/walk_forward/walk_forward_config.json` before the first run.
+  Anchored expanding in-sample, 1-year out-of-sample, 1-year step, in-sample
+  anchor at the first available candle (2019-09-08).
+- No parameter/hyperparameter/threshold search; no threshold selection; no
+  promotion; no change to `.mece/PHASE_GATE.json`; no commit or push.
+
+**Non-pristine disclosure.** The 2025 and 2026 out-of-sample windows were already
+observed by EXP-001…004 and PHASE 2. They are included only as explicitly
+labelled **NON-PRISTINE** diagnostic windows and cannot support a confirmatory
+claim; a pristine check requires new post-2026-09 data (SI-2).
+
+**What was explicitly NOT done.** No frozen-spec edit; no gate change; no
+strategy promotion; no P3-EXP-006/007/008; no parameter search; no combination of
+strategies; no reinterpretation of any failed experiment as validated.
+
+**Consequences.** The walk-forward result is recorded as diagnostic robustness
+evidence only. The programme continues to stop at the next human decision gate.

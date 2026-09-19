@@ -9,6 +9,35 @@ UNKNOWN.
 
 ---
 
+## Post-execution addendum (2026-09-16) — does not rewrite the evaluation above
+
+This evaluation was written **before** any Phase-3 experiment ran. Three have now
+executed, so several of its questions have answers. The original text is left
+intact; this addendum records the delta.
+
+- **F5 update.** Genuine Binance USDT-M futures OHLCV **is now on disk**
+  (`user_data/data_p3`: 4h OHLCV + 1h mark + funding). SI-1 is resolved; the spot
+  mirror is no longer the basis of Phase-3 results.
+- **Critical question 1** (Turtle on genuine futures) — **answered**: FAIL both
+  directions (P3-EXP-001); costs are not the cause (P3-EXP-002).
+- **Critical question 2** (carry independently useful) — **answered for the
+  implemented proxy**: FAIL; the single-leg trailing-sign carry paid funding
+  (P3-EXP-003). Not a general refutation of carry.
+- **Critical question 5** (volatility estimator) — **still open**; now the
+  lowest-complexity next experiment (P3-EXP-006).
+- **Critical question 6** (regime) — **still open**, but PHASE 2's regime-shift
+  evidence makes P3-EXP-007 the most directly motivated test.
+- **Critical questions 3/4/7/8/9** — still open; no component has shown robust
+  incremental OOS value.
+- **Architecture table** — unchanged conclusion strengthened: **Turtle-only
+  remains the default; every other architecture is still UNRESOLVED, now with
+  three failed Phase-3 experiments behind the "no evidence" column.**
+
+Full audit and proposed next steps: `.mece/cells/CELL-002/REPORT.md`,
+`.mece/cells/CELL-003/REPORT.md`, `.mece/SYNTHESIS.md`.
+
+---
+
 ## FACT (directly established)
 
 **Internal, measured**

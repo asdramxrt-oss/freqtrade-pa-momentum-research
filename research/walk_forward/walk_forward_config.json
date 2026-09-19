@@ -1,0 +1,109 @@
+{
+  "experiment_id": "DEC-007",
+  "governance_ref": "DEC-007",
+  "governance_rule": "diagnostic-only; not validation, promotion or a strategy verdict",
+  "status": "FROZEN",
+  "frozen_by": "DEC-007",
+  "frozen_on": "2026-09-16",
+  "methodology": {
+    "source": "docs/FROZEN_IMPLEMENTATION_SPEC.md section 9",
+    "scheme": "anchored expanding in-sample, 1-year out-of-sample, 1-year step",
+    "is_anchor": "20190908",
+    "is_anchor_note": "first available candle in user_data/data_p3 (BTC/USDT:USDT 2019-09-08 16:00 UTC); some pairs list later and are absent before their listing date",
+    "parameter_selection": "NONE",
+    "parameter_selection_note": "engines use frozen fixed parameters; no parameter is chosen or tuned on any window, so parameter drift is reported as not applicable",
+    "pristine_holdout_available": false,
+    "non_pristine_note": "2025-2026 were already observed by EXP-001..004 and PHASE 2; every window overlapping them is labelled NON-PRISTINE"
+  },
+  "dataset": "user_data/data_p3",
+  "strategy_path": "research_lib/strategies",
+  "timeframe": "4h",
+  "fee": 0.0005,
+  "slippage": 0.0,
+  "universe": [
+    "BTC/USDT:USDT",
+    "ETH/USDT:USDT",
+    "BNB/USDT:USDT",
+    "SOL/USDT:USDT",
+    "XRP/USDT:USDT",
+    "ADA/USDT:USDT",
+    "DOGE/USDT:USDT",
+    "LINK/USDT:USDT",
+    "AVAX/USDT:USDT",
+    "DOT/USDT:USDT"
+  ],
+  "arms": {
+    "long_vol": {
+      "strategy": "TurtleFuturesLong",
+      "config": "user_data/configs/P3-EXP-001.json",
+      "experiment": "P3-EXP-001",
+      "kind": "turtle"
+    },
+    "long_raw": {
+      "strategy": "TurtleFuturesLongRaw",
+      "config": "user_data/configs/P3-EXP-001.json",
+      "experiment": "P3-EXP-001",
+      "kind": "turtle"
+    },
+    "carry": {
+      "strategy": "FundingCarry",
+      "config": "user_data/configs/P3-EXP-003.json",
+      "experiment": "P3-EXP-003",
+      "kind": "carry"
+    }
+  },
+  "windows": [
+    {
+      "id": "W1",
+      "label": "2023",
+      "is_start": "20190908",
+      "is_end": "20230101",
+      "oos_start": "20230101",
+      "oos_end": "20240101",
+      "non_pristine": false
+    },
+    {
+      "id": "W2",
+      "label": "2024",
+      "is_start": "20190908",
+      "is_end": "20240101",
+      "oos_start": "20240101",
+      "oos_end": "20250101",
+      "non_pristine": false
+    },
+    {
+      "id": "W3",
+      "label": "2025 (PHASE 2 'C', consumed)",
+      "is_start": "20190908",
+      "is_end": "20250101",
+      "oos_start": "20250101",
+      "oos_end": "20260101",
+      "non_pristine": true
+    },
+    {
+      "id": "W4",
+      "label": "2026 partial (PHASE 2 'F', consumed)",
+      "is_start": "20190908",
+      "is_end": "20260101",
+      "oos_start": "20260101",
+      "oos_end": "20260916",
+      "non_pristine": true
+    }
+  ],
+  "reproducibility_passes": 2,
+  "metrics": [
+    "net_profit_pct",
+    "profit_factor",
+    "trades",
+    "max_drawdown_wallet_pct",
+    "expectancy",
+    "p_value",
+    "winrate_pct",
+    "sharpe"
+  ],
+  "outputs": {
+    "raw": "research/experiment_results/DEC-007_walk_forward.raw.json",
+    "consolidated": "research/experiment_results/DEC-007_walk_forward.json",
+    "report": "research/experiment_results/DEC-007_WALK_FORWARD.md"
+  }
+}

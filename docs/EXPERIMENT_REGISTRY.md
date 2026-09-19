@@ -4,8 +4,18 @@ Mirror of the Notion **Phase 3 — Experiment Registry** database
 (`collection://c2c4f6e5-47ad-477a-b360-8bfce6add095`). Git is the executable
 source of truth; Notion is the human-readable control plane.
 
-**Status: all experiments PREREGISTERED on 2026-09-16, none executed.**
-**No strategy code has been written or modified.**
+**Status: P3-EXP-001, P3-EXP-002 and P3-EXP-003 have been EXECUTED** (verdicts:
+FAIL / FAIL / FAIL). All other experiments remain PREREGISTERED and **not**
+executed. No production strategy code has been written or modified; Phase-3
+implementations live in `research_lib/strategies/` and results under
+`research/experiment_results/`.
+
+**DEC-007 (diagnostic-only, no verdict):** a walk-forward harness
+(`research/walk_forward/run_walk_forward.py`, frozen windows in
+`walk_forward_config.json`) was applied to the already-failed P3-EXP-001 long
+arms and P3-EXP-003 carry, implementations unchanged, strictly to measure
+stability/decay/reproducibility. It is **not** a new strategy experiment and
+does **not** change any verdict; 2025–2026 windows are NON-PRISTINE.
 
 ## Naming and scope
 
@@ -21,15 +31,23 @@ source of truth; Notion is the human-readable control plane.
 
 | ID | Experiment | Executable now | Missing data / dependency |
 |----|-----------|----------------|---------------------------|
-| P3-EXP-001 | Real futures Turtle baseline (long + short; signal vs vol-scaled sizing) | PARTIAL | Genuine Binance futures OHLCV not on disk (spot mirror only); obtainable but not downloaded. Short side + sizing ablation need code. |
-| P3-EXP-002 | Turtle cost / slippage sensitivity | NO | depends on P3-EXP-001 |
-| P3-EXP-003 | Carry / basis standalone | NO | funding/mark/index downloaded; carry strategy code not written |
-| P3-EXP-004A | Cross-sectional momentum | NO | code not written; genuine futures OHLCV |
+| P3-EXP-001 | Real futures Turtle baseline (long + short; signal vs vol-scaled sizing) | EXECUTED | **FAIL** — genuine `data_p3` futures OHLCV (funding + 1h mark); both long arms negative OOS (PF 0.813 / 0.852), short negative throughout. `research/experiment_results/P3-EXP-001.md` |
+| P3-EXP-002 | Turtle cost / slippage sensitivity | EXECUTED | **FAIL (corrected)** — stress PF 1.037 (`long_vol`, below the 1.05 threshold) vs 1.259 (`long_raw`); costs are not the cause of failure. `research/experiment_results/P3-EXP-002.md` |
+| P3-EXP-003 | Carry / basis standalone | EXECUTED | **FAIL** — net funding PnL −11,306 USDT (paid funding, did not harvest it); OOS PF 0.805. `research/experiment_results/P3-EXP-003.md` |
+| P3-EXP-004A | Cross-sectional momentum | NO | research candidate implemented in `research_lib/strategies/CrossSectionalMomentumResearch.py` with dry-run config `user_data/configs/P3-EXP-004A.json`; not backtested/validated because local Freqtrade is blocked by the Pydantic dependency mismatch |
 | P3-EXP-004B | Residual momentum | NO | code not written; genuine futures OHLCV |
 | P3-EXP-005 | Turtle + complementary momentum | NO | depends on 001 and 004A/B |
 | P3-EXP-006 | Volatility estimator ablation (ATR vs GK; YZ excluded) | NO | estimator code not written |
 | P3-EXP-007 | Regime (selection / sizing / allocation) | NO | regime code not written |
 | P3-EXP-008 | ML meta-filter (tested LAST) | NO | ML pipeline not written; LightGBM not installed (sklearn/XGBoost available) |
+| DEC-007 | Diagnostic-only walk-forward of already-failed engines (non-strategy) | EXECUTED | **DIAGNOSTIC ONLY** — P3-EXP-001 long arms + P3-EXP-003 carry, implementations unchanged; windows frozen in `research/walk_forward/walk_forward_config.json`; 2025–2026 windows NON-PRISTINE. Not a verdict. `research/experiment_results/DEC-007_WALK_FORWARD.md` |
+
+**Execution note (2026-09-16).** P3-EXP-001/002/003 were first run when funding
+was silently excluded (engine requires 1h mark; SI-4). After the 1h-mark data was
+downloaded, all affected runs were re-executed with funding applied; the earlier
+numbers are superseded, not deleted (see `docs/ISSUES_LOG.md` SI-4 and each
+result document's correction section). P3-EXP-002's verdict changed from PASS to
+FAIL as a result.
 
 Every record in Notion carries the full preregistration: research question, both
 hypotheses, baseline, treatment, dataset, universe, period, timeframe, features,
@@ -73,14 +91,15 @@ leakage detected. **Otherwise: INSUFFICIENT EVIDENCE** (not PASS).
 
 | Dimension | Count so far | Notes |
 |-----------|--------------|-------|
-| Phase-3 hypotheses preregistered | 9 experiments (EXPERIMENTAL: 0 run) | P3-EXP-001…008 (004 split A/B) |
+| Phase-3 hypotheses preregistered | 9 experiments (EXECUTED: 3) | P3-EXP-001…008 (004 split A/B); 001–003 run, all FAIL |
 | Prior-programme experiments run | 4 (+1 diagnostic phase) | EXP-001…004, PHASE 2 |
-| Strategy families implemented | 2 | Turtle, Pullback |
-| Parameter variants searched (Phase 3) | 0 | no search performed |
-| Different datasets used | 1 (spot OHLCV) + a spot-derived futures mirror | genuine futures OHLCV not yet used |
+| Strategy families implemented | 2 rule-based + 2 Phase-3 research engines | Turtle, Pullback; `research_lib` adds futures Turtle + funding carry |
+| Parameter variants searched (Phase 3) | 0 | no search performed; fixed frozen parameters |
+| Different datasets used | spot OHLCV + spot-derived mirror + genuine futures (`data_p3`) | genuine futures now used for P3-EXP-001/002/003 |
 | Pair combinations tested | 1 fixed universe (10 pairs) | no pair subsets selected |
 | Timeframe variants | 1 (4h) | 1d untested |
 | Model variants (ML) | 0 | ML not started |
+| Diagnostic robustness runs (non-strategy, DEC-007) | 1 | walk-forward of P3-EXP-001/003; diagnostic only, no strategy tested, no parameter selected |
 | Consumed holdouts | 2025 and 2026 | **not pristine** |
 
 ## Data-snooping risk statement

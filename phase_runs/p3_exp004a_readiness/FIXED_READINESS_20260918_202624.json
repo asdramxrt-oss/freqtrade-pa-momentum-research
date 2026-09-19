@@ -1,0 +1,34 @@
+{
+  "timestamp": "2026-09-18T20:26:24",
+  "project_root": "C:\\Users\\rahul\\Downloads\\freqtrade-develop\\freqtrade-pa-momentum-research",
+  "phase": "PHASE2",
+  "allow_new_experiments": false,
+  "stop_after_phase_completion": true,
+  "frozen_spec_sha256": "e9b3145a51ac6bd587844f26ad1675720ab531556992027de78097fe06543df2",
+  "p3_exp004a_registered": true,
+  "strategy_matches": [
+    "research_lib/strategies/CrossSectionalMomentumResearch.py"
+  ],
+  "config_matches": [
+    "user_data/configs/P3-EXP-004A.json"
+  ],
+  "runner_matches": [
+    "automation/p3_exp004a_readiness.py"
+  ],
+  "spec_matches": [],
+  "python": "Python 3.12.10",
+  "freqtrade": "2026.9-dev",
+  "pydantic": "2.13.5",
+  "codex": false,
+  "chatgpt_data_analysis": false,
+  "work": false,
+  "live_trading": false,
+  "promotion": false,
+  "experiment_executed": false,
+  "gate_modified": false,
+  "action": "WAIT",
+  "blockers": [
+    "Governance gate is closed for new experiments."
+  ],
+  "reason": "Governance gate is closed for new experiments."
+}
