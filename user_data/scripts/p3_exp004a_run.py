@@ -16,7 +16,7 @@ STRATEGY_FILE = STRATEGY_DIR / "CrossSectionalMomentumResearch.py"
 GATE = ROOT / ".mece" / "PHASE_GATE.json"
 RESULTS = ROOT / "research" / "experiment_results"
 RUNS = ROOT / "phase_runs" / "p3_exp004a"
-DATA = USER_DATA / "data" / "binance" / "futures"
+DATA = USER_DATA / "data_p3"
 TIMERANGE = "20190101-20260916"
 FEE = 0.0005
 STRATEGY = "CrossSectionalMomentum"
@@ -91,13 +91,37 @@ def main() -> int:
     if missing:
         raise RuntimeError("Missing required files: " + "; ".join(missing))
 
-    data_files = [
-        DATA / f"{p.replace('/', '_').replace(':', '_')}-4h-futures.feather"
-        for p in PAIRS
-    ]
-    missing_data = [str(p) for p in data_files if not p.exists()]
+    def futures_file(pair: str) -> Path:
+        stem = pair.replace("/", "_").replace(":", "_")
+        return DATA / f"{stem}-4h-futures.feather"
+
+    data_files = [futures_file(p) for p in PAIRS]
+    missing_data = [p for p in data_files if not p.exists()]
     if missing_data:
-        raise RuntimeError("Missing genuine futures files: " + "; ".join(missing_data))
+        print("Genuine Phase-3 futures data missing; downloading into data_p3 (spot mirror untouched).")
+        download = [
+            sys.executable, "-m", "freqtrade", "download-data",
+            "--userdir", str(USER_DATA),
+            "-d", str(DATA),
+            "-c", str(CONFIG),
+            "-t", "4h",
+            "--trading-mode", "futures",
+            "--candle-types", "futures",
+            "--timerange", TIMERANGE,
+        ]
+        cp_download = subprocess.run(
+            download, cwd=str(ROOT), capture_output=True, text=True, check=False
+        )
+        download_log = RUNS / f"p3_exp004a_download_{datetime.now(UTC).strftime('%Y%m%d_%H%M%S')}.log"
+        download_log.write_text(
+            "$ " + " ".join(download) + "\n\nSTDOUT\n" + cp_download.stdout +
+            "\nSTDERR\n" + cp_download.stderr, encoding="utf-8"
+        )
+        if cp_download.returncode != 0:
+            raise RuntimeError(f"Genuine futures download failed; see {download_log}")
+        missing_data = [p for p in data_files if not p.exists()]
+        if missing_data:
+            raise RuntimeError("Genuine futures files still missing after download: " + "; ".join(map(str, missing_data)))
 
     # Freeze integrity inputs immediately before execution.
     before = {
@@ -152,6 +176,7 @@ def main() -> int:
         "strategy": STRATEGY,
         "config": str(CONFIG.relative_to(ROOT)),
         "strategy_path": str(STRATEGY_FILE.relative_to(ROOT)),
+        "data_directory": str(DATA.relative_to(ROOT)),
         "data_files": [str(p.relative_to(ROOT)) for p in data_files],
         "command": command,
         "log": str(log.relative_to(ROOT)),
