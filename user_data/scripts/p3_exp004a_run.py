@@ -109,6 +109,8 @@ def main() -> int:
 
     data_files = [futures_file(p) for p in PAIRS]
     missing_data = [p for p in data_files if not p.exists()]
+    if not missing_data and any(p.stat().st_size == 0 for p in data_files):
+        raise RuntimeError("One or more genuine futures files are empty.")
     if missing_data:
         print("Genuine Phase-3 futures data missing; downloading into data_p3 (spot mirror untouched).")
         download = [
