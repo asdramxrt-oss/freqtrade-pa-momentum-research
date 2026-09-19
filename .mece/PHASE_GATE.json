@@ -1,5 +1,5 @@
 {
-  "phase": "PHASE2",
-  "allow_new_experiments": false,
-  "stop_after_phase_completion": true
+  "phase": "PHASE3",
+  "allow_new_experiments": true,
+  "stop_after_phase_completion": false
 }
