@@ -16,6 +16,7 @@ STRATEGY_FILE = STRATEGY_DIR / "CrossSectionalMomentumResearch.py"
 GATE = ROOT / ".mece" / "PHASE_GATE.json"
 RESULTS = ROOT / "research" / "experiment_results"
 RUNS = ROOT / "phase_runs" / "p3_exp004a"
+COMPLETION = RUNS / "P3-EXP-004A_COMPLETED.json"
 DATA = USER_DATA / "data_p3"
 TIMERANGE = "20190101-20260916"
 FEE = 0.0005
@@ -78,12 +79,19 @@ def main() -> int:
     RESULTS.mkdir(parents=True, exist_ok=True)
 
     g = load_gate()
+    if g.get("phase") != "PHASE3":
+        raise RuntimeError(f"P3-EXP-004A requires PHASE3 gate; got {g.get('phase')!r}")
     if not authorized(g):
         print("P3-EXP-004A RUNNER: WAIT")
         print(f"phase={g.get('phase')}")
         print(f"allow_new_experiments={g['allow_new_experiments']}")
         print(f"stop_after_phase_completion={g['stop_after_phase_completion']}")
         print("No experiment executed.")
+        return 0
+
+    if COMPLETION.exists():
+        print("P3-EXP-004A already executed once; no repeat evaluation is authorized.")
+        print(f"Completion marker: {COMPLETION}")
         return 0
 
     required = [CONFIG, STRATEGY_FILE, GATE]
@@ -188,6 +196,13 @@ def main() -> int:
     stamp = datetime.now(UTC).strftime("%Y%m%d_%H%M%S")
     raw = RUNS / f"P3-EXP-004A_RAW_{stamp}.json"
     raw.write_text(json.dumps(report, indent=2, default=str), encoding="utf-8")
+    COMPLETION.write_text(json.dumps({
+        "experiment_id": "P3-EXP-004A",
+        "executed_utc": after["completed_utc"],
+        "raw_result": str(raw.relative_to(ROOT)),
+        "promotion": False,
+        "note": "One evaluation per strategy version; repeat execution is blocked by this marker.",
+    }, indent=2), encoding="utf-8")
 
     # Never promote automatically. The result is evidence only.
     print(f"RAW RESULT: {raw}")
